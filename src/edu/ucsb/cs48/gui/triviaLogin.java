@@ -8,7 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
-public class loginWindow {
+public class triviaLogin {
     JButton loginButton;
     JTextField loginField;
     JPasswordField passwordField;
