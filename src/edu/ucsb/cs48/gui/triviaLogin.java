@@ -88,6 +88,7 @@ public class triviaLogin {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
+                //DB LOADING GOES HERE
                 triviaMain.setCurrentPanel(new mainMenuPanel());
             }
         });
@@ -97,6 +98,7 @@ public class triviaLogin {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     frame.dispose();
+                    // DB LOADING GOES HERE
                     triviaMain.setCurrentPanel(new mainMenuPanel());
                 }
             }
