@@ -28,10 +28,28 @@ public class triviaMain {
     public static JFrame mainFrame;
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
-    public static final String pathToFileOnDisk = "icon_256.png";
+    public static final String pathToFileOnDisk = "gui/assets/icon_256.png";
     public static final ImageIcon icon = new ImageIcon(pathToFileOnDisk);
 
     public void createWindow(){
+        //UI Design
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (UnsupportedLookAndFeelException e) {
+            // handle exception
+        } catch (ClassNotFoundException e) {
+            // handle exception
+        } catch (InstantiationException e) {
+            // handle exception
+        } catch (IllegalAccessException e) {
+            // handle exception
+        }
+
         // Instantiate objects
         mainFrame = new JFrame("Trivia Master");
         mainPanel = new JPanel(new GridLayout(2,1));
@@ -83,6 +101,7 @@ public class triviaMain {
         mainFrame.setResizable(false);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setIconImage(icon.getImage());
+
 
         mainFrame.setVisible(true);
 
