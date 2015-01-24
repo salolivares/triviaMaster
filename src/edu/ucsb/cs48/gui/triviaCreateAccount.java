@@ -2,6 +2,10 @@ package edu.ucsb.cs48.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class triviaCreateAccount {
     JButton loginButton;
@@ -16,8 +20,8 @@ public class triviaCreateAccount {
     JPanel panBot;
 
     public void createWindow() {
-        frame = new JFrame("Account Login");
-        loginButton = new JButton("Login");
+        frame = new JFrame("Create Account");
+        loginButton = new JButton("Create Account");
         loginField = new JTextField("Username", 20);
         passwordField = new JPasswordField("Password", 20);
         loginLabel = new JLabel("Login:");
@@ -48,5 +52,51 @@ public class triviaCreateAccount {
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
+
+        /* Event Managers */
+        loginField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                loginField.setText("");
+                passwordField.setText("");
+            }
+        });
+        loginField.addKeyListener(new KeyAdapter() {
+            boolean notPressed = true;
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(notPressed) {
+                    loginField.setText("");
+                    notPressed = false;
+                }
+            }
+        });
+
+        passwordField.addKeyListener(new KeyAdapter() {
+            boolean notPressed = true;
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(notPressed) {
+                    passwordField.setText("");
+                    notPressed = false;
+                }
+            }
+        });
+
+        loginButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frame.dispose();
+            }
+        });
+
+        passwordField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    frame.dispose();
+                }
+            }
+        });
     }
 }

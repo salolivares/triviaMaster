@@ -13,14 +13,14 @@ import java.awt.event.MouseEvent;
 public class triviaMain {
 
     //Java GUI components
-    JFrame mainFrame;
+    public static JFrame mainFrame;
     triviaLogin loginWindow;
-    triviaCreateAccount accountWindow;
+    triviaCreateAccount createAccountWindow;
     JPanel mainPanel;
     JPanel topPanel;
     JPanel botPanel;
     JButton loginButton;
-    JButton createAccountWindow;
+    JButton createAccountButton;
     JButton options;
     JLabel triviaTitle;
     GridBagConstraints gbc;
@@ -38,11 +38,11 @@ public class triviaMain {
         topPanel = new JPanel(new BorderLayout());
         botPanel = new JPanel(new GridBagLayout());
         loginButton = new JButton("Account Login");
-        createAccountWindow = new JButton("Create Account");
+        createAccountButton = new JButton("Create Account");
         options = new JButton("Options");
         triviaTitle = new JLabel("Trivia Master");
         loginWindow = new triviaLogin();
-        accountWindow = new triviaCreateAccount();
+        createAccountWindow = new triviaCreateAccount();
         gbc = new GridBagConstraints();
 
         // set jlabel properties
@@ -63,7 +63,7 @@ public class triviaMain {
         botPanel.add(options,gbc);
         gbc.gridx = 0;
         gbc.gridy = 1;
-        botPanel.add(createAccountWindow,gbc);
+        botPanel.add(createAccountButton,gbc);
 
         //add bot and top panels to main panel
         mainPanel.add(topPanel);
@@ -89,19 +89,27 @@ public class triviaMain {
             }
         });
 
-        createAccountWindow.addMouseListener(new MouseAdapter() {
+        createAccountButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                accountWindow.createWindow();
+                createAccountWindow.createWindow();
             }
         });
 
         options.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-
             }
         });
+    }
+
+    /**
+     * Helper function to set curent panel in main JFrame to avoid window clutter
+     * @param newPanel
+     */
+    public static void setCurrentPanel(JPanel newPanel){
+        mainFrame.setContentPane(newPanel);
+        mainFrame.revalidate();
     }
 
     /**
