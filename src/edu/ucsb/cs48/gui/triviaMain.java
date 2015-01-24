@@ -15,11 +15,12 @@ public class triviaMain {
     //Java GUI components
     JFrame mainFrame;
     triviaLogin loginWindow;
+    triviaCreateAccount accountWindow;
     JPanel mainPanel;
     JPanel topPanel;
     JPanel botPanel;
     JButton loginButton;
-    JButton loginAsGuestButton;
+    JButton createAccountWindow;
     JButton options;
     JLabel triviaTitle;
     GridBagConstraints gbc;
@@ -37,10 +38,11 @@ public class triviaMain {
         topPanel = new JPanel(new BorderLayout());
         botPanel = new JPanel(new GridBagLayout());
         loginButton = new JButton("Account Login");
-        loginAsGuestButton = new JButton("Guest Login");
+        createAccountWindow = new JButton("Create Account");
         options = new JButton("Options");
         triviaTitle = new JLabel("Trivia Master");
         loginWindow = new triviaLogin();
+        accountWindow = new triviaCreateAccount();
         gbc = new GridBagConstraints();
 
         // set jlabel properties
@@ -54,14 +56,14 @@ public class triviaMain {
         //configure gridbaglayout and add to bot panel
         gbc.gridx = 0;
         gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         botPanel.add(loginButton,gbc);
         gbc.gridx = 0;
         gbc.gridy = 2;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         botPanel.add(options,gbc);
         gbc.gridx = 0;
         gbc.gridy = 1;
-        botPanel.add(loginAsGuestButton,gbc);
+        botPanel.add(createAccountWindow,gbc);
 
         //add bot and top panels to main panel
         mainPanel.add(topPanel);
@@ -72,7 +74,7 @@ public class triviaMain {
 
         // Set Jframe properties
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setSize(WIDTH,HEIGHT);
+        mainFrame.setSize(WIDTH, HEIGHT);
         mainFrame.setResizable(false);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setIconImage(icon.getImage());
@@ -82,8 +84,22 @@ public class triviaMain {
         /* Event manager */
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseReleased(MouseEvent e) {
                 loginWindow.createWindow();
+            }
+        });
+
+        createAccountWindow.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                accountWindow.createWindow();
+            }
+        });
+
+        options.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
             }
         });
     }
