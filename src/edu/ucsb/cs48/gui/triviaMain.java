@@ -7,8 +7,7 @@ import java.awt.event.MouseEvent;
 
 /**
  * Class the starts it all
- * This class is the one that first intializes the JFrame and is updated with a new panel each time
- *
+ * This class is the one that first initializes the JFrame and is updated with a new panel each time
  */
 public class triviaMain {
 
