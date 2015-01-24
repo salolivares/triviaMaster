@@ -32,7 +32,7 @@ public class triviaLogin {
         panRight         = new JPanel(new BorderLayout());
         panBot           = new JPanel();
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         panLeft.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
         panRight.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
@@ -52,6 +52,7 @@ public class triviaLogin {
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
 
         /* Event Managers */
         loginField.addMouseListener(new MouseAdapter() {
