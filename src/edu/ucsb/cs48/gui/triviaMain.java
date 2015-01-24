@@ -7,13 +7,12 @@ import java.awt.event.MouseEvent;
 
 /**
  * Class the starts it all
- * This class is the one that first intiliazes the JFrame and is updated with a new panel each time
+ * This class is the one that first intializes the JFrame and is updated with a new panel each time
  *
  */
 public class triviaMain {
 
     //Java GUI components
-    public static JFrame mainFrame;
     triviaLogin loginWindow;
     triviaCreateAccount createAccountWindow;
     JPanel mainPanel;
@@ -26,6 +25,7 @@ public class triviaMain {
     GridBagConstraints gbc;
 
     // GUI constants
+    public static JFrame mainFrame;
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
     public static final String pathToFileOnDisk = "icon_256.png";
@@ -104,7 +104,7 @@ public class triviaMain {
     }
 
     /**
-     * Helper function to set curent panel in main JFrame to avoid window clutter
+     * Helper function to set current panel in main JFrame to avoid window clutter
      * @param newPanel
      */
     public static void setCurrentPanel(JPanel newPanel){
@@ -112,12 +112,4 @@ public class triviaMain {
         mainFrame.revalidate();
     }
 
-    /**
-     * main is used for testing purposes and should not be called in other classes
-     * @param args
-     */
-    public static void main(String[] args) {
-        triviaMain mainWindow = new triviaMain();
-        mainWindow.createWindow();
-    }
 }
