@@ -9,6 +9,9 @@ Brian Yan
 
 Trivia!
 
+## Learn Branching!!!
+http://pcottle.github.io/learnGitBranching/
+
 ## How to make your panel
 Check out mainMenuPanel to give you an idea on how to create your panel
 
