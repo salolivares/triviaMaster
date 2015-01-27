@@ -13,11 +13,11 @@ public class User {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/triviamaster" + "user=trivia&password=master");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/triviamaster?" + "user=trivia&password=master");
 
 			Statement stmt = (Statement) con.createStatement();
 			query = "SELECT username, password FROM user WHERE username='"
-					+ username + "' AND password='" + password + "';'";
+					+ username + "' AND password='" + password + "';";
 			stmt.executeQuery(query);
 			ResultSet rs = stmt.getResultSet();
 			login = rs.first();
