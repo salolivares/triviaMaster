@@ -2,6 +2,8 @@ package edu.ucsb.cs48.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class mainMenuPanel extends JPanel{
     //Java GUI Components
@@ -49,6 +51,20 @@ public class mainMenuPanel extends JPanel{
         //add bot and top panel
         add(topPanel);
         add(botPanel);
+
+        // event manager
+        playGameButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                triviaMain.setCurrentPanel(new gameModePanel());
+            }
+        });
+        viewHighScoreButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                triviaMain.setCurrentPanel(new highscorePanel());
+            }
+        });
     }
 
 }
