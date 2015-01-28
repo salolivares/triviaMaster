@@ -65,6 +65,12 @@ public class mainMenuPanel extends JPanel{
                 triviaMain.setCurrentPanel(new highscorePanel());
             }
         });
+        enterShopButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                triviaMain.setCurrentPanel(new shopPanel());
+            }
+        });
     }
 
 }
