@@ -1,5 +1,7 @@
 package edu.ucsb.cs48.gui;
 
+import edu.ucsb.cs48.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -19,6 +21,7 @@ public class triviaLogin {
     JPanel panLeft;
     JPanel panRight;
     JPanel panBot;
+    JFrame loginError;
 
     public void createWindow() {
         frame            = new JFrame("Account Login");
@@ -88,8 +91,16 @@ public class triviaLogin {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                //DB LOADING GOES HERE
-                triviaMain.setCurrentPanel(new mainMenuPanel());
+
+                //Authenticate User
+                String username = loginField.getText();
+                String password = loginField.getText();
+                if(Main.player.loginCheck(username,password)){
+                    triviaMain.setCurrentPanel(new mainMenuPanel());
+                }
+                else{
+                    JOptionPane.showMessageDialog(loginError,"Incorrect Password. Please try again","Login Incorrect",JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
@@ -98,8 +109,14 @@ public class triviaLogin {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     frame.dispose();
-                    // DB LOADING GOES HERE
-                    triviaMain.setCurrentPanel(new mainMenuPanel());
+                    String username = loginField.getText();
+                    String password = loginField.getText();
+                    if(Main.player.loginCheck(username,password)){
+                        triviaMain.setCurrentPanel(new mainMenuPanel());
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(loginError,"Incorrect Password. Please try again","Login Incorrect",JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
