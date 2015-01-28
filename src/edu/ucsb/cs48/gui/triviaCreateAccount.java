@@ -18,6 +18,7 @@ public class triviaCreateAccount {
     JPanel panLeft;
     JPanel panRight;
     JPanel panBot;
+    JFrame createdAccount;
 
     public void createWindow() {
         frame = new JFrame("Create Account");
@@ -86,6 +87,7 @@ public class triviaCreateAccount {
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
             }
         });
@@ -94,6 +96,7 @@ public class triviaCreateAccount {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
                     frame.dispose();
                 }
             }
