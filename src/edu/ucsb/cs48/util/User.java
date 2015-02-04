@@ -55,10 +55,10 @@ public class User {
 
 	public static Connection createDBconnection() {
 		String url = "jdbc:mysql://localhost/";
-		String dbName = "scot";
+		String dbName = "triviamaster";
 		String driver = "com.mysql.jdbc.Driver";
-		String userName = "scot";
-		String password = "tiger";
+		String userName = "nivedita";
+		String password = "choudhuri";
 		try {
 			Class.forName(driver).newInstance();
 			Connection conn = DriverManager.getConnection(url + dbName,
