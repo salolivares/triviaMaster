@@ -14,9 +14,8 @@ public class User {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			Connection con = DriverManager.getConnection("jdbc:mysql://104.236.175.85:3306/triviamaster","triviaMaster","trivia");
+			Connection con = createDBconnection();
 
-			//Connection con = createDBconnection();
 			Statement stmt = (Statement) con.createStatement();
 			query = "SELECT username, password FROM user WHERE username='"
 					+ username + "' AND password='" + password + "';";
@@ -59,11 +58,11 @@ public class User {
 	}
 
 	public static Connection createDBconnection() {
-		String url = "jdbc:mysql://localhost/";
-		String dbName = "scot";
+		String url = "jdbc:mysql://104.236.175.85:3306/";
+		String dbName = "triviamaster";
 		String driver = "com.mysql.jdbc.Driver";
-		String userName = "scot";
-		String password = "tiger";
+		String userName = "triviaMaster";
+		String password = "trivia";
 		try {
 			Class.forName(driver).newInstance();
 			Connection conn = DriverManager.getConnection(url + dbName,
