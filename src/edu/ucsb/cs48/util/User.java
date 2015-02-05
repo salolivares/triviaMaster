@@ -1,9 +1,13 @@
-package triviamaster;
+package edu.ucsb.cs48.util;
+//package triviamaster;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+//TODO:
+// Make createAccount return a boolean
 
 public class User {
 	public static boolean loginCheck(String username, String password) {
@@ -11,7 +15,10 @@ public class User {
 		boolean login = false;
 
 		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+
 			Connection con = createDBconnection();
+
 			Statement stmt = (Statement) con.createStatement();
 			query = "SELECT username, password FROM user WHERE username='"
 					+ username + "' AND password='" + password + "';";
@@ -54,11 +61,19 @@ public class User {
 	}
 
 	public static Connection createDBconnection() {
+<<<<<<< HEAD
 		String url = "jdbc:mysql://localhost/";
 		String dbName = "triviamaster";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = "nivedita";
 		String password = "choudhuri";
+=======
+		String url = "jdbc:mysql://104.236.175.85:3306/";
+		String dbName = "triviamaster";
+		String driver = "com.mysql.jdbc.Driver";
+		String userName = "triviaMaster";
+		String password = "trivia";
+>>>>>>> origin/master
 		try {
 			Class.forName(driver).newInstance();
 			Connection conn = DriverManager.getConnection(url + dbName,

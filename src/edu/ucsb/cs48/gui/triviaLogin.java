@@ -92,14 +92,14 @@ public class triviaLogin {
             public void mouseClicked(MouseEvent e) {
                 //Authenticate User
                 String username = loginField.getText();
-                String password = loginField.getText();
+                String password = passwordField.getText();
                 if(Main.player.loginCheck(username,password)){
                     triviaMain.setCurrentPanel(new mainMenuPanel());
+                    frame.dispose();
                 }
                 else{
                     JOptionPane.showMessageDialog(loginError,"Incorrect Password. Please try again","Login Incorrect",JOptionPane.ERROR_MESSAGE);
                 }
-                frame.dispose();
             }
         });
 
@@ -108,14 +108,14 @@ public class triviaLogin {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     String username = loginField.getText();
-                    String password = loginField.getText();
+                    String password = passwordField.getText();
                     if(Main.player.loginCheck(username,password)){
                         triviaMain.setCurrentPanel(new mainMenuPanel());
+                        frame.dispose();
                     }
                     else{
                         JOptionPane.showMessageDialog(loginError,"Incorrect Password. Please try again","Login Incorrect",JOptionPane.ERROR_MESSAGE);
                     }
-                    frame.dispose();
                 }
             }
         });
