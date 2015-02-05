@@ -1,5 +1,7 @@
 package edu.ucsb.cs48.gui;
 
+import edu.ucsb.cs48.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -87,6 +89,11 @@ public class triviaCreateAccount {
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if(loginField.getText().equals("Username")){
+                    JOptionPane.showMessageDialog(createdAccount,"Please choose a username","Account Creation",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                Main.player.createUser(loginField.getText(),passwordField.getText());
                 JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
             }
@@ -96,6 +103,11 @@ public class triviaCreateAccount {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    if(loginField.getText().equals("Username")){
+                        JOptionPane.showMessageDialog(createdAccount,"Please choose a username","Account Creation",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    Main.player.createUser(loginField.getText(),passwordField.getText());
                     JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
                     frame.dispose();
                 }

@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+//TODO:
+// Make createAccount return a boolean
+
 public class User {
 	public static boolean loginCheck(String username, String password) {
 		String query;
