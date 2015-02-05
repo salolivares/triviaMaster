@@ -95,11 +95,11 @@ public class triviaLogin {
                 String password = passwordField.getText();
                 if(Main.player.loginCheck(username,password)){
                     triviaMain.setCurrentPanel(new mainMenuPanel());
+                    frame.dispose();
                 }
                 else{
                     JOptionPane.showMessageDialog(loginError,"Incorrect Password. Please try again","Login Incorrect",JOptionPane.ERROR_MESSAGE);
                 }
-                frame.dispose();
             }
         });
 
@@ -111,11 +111,11 @@ public class triviaLogin {
                     String password = passwordField.getText();
                     if(Main.player.loginCheck(username,password)){
                         triviaMain.setCurrentPanel(new mainMenuPanel());
+                        frame.dispose();
                     }
                     else{
                         JOptionPane.showMessageDialog(loginError,"Incorrect Password. Please try again","Login Incorrect",JOptionPane.ERROR_MESSAGE);
                     }
-                    frame.dispose();
                 }
             }
         });
