@@ -1,4 +1,4 @@
-package triviaMaster;
+package edu.ucsb.cs48.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ public class User {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/triviamaster?" + "user=trivia&password=master");
+			Connection con = DriverManager.getConnection("jdbc:mysql://104.236.175.85:3306/triviamaster","triviaMaster","trivia");
 
 			Statement stmt = (Statement) con.createStatement();
 			query = "SELECT username, password FROM user WHERE username='"
@@ -25,7 +25,7 @@ public class User {
 			return login;
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
 		return login;
 	}
 

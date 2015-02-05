@@ -1,7 +1,6 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.gui.guiUtils.ForcedListSelectionModel;
-import edu.ucsb.cs48.gui.guiUtils.tableModel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
