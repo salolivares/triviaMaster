@@ -131,7 +131,7 @@ public class triviaMain {
             @Override
             public void mouseReleased(MouseEvent e) {
                 // CHANGE mainMenuPanel to your panel name to test!
-                setCurrentPanel(new mainMenuPanel());
+                setCurrentPanel(new gameModePanel());
             }
         });
     }
