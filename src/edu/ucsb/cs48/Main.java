@@ -1,6 +1,7 @@
 package edu.ucsb.cs48;
 
 import edu.ucsb.cs48.gui.triviaMain;
+import edu.ucsb.cs48.util.Database;
 import edu.ucsb.cs48.util.User;
 
 /**
@@ -8,11 +9,15 @@ import edu.ucsb.cs48.util.User;
  */
 
 public class Main {
+
+    // player is a static variable so it can be accessed by all other classes at runtime
     public static User player;
+    public static Database db;
 
     public static void main(String[] args){
         triviaMain gui = new triviaMain();
         player = new User();
+        db = new Database();
 
         gui.createWindow();
     }
