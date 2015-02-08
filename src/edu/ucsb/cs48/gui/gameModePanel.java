@@ -28,6 +28,7 @@ public class gameModePanel extends JPanel{
         mainPanel.add(mode1);
         mainPanel.add(mode2);
         mainPanel.add(mainMenu);
+        // test comment
 
         add(mainPanel);
 
