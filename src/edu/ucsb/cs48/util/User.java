@@ -10,6 +10,7 @@ import java.sql.Statement;
 // Make createAccount return a boolean
 
 public class User {
+		
 	public static boolean loginCheck(String username, String password) {
 		String query;
 		boolean login = false;
@@ -17,7 +18,7 @@ public class User {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			Connection con = createDBconnection();
+			Connection con = db.createDBconnection();
 
 			Statement stmt = (Statement) con.createStatement();
 			query = "SELECT username, password FROM user WHERE username='"
@@ -25,7 +26,7 @@ public class User {
 			stmt.executeQuery(query);
 			ResultSet rs = stmt.getResultSet();
 			login = rs.first();
-			closeDBconnection(con);
+			db.closeDBconnection(con);
 			return login;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -35,7 +36,7 @@ public class User {
 
 	public static String createUser(String username, String password) {
 		try {
-			Connection con = createDBconnection();
+			Connection con = db.createDBconnection();
 			Statement select_stmt = (Statement) con.createStatement();
 			String query = "SELECT username FROM user WHERE username='"
 					+ username + "';";
@@ -52,7 +53,7 @@ public class User {
 			else { /* If user already exists */
 				return "DUPLICATE";
 			}
-			closeDBconnection(con);
+			db.closeDBconnection(con);
 			return "CREATED";
 		} catch (Exception e) {
 			e.printStackTrace();
