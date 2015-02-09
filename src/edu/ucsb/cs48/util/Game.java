@@ -1,20 +1,23 @@
 package edu.ucsb.cs48.util;
 
 import edu.ucsb.cs48.gui.countdownTimer;
+import edu.ucsb.cs48.gui.mainMenuPanel;
 import edu.ucsb.cs48.gui.triviaMain;
 
-import java.util.concurrent.TimeUnit;
 
 public class Game implements Runnable{
 
-    // Unintialized constants used to choose questions
-    // GUI should intialize these
+    // Uninitialized constants used to choose questions
+    // GUI should initialize these
     // Difficulty:
     //        0 - easy
     //        1 - hard
-    public static String CATEGORY = "null";
-    public static int DIFFICULTY = 0;
+    private String category = "null";
+    private int difficulty = 0;
+    public static QuestionAndAnswers QandA;
 
+
+    //mandatory method to make a class run in separate thread
     public void run(){
         try {
             gameStart();
@@ -23,11 +26,16 @@ public class Game implements Runnable{
         }
     }
 
+    // starts the main game
     public void gameStart() throws InterruptedException{
         countdownTimer();
+        QandA = new QuestionAndAnswers(category,difficulty);
+        triviaMain.setCurrentPanel(new mainMenuPanel()); // CHANGE THIS TO THE QUESTIONS and ANSWERS PANEL
     }
-    public void gameEnd(){
+    public void gameEnd() {
     }
+
+    // counts down on main JFrame
     public void countdownTimer() throws InterruptedException{
         triviaMain.setCurrentPanel(new countdownTimer("3"));
         Thread.sleep(1000);
@@ -35,5 +43,11 @@ public class Game implements Runnable{
         Thread.sleep(1000);
         triviaMain.setCurrentPanel(new countdownTimer("1"));
         Thread.sleep(1000);
+    }
+    public void setCategory(String category){
+        this.category = category;
+    }
+    public void setDifficulty(int difficulty){
+        this.difficulty = difficulty;
     }
 }

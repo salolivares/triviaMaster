@@ -3,6 +3,7 @@ package edu.ucsb.cs48;
 import edu.ucsb.cs48.gui.triviaMain;
 import edu.ucsb.cs48.util.Database;
 import edu.ucsb.cs48.util.Game;
+import edu.ucsb.cs48.util.QuestionAndAnswers;
 import edu.ucsb.cs48.util.User;
 
 /**
