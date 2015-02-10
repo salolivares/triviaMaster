@@ -46,8 +46,8 @@ public class User {
 			select_stmt.executeQuery(query);
 			ResultSet rs = select_stmt.getResultSet();
 			if (!(rs.first())) { /* If user does not exist */
-				String ins = "INSERT into user (username, password) values ('"
-						+ username + "','" + password + "');";
+				String ins = "INSERT into user (username, password, points, highscore) values ('"
+						+ username + "','" + password + "','" + 0 + "','" + 0 + "');";
 				//System.out.println(ins);
 				Statement ins_stmt = (Statement) con.createStatement();
 				ins_stmt.executeUpdate(ins);
