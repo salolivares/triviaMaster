@@ -1,6 +1,8 @@
 package edu.ucsb.cs48.util;
 //package triviamaster;
 
+import edu.ucsb.cs48.Main;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -18,7 +20,7 @@ public class User {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			Connection con = db.createDBconnection();
+			Connection con = Main.db.createDBconnection();
 
 			Statement stmt = (Statement) con.createStatement();
 			query = "SELECT username, password FROM user WHERE username='"
@@ -26,7 +28,7 @@ public class User {
 			stmt.executeQuery(query);
 			ResultSet rs = stmt.getResultSet();
 			login = rs.first();
-			db.closeDBconnection(con);
+			Main.db.closeDBconnection(con);
 			return login;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -36,7 +38,7 @@ public class User {
 
 	public static String createUser(String username, String password) {
 		try {
-			Connection con = db.createDBconnection();
+			Connection con = Main.db.createDBconnection();
 			Statement select_stmt = (Statement) con.createStatement();
 			String query = "SELECT username FROM user WHERE username='"
 					+ username + "';";
@@ -44,8 +46,8 @@ public class User {
 			select_stmt.executeQuery(query);
 			ResultSet rs = select_stmt.getResultSet();
 			if (!(rs.first())) { /* If user does not exist */
-				String ins = "INSERT into user (username, password) values ('"
-						+ username + "','" + password + "');";
+				String ins = "INSERT into user (username, password, points, highscore) values ('"
+						+ username + "','" + password + "','" + 0 + "','" + 0 + "');";
 				//System.out.println(ins);
 				Statement ins_stmt = (Statement) con.createStatement();
 				ins_stmt.executeUpdate(ins);
@@ -53,7 +55,7 @@ public class User {
 			else { /* If user already exists */
 				return "DUPLICATE";
 			}
-			db.closeDBconnection(con);
+			Main.db.closeDBconnection(con);
 			return "CREATED";
 		} catch (Exception e) {
 			e.printStackTrace();

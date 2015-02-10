@@ -40,6 +40,13 @@ public class categoryPanel extends JPanel {
                 triviaMain.setCurrentPanel(new gameModePanel());
             }
         });
+
+        startGame.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                triviaMain.setCurrentPanel(new gamePanel());
+            }
+        });
     }
 
 
