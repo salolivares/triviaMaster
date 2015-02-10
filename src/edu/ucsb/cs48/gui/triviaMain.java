@@ -123,6 +123,7 @@ public class triviaMain {
         options.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
+                setCurrentPanel(new optionsPanel());
             }
         });
 
@@ -131,7 +132,7 @@ public class triviaMain {
             @Override
             public void mouseReleased(MouseEvent e) {
                 // CHANGE mainMenuPanel to your panel name to test!
-                setCurrentPanel(new mainMenuPanel());
+                //setCurrentPanel();
             }
         });
     }

@@ -10,6 +10,7 @@ public class mainMenuPanel extends JPanel{
     JButton playGameButton;
     JButton viewHighScoreButton;
     JButton enterShopButton;
+    //JButton optionsButton;
     JLabel welcomeToLabel;
     JPanel topPanel;
     JPanel botPanel;
@@ -18,6 +19,7 @@ public class mainMenuPanel extends JPanel{
     public mainMenuPanel(){
         playGameButton = new JButton("Play Game");
         viewHighScoreButton = new JButton("View High Scores");
+        //optionsButton = new JButton("Options");
         enterShopButton = new JButton("Enter Shop");
         welcomeToLabel = new JLabel("Welcome to Trivia Master");
         topPanel = new JPanel(new BorderLayout());
@@ -62,7 +64,7 @@ public class mainMenuPanel extends JPanel{
         viewHighScoreButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                triviaMain.setCurrentPanel(new highscorePanel());
+                triviaMain.setCurrentPanel(new optionsPanel());
             }
         });
         enterShopButton.addMouseListener(new MouseAdapter() {
