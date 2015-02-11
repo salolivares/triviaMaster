@@ -19,15 +19,16 @@ public class gamePanel extends JPanel{
     JRadioButton answer3;
     JRadioButton answer4;
     JRadioButton answer5;
-    String q  = "question";
-    String a1 = "answer 1";
-    String a2 = "answer 2";
-    String a3 = "answer 3";
-    String a4 = "answer 4";
-    String a5 = "answer 5";
+    //String q  = "question";
+    //String a1 = "answer 1";
+    //String a2 = "answer 2";
+    //String a3 = "answer 3";
+    //String a4 = "answer 4";
+    //String a5 = "answer 5";
     JButton submit;
 
-    public gamePanel() {
+    public gamePanel(String q, String a1, String a2, String a3,
+                     String a4, String a5) {
 
         mainPanel = new JPanel();
         question  = new JLabel(q);
@@ -38,9 +39,24 @@ public class gamePanel extends JPanel{
         answer5   = new JRadioButton(a5);
         submit    = new JButton("Submit Answer");
 
-        question.setFont(new Font("Serif", Font.PLAIN, 28));
+        question.setFont(new Font("Arial", Font.PLAIN, 16));
         question.setHorizontalAlignment(SwingConstants.CENTER);
         question.setVerticalAlignment(SwingConstants.CENTER);
+
+        answer1.setHorizontalAlignment(SwingConstants.CENTER);
+        answer1.setVerticalAlignment(SwingConstants.CENTER);
+
+        answer2.setHorizontalAlignment(SwingConstants.CENTER);
+        answer2.setVerticalAlignment(SwingConstants.CENTER);
+
+        answer3.setHorizontalAlignment(SwingConstants.CENTER);
+        answer3.setVerticalAlignment(SwingConstants.CENTER);
+
+        answer4.setHorizontalAlignment(SwingConstants.CENTER);
+        answer4.setVerticalAlignment(SwingConstants.CENTER);
+
+        answer5.setHorizontalAlignment(SwingConstants.CENTER);
+        answer5.setVerticalAlignment(SwingConstants.CENTER);
 
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
 
@@ -65,7 +81,6 @@ public class gamePanel extends JPanel{
         mainPanel.add(answer4);
         mainPanel.add(answer5);
         mainPanel.add(submit);
-
         add(mainPanel);
 
         submit.addKeyListener(new KeyAdapter() {
