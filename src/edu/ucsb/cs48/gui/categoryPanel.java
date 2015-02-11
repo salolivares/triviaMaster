@@ -44,7 +44,9 @@ public class categoryPanel extends JPanel {
         startGame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                triviaMain.setCurrentPanel(new gamePanel());
+                triviaMain.setCurrentPanel(new gamePanel("How much wood could a woodchuck chuck " +
+                        "if a woodchuck could chuck wood","answer1","answer2",
+                        "answer3","answer4","answer5"));
             }
         });
     }
