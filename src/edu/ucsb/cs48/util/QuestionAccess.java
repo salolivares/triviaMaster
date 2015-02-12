@@ -9,6 +9,29 @@ import java.util.ArrayList;
 
 
 public class QuestionAccess {
+
+    public static ArrayList<String> getCategories() {
+        String query;
+        ArrayList<String> categories = new ArrayList<String>();
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "SELECT category FROM category;";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                categories.add(rs.getString("category"));
+            }
+
+            Main.db.closeDBconnection(con);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return categories;
+    }
+
     public ArrayList<Integer> getQuestionIDs(int cID) {
         ArrayList<Integer> questions = new ArrayList<Integer>();
         String query;
@@ -28,7 +51,6 @@ public class QuestionAccess {
         catch (Exception e) {
             e.printStackTrace();
         }
-
         return questions;
     }
 
@@ -59,7 +81,15 @@ public class QuestionAccess {
         catch (Exception e) {
             e.printStackTrace();
         }
-
         return questionInfo;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> allCategories = getCategories();
+
+        System.out.println("All Categories: ");
+        for(int i = 0; i < allCategories.size(); i++) {
+            System.out.println(allCategories.get(i));
+        }
     }
 }
