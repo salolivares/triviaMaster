@@ -1,6 +1,7 @@
 package edu.ucsb.cs48.util;
 
 import edu.ucsb.cs48.gui.countdownTimer;
+import edu.ucsb.cs48.gui.gamePanel;
 import edu.ucsb.cs48.gui.mainMenuPanel;
 import edu.ucsb.cs48.gui.triviaMain;
 
@@ -30,7 +31,9 @@ public class Game implements Runnable{
     public void gameStart() throws InterruptedException{
         countdownTimer();
         QandA = new QuestionAndAnswers(category,difficulty);
-        triviaMain.setCurrentPanel(new mainMenuPanel()); // CHANGE THIS TO THE QUESTIONS and ANSWERS PANEL
+        triviaMain.setCurrentPanel(new gamePanel("Who made the game saving interception in Super Bowl XLIX?", "Richard Sherman",
+                "Darrelle Revis", "Malcolm Butler",
+                "Earl Thomas","Tom Brady")); // CHANGE THIS TO THE QUESTIONS and ANSWERS PANEL
     }
     public void gameEnd() {
     }

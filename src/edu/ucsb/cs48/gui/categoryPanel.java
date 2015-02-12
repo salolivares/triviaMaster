@@ -55,9 +55,7 @@ public class categoryPanel extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 //Main.game.setCategory(catID.get(categoryMenu.getSelectedItem()));
-                triviaMain.setCurrentPanel(new gamePanel("Who made the game saving interception in Super Bowl XLIX?", "Richard Sherman",
-                        "Darrelle Revis", "Malcolm Butler",
-                        "Earl Thomas","Tom Brady"));
+                Main.gameThread.start();
             }
         });
     }
