@@ -7,6 +7,8 @@ import edu.ucsb.cs48.util.Game;
 import edu.ucsb.cs48.util.QuestionAndAnswers;
 import edu.ucsb.cs48.util.User;
 
+import java.sql.Connection;
+
 /**
  * Application launcher
  */
@@ -28,6 +30,8 @@ public class Main {
         game = new Game();
 
         gui.createWindow();
+
+        /* when program is closed */
     }
 
     /**

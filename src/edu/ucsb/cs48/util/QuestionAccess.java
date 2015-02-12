@@ -8,6 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
+/* TO DO: modify database functions to take Connection con as a parameter,
+ * instead of creating and closing a connection in each function. This way,
+ * the connection can just be created and closed once, in the main function. */
+
 public class QuestionAccess {
 
     public static ArrayList<String> getCategories() {
@@ -43,7 +48,7 @@ public class QuestionAccess {
             ResultSet rs = stmt.executeQuery(query);
 
             while(rs.next()) {
-                catID.put(rs.getString("category"),rs.getInt("category_id"));
+                catID.put(rs.getString("category"), rs.getInt("category_id"));
             }
 
             Main.db.closeDBconnection(con);
@@ -106,14 +111,5 @@ public class QuestionAccess {
             e.printStackTrace();
         }
         return questionInfo;
-    }
-
-    public static void main(String[] args) {
-        ArrayList<String> allCategories = getCategories();
-
-        System.out.println("All Categories: ");
-        for(int i = 0; i < allCategories.size(); i++) {
-            System.out.println(allCategories.get(i));
-        }
     }
 }

@@ -9,7 +9,7 @@ import edu.ucsb.cs48.gui.triviaMain;
 import java.util.concurrent.CountDownLatch;
 
 
-public class Game implements Runnable{
+public class Game implements Runnable {
 
     // Uninitialized constants used to choose questions
     // GUI should initialize these
