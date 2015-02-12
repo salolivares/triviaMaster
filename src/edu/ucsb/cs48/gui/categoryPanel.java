@@ -55,8 +55,8 @@ public class categoryPanel extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 Main.game.setCategory(catID.get(categoryMenu.getSelectedItem()));
-                Thread gameThread = new Thread(Main.game);
-                gameThread.start();
+                Main.gameThread = new Thread(Main.game);
+                Main.gameThread.start();
             }
         });
     }

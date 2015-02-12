@@ -18,6 +18,7 @@ public class Main {
     public static Database db;
     public static QuestionAccess qa;
     public static Game game;
+    public static Thread gameThread;
 
     public static void main(String[] args){
         triviaMain gui = new triviaMain();

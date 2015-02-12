@@ -1,5 +1,8 @@
 package edu.ucsb.cs48.gui;
 
+import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.Game;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -110,8 +113,10 @@ public class gamePanel extends JPanel{
                 if (!(answer1.isSelected()) && !(answer2.isSelected()) && !(answer3.isSelected())
                         && !(answer4.isSelected()) && !(answer5.isSelected()))
                     noAnsSelected.setVisible(true);
-                else
-                    triviaMain.setCurrentPanel(new categoryPanel());
+                else {
+                    // gui signals to game controller that it is done
+                    Game.latch.countDown();
+                }
 
             }
         };
@@ -125,8 +130,10 @@ public class gamePanel extends JPanel{
                 if (!(answer1.isSelected()) && !(answer2.isSelected()) && !(answer3.isSelected())
                         && !(answer4.isSelected()) && !(answer5.isSelected()))
                     noAnsSelected.setVisible(true);
-                else
-                    triviaMain.setCurrentPanel(new categoryPanel());
+                else {
+                    // gui singnals to game controller that is is done
+                    Game.latch.countDown();
+                }
             }
         });
 
