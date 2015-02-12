@@ -18,7 +18,6 @@ public class Main {
     public static Database db;
     public static QuestionAccess qa;
     public static Game game;
-    public static Thread gameThread;
 
     public static void main(String[] args){
         triviaMain gui = new triviaMain();
@@ -26,7 +25,6 @@ public class Main {
         db = new Database();
         qa = new QuestionAccess();
         game = new Game();
-        gameThread = new Thread(game);
 
         gui.createWindow();
     }
