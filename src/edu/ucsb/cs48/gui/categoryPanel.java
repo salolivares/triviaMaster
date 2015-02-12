@@ -1,6 +1,6 @@
 package edu.ucsb.cs48.gui;
 
-
+import edu.ucsb.cs48.Main;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -18,17 +18,13 @@ public class categoryPanel extends JPanel {
 
 
     public categoryPanel() {
-        ArrayList<String> categories = new ArrayList<String>();
-        categories.add("Sports");
-        categories.add("UCSB");
-        categories.add("Music");
+
+        //fill up ArrayList with categories from database
+        ArrayList<String> categories = Main.qa.getCategories();
         Collections.sort(categories);
 
-        HashMap<String, Integer> catID= new HashMap<String, Integer>();
-        catID.put("Sports", 1);
-        catID.put("Music", 2);
-        catID.put("UCSB", 3);
-
+        //fill up a HashMap with categories that map to their category ID
+        HashMap<String, Integer> catID= Main.qa.getHashMap();
 
         selectCategory = new JLabel("Choose a category");
         startGame = new JButton("Start Game!");
