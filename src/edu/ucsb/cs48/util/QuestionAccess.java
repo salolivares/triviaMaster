@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 public class QuestionAccess {
 
@@ -30,6 +30,28 @@ public class QuestionAccess {
             e.printStackTrace();
         }
         return categories;
+    }
+
+    public static HashMap<String, Integer> getHashMap() {
+        String query;
+        HashMap<String, Integer> catID = new HashMap<String, Integer>();
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "SELECT category_id, category FROM category;";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                catID.put(rs.getString("category"),rs.getInt("category_id"));
+            }
+
+            Main.db.closeDBconnection(con);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return catID;
     }
 
     public ArrayList<Integer> getQuestionIDs(int cID) {
