@@ -24,7 +24,7 @@ public class categoryPanel extends JPanel {
         Collections.sort(categories);
 
         //fill up a HashMap with categories that map to their category ID
-        HashMap<String, Integer> catID= Main.qa.getHashMap();
+        final HashMap<String, Integer> catID= Main.qa.getHashMap();
 
         selectCategory = new JLabel("Choose a category");
         startGame = new JButton("Start Game!");
@@ -54,8 +54,9 @@ public class categoryPanel extends JPanel {
         startGame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                //Main.game.setCategory(catID.get(categoryMenu.getSelectedItem()));
-                Main.gameThread.start();
+                Main.game.setCategory(catID.get(categoryMenu.getSelectedItem()));
+                Thread gameThread = new Thread(Main.game);
+                gameThread.start();
             }
         });
     }

@@ -1,6 +1,11 @@
 package edu.ucsb.cs48.util;
 
 
+import edu.ucsb.cs48.Main;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 public class QuestionAndAnswers {
     private String question;
     private String answerOne;
@@ -9,27 +14,38 @@ public class QuestionAndAnswers {
     private String answerFour;
     private String answerFive;
 
-    private String category;
-    private int difficulty;
+    private int category;
+    private int numberOfQuestions;
 
-    private static int currentQuestion = 0;
-    private int lastQuestion;
 
-    public QuestionAndAnswers(String category, int difficulty){
+    public QuestionAndAnswers(int category){
+        ArrayList<Integer> questionIDList = Main.qa.getQuestionIDs(category);
+        this.numberOfQuestions = questionIDList.size();
         this.category = category;
-        this.difficulty = difficulty;
-        currentQuestion = 0;
+    }
+
+    private int randomlySelectQuestionID(ArrayList<Integer> q){
+        int arrayLength = q.size();
+        System.out.println(arrayLength);
+        Random rand = new Random();
+        int result = rand.nextInt(arrayLength);
+
+        q.remove(result);
+
+        return result;
     }
 
     private void fetchAndSetQuestionAndAnswers(){
-        setQuestion("test");
-        setAnswerOne("test");
-        setAnswerTwo("test");
-        setAnswerThree("test");
-        setAnswerFour("test");
-        setAnswerFive("test");
+        ArrayList<Integer> questionIDList = Main.qa.getQuestionIDs(category);
+        int selectedQuestionID = randomlySelectQuestionID(questionIDList);
+        String [] listOfQuestions = Main.qa.getQuestionAndAnswer(selectedQuestionID);
 
-        currentQuestion++;
+        setQuestion(listOfQuestions[0]);
+        setAnswerOne(listOfQuestions[1]);
+        setAnswerTwo(listOfQuestions[2]);
+        setAnswerThree(listOfQuestions[3]);
+        setAnswerFour(listOfQuestions[4]);
+        setAnswerFive(listOfQuestions[5]);
     }
 
     public String getQuestion() {
@@ -51,6 +67,7 @@ public class QuestionAndAnswers {
     public String getAnswerFive() {
         return answerFive;
     }
+    public int getNumberOfQuestions(){ return this.numberOfQuestions; }
 
     public void setAnswerFive(String answerFive) {
         this.answerFive = answerFive;

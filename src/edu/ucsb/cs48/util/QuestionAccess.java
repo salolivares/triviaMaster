@@ -89,14 +89,16 @@ public class QuestionAccess {
             query = "SELECT question, ans1, ans2, ans3, ans4, ans5, correct_answer, point_value FROM question WHERE question_ID='" + qID + "';";
             ResultSet rs = stmt.executeQuery(query);
 
-            questionInfo[0] = rs.getString("question"); // the question
-            questionInfo[1] = rs.getString("ans1"); // possible answer 1
-            questionInfo[2] = rs.getString("ans2"); // possible answer 2
-            questionInfo[3] = rs.getString("ans3"); // possible answer 3
-            questionInfo[4] = rs.getString("ans4"); // possible answer 4
-            questionInfo[5] = rs.getString("ans5"); // possible answer 5
-            questionInfo[6] = rs.getString("correct_answer"); // the correct answer
-            questionInfo[7] = rs.getString("point_value"); // the point value
+            while(rs.next()){
+                questionInfo[0] = rs.getString("question"); // the question
+                questionInfo[1] = rs.getString("ans1"); // possible answer 1
+                questionInfo[2] = rs.getString("ans2"); // possible answer 2
+                questionInfo[3] = rs.getString("ans3"); // possible answer 3
+                questionInfo[4] = rs.getString("ans4"); // possible answer 4
+                questionInfo[5] = rs.getString("ans5"); // possible answer 5
+                questionInfo[6] = rs.getString("correct_answer"); // the correct answer
+                questionInfo[7] = rs.getString("point_value"); // the point value
+            }
 
             Main.db.closeDBconnection(con);
         }
