@@ -11,6 +11,7 @@ public class gamePanel extends JPanel{
 
     JPanel mainPanel;
     JLabel question;
+    JLabel noAnsSelected;
     JRadioButton answer1;
     JRadioButton answer2;
     JRadioButton answer3;
@@ -27,20 +28,27 @@ public class gamePanel extends JPanel{
     public gamePanel(String q, String a1, String a2, String a3,
                      String a4, String a5) {
         // Instantiate Components
-        mainPanel = new JPanel();
-        question  = new JLabel(q);
-        answer1   = new JRadioButton(a1);
-        answer2   = new JRadioButton(a2);
-        answer3   = new JRadioButton(a3);
-        answer4   = new JRadioButton(a4);
-        answer5   = new JRadioButton(a5);
-        submit    = new JButton("Submit Answer");
+        mainPanel     = new JPanel();
+        question      = new JLabel(q);
+        answer1       = new JRadioButton(a1);
+        answer2       = new JRadioButton(a2);
+        answer3       = new JRadioButton(a3);
+        answer4       = new JRadioButton(a4);
+        answer5       = new JRadioButton(a5);
+        submit        = new JButton("Submit Answer");
+        noAnsSelected = new JLabel("Please select an answer!");
 
 
         // Set font and allignment of question and answers
         question.setFont(new Font("Arial", Font.PLAIN, 16));
         question.setHorizontalAlignment(SwingConstants.CENTER);
         question.setVerticalAlignment(SwingConstants.CENTER);
+
+        noAnsSelected.setFont(new Font("Arial", Font.BOLD, 16));
+        noAnsSelected.setForeground(Color.RED);
+        noAnsSelected.setHorizontalAlignment(SwingConstants.CENTER);
+        noAnsSelected.setVerticalAlignment(SwingConstants.CENTER);
+        noAnsSelected.setVisible(false);  //will set visible if user presses submit with no answer selected
 
         answer1.setHorizontalAlignment(SwingConstants.CENTER);
         answer1.setVerticalAlignment(SwingConstants.CENTER);
@@ -76,14 +84,21 @@ public class gamePanel extends JPanel{
         mainPanel.add(answer4);
         mainPanel.add(answer5);
         mainPanel.add(submit);
+        mainPanel.add(noAnsSelected);
         add(mainPanel);
+
 
 
         // Allow user to hit ENTER to continue in addition to clicking enter
         pressedEnter = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                triviaMain.setCurrentPanel(new categoryPanel());
+                if (!(answer1.isSelected()) && !(answer2.isSelected()) && !(answer3.isSelected())
+                        && !(answer4.isSelected()) && !(answer5.isSelected()))
+                    noAnsSelected.setVisible(true);
+                else
+                    triviaMain.setCurrentPanel(new categoryPanel());
+
             }
         };
 
@@ -93,7 +108,11 @@ public class gamePanel extends JPanel{
         submit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                triviaMain.setCurrentPanel(new categoryPanel());
+                if (!(answer1.isSelected()) && !(answer2.isSelected()) && !(answer3.isSelected())
+                        && !(answer4.isSelected()) && !(answer5.isSelected()))
+                    noAnsSelected.setVisible(true);
+                else
+                    triviaMain.setCurrentPanel(new categoryPanel());
             }
         });
 
