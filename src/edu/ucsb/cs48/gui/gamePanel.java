@@ -1,6 +1,7 @@
 package edu.ucsb.cs48.gui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -9,7 +10,7 @@ import java.awt.event.*;
  */
 public class gamePanel extends JPanel{
 
-    JPanel mainPanel;
+    JPanel botPanel;
     JLabel question;
     JLabel noAnsSelected;
     JRadioButton answer1;
@@ -27,8 +28,9 @@ public class gamePanel extends JPanel{
 
     public gamePanel(String q, String a1, String a2, String a3,
                      String a4, String a5) {
+
         // Instantiate Components
-        mainPanel     = new JPanel();
+        botPanel      = new JPanel(new GridBagLayout());
         question      = new JLabel(q);
         answer1       = new JRadioButton(a1);
         answer2       = new JRadioButton(a2);
@@ -37,12 +39,19 @@ public class gamePanel extends JPanel{
         answer5       = new JRadioButton(a5);
         submit        = new JButton("Submit Answer");
         noAnsSelected = new JLabel("Please select an answer!");
+        setLayout(new BorderLayout());
 
 
         // Set font and allignment of question and answers
-        question.setFont(new Font("Arial", Font.PLAIN, 16));
+        question.setFont(new Font("Arial", Font.BOLD, 18));
         question.setHorizontalAlignment(SwingConstants.CENTER);
         question.setVerticalAlignment(SwingConstants.CENTER);
+
+        answer1.setFont(new Font("Arial", Font.PLAIN, 16));
+        answer2.setFont(new Font("Arial", Font.PLAIN, 16));
+        answer3.setFont(new Font("Arial", Font.PLAIN, 16));
+        answer4.setFont(new Font("Arial", Font.PLAIN, 16));
+        answer5.setFont(new Font("Arial", Font.PLAIN, 16));
 
         noAnsSelected.setFont(new Font("Arial", Font.BOLD, 16));
         noAnsSelected.setForeground(Color.RED);
@@ -50,22 +59,6 @@ public class gamePanel extends JPanel{
         noAnsSelected.setVerticalAlignment(SwingConstants.CENTER);
         noAnsSelected.setVisible(false);  //will set visible if user presses submit with no answer selected
 
-        answer1.setHorizontalAlignment(SwingConstants.CENTER);
-        answer1.setVerticalAlignment(SwingConstants.CENTER);
-
-        answer2.setHorizontalAlignment(SwingConstants.CENTER);
-        answer2.setVerticalAlignment(SwingConstants.CENTER);
-
-        answer3.setHorizontalAlignment(SwingConstants.CENTER);
-        answer3.setVerticalAlignment(SwingConstants.CENTER);
-
-        answer4.setHorizontalAlignment(SwingConstants.CENTER);
-        answer4.setVerticalAlignment(SwingConstants.CENTER);
-
-        answer5.setHorizontalAlignment(SwingConstants.CENTER);
-        answer5.setVerticalAlignment(SwingConstants.CENTER);
-
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
 
         // Group the answers together so only one can be selected at a time
         ButtonGroup group = new ButtonGroup();
@@ -75,17 +68,38 @@ public class gamePanel extends JPanel{
         group.add(answer4);
         group.add(answer5);
 
+        // set up GBC and panels
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5,5,5,5);
 
-        // Add all the components to the panel
-        mainPanel.add(question);
-        mainPanel.add(answer1);
-        mainPanel.add(answer2);
-        mainPanel.add(answer3);
-        mainPanel.add(answer4);
-        mainPanel.add(answer5);
-        mainPanel.add(submit);
-        mainPanel.add(noAnsSelected);
-        add(mainPanel);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        botPanel.add(question,gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        botPanel.add(answer1, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        botPanel.add(answer2, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        botPanel.add(answer3, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        botPanel.add(answer4, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        botPanel.add(answer5, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        botPanel.add(submit, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        botPanel.add(noAnsSelected, gbc);
+
+        add(botPanel, BorderLayout.CENTER);
 
 
 

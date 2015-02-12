@@ -55,9 +55,9 @@ public class categoryPanel extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 //Main.game.setCategory(catID.get(categoryMenu.getSelectedItem()));
-                triviaMain.setCurrentPanel(new gamePanel("How much wood could a woodchuck chuck " +
-                        "if a woodchuck could chuck wood", "answer1", "answer2",
-                        "answer3","answer4","answer5"));
+                triviaMain.setCurrentPanel(new gamePanel("Who made the game saving interception in Super Bowl XLIX?", "Richard Sherman",
+                        "Darrelle Revis", "Malcolm Butler",
+                        "Earl Thomas","Tom Brady"));
             }
         });
     }
