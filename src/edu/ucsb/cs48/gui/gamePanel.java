@@ -13,6 +13,7 @@ import java.awt.event.*;
  */
 public class gamePanel extends JPanel{
 
+    JPanel topPanel;
     JPanel botPanel;
     JLabel question;
     JLabel noAnsSelected;
@@ -38,6 +39,7 @@ public class gamePanel extends JPanel{
 
         // Instantiate Components
         botPanel      = new JPanel(new GridBagLayout());
+        topPanel      = new JPanel(new GridBagLayout());
         question      = new JLabel(q);
         score         = new JLabel("Score: " + Main.game.getGameScore());
         answer1       = new JRadioButton(a1);
@@ -53,8 +55,9 @@ public class gamePanel extends JPanel{
         setLayout(new BorderLayout());
 
 
+
         // Set font and allignment of question and answers
-        question.setFont(new Font("Arial", Font.BOLD, 18));
+        question.setFont(new Font("Arial", Font.BOLD, 16));
         question.setHorizontalAlignment(SwingConstants.CENTER);
         question.setVerticalAlignment(SwingConstants.CENTER);
 
@@ -85,39 +88,40 @@ public class gamePanel extends JPanel{
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5,5,5,5);
 
-        gbc.gridx = 1;
+        gbc.gridx = 3;
         gbc.gridy = 0;
-        botPanel.add(score, gbc);
+        topPanel.add(score, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 0;
         gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.CENTER;
         botPanel.add(question,gbc);
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 1;
         botPanel.add(answer1, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridy = 2;
         botPanel.add(answer2, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 4;
+        gbc.gridy = 3;
         botPanel.add(answer3, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 5;
+        gbc.gridy = 4;
         botPanel.add(answer4, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 6;
+        gbc.gridy = 5;
         botPanel.add(answer5, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 7;
+        gbc.gridy = 6;
         botPanel.add(submit, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 8;
+        gbc.gridy = 7;
         botPanel.add(next, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 9;
+        gbc.gridy = 8;
         botPanel.add(noAnsSelected, gbc);
 
+        add(topPanel, BorderLayout.NORTH);
         add(botPanel, BorderLayout.CENTER);
 
 
