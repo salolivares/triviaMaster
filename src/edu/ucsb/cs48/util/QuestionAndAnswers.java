@@ -5,6 +5,7 @@ import edu.ucsb.cs48.Main;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.sql.Connection;
 
 public class QuestionAndAnswers {
     private String question;
@@ -16,7 +17,6 @@ public class QuestionAndAnswers {
 
     private int category;
     private int numberOfQuestions;
-
 
     public QuestionAndAnswers(int category){
         ArrayList<Integer> questionIDList = Main.qa.getQuestionIDs(category);
