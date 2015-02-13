@@ -14,6 +14,7 @@ public class QuestionAndAnswers {
     private String answerThree;
     private String answerFour;
     private String answerFive;
+    private String correctAnswer;
 
     private int category;
     private int numberOfQuestions;
@@ -46,6 +47,7 @@ public class QuestionAndAnswers {
         setAnswerThree(listOfQuestions[3]);
         setAnswerFour(listOfQuestions[4]);
         setAnswerFive(listOfQuestions[5]);
+        setCorrectAnswer(listOfQuestions[6]);
     }
 
     public String getQuestion() {
@@ -68,6 +70,7 @@ public class QuestionAndAnswers {
     public String getAnswerFive() {
         return answerFive;
     }
+    public String getCorrectAnswer(){ return correctAnswer; }
     public int getNumberOfQuestions(){ return this.numberOfQuestions; }
 
     public void setAnswerFive(String answerFive) {
@@ -92,5 +95,8 @@ public class QuestionAndAnswers {
 
     public void setAnswerFour(String answerFour) {
         this.answerFour = answerFour;
+    }
+    public void setCorrectAnswer(String correctAnswer){
+        this.correctAnswer = correctAnswer;
     }
 }
