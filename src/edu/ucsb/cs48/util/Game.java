@@ -16,6 +16,7 @@ public class Game implements Runnable {
     //        0 - easy
     //        1 - hard
     private int category = 0;
+    private double gameScore = 0;
     public static QuestionAndAnswers QandA;
     public static CountDownLatch latch;
 
@@ -59,4 +60,9 @@ public class Game implements Runnable {
     public void setCategory(int category){
         this.category = category;
     }
+
+    // functions to modify gamescore
+    public void resetGameScore() { this.gameScore = 0; }
+    public void addToGameScore(double score) { this.gameScore += score; }
+    public double getGameScore() {return this.gameScore; }
 }

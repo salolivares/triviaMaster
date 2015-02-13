@@ -16,6 +16,7 @@ public class gamePanel extends JPanel{
     JPanel botPanel;
     JLabel question;
     JLabel noAnsSelected;
+    JLabel score;
     JRadioButton answer1;
     JRadioButton answer2;
     JRadioButton answer3;
@@ -38,6 +39,7 @@ public class gamePanel extends JPanel{
         // Instantiate Components
         botPanel      = new JPanel(new GridBagLayout());
         question      = new JLabel(q);
+        score         = new JLabel("Score: " + Main.game.getGameScore());
         answer1       = new JRadioButton(a1);
         answer2       = new JRadioButton(a2);
         answer3       = new JRadioButton(a3);
@@ -55,6 +57,8 @@ public class gamePanel extends JPanel{
         question.setFont(new Font("Arial", Font.BOLD, 18));
         question.setHorizontalAlignment(SwingConstants.CENTER);
         question.setVerticalAlignment(SwingConstants.CENTER);
+
+        score.setFont(new Font("Arial", Font.BOLD, 14));
 
         answer1.setFont(new Font("Arial", Font.PLAIN, 16));
         answer2.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -81,34 +85,37 @@ public class gamePanel extends JPanel{
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5,5,5,5);
 
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 0;
+        botPanel.add(score, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         botPanel.add(question,gbc);
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 2;
         botPanel.add(answer1, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         botPanel.add(answer2, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         botPanel.add(answer3, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 4;
+        gbc.gridy = 5;
         botPanel.add(answer4, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 5;
+        gbc.gridy = 6;
         botPanel.add(answer5, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 6;
+        gbc.gridy = 7;
         botPanel.add(submit, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 7;
+        gbc.gridy = 8;
         botPanel.add(next, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 8;
+        gbc.gridy = 9;
         botPanel.add(noAnsSelected, gbc);
 
         add(botPanel, BorderLayout.CENTER);
@@ -222,32 +229,42 @@ public class gamePanel extends JPanel{
     // A helper function to check if the user input the correct answer
     public void checkAnswer() {
         if (answer1.isSelected()) {
-            if (answer1.getText().equals(this.correctAnswer))
+            if (answer1.getText().equals(this.correctAnswer)) {
                 answer1.setForeground(Color.GREEN);
+                Main.game.addToGameScore(10);
+            }
             else
                 answer1.setForeground(Color.RED);
             }
         if (answer2.isSelected()) {
-            if (answer2.getText().equals(this.correctAnswer))
+            if (answer2.getText().equals(this.correctAnswer)) {
                 answer2.setForeground(Color.GREEN);
+                Main.game.addToGameScore(10);
+            }
             else
                 answer2.setForeground(Color.RED);
             }
         if (answer3.isSelected()) {
-            if (answer3.getText().equals(this.correctAnswer))
+            if (answer3.getText().equals(this.correctAnswer)) {
                 answer3.setForeground(Color.GREEN);
+                Main.game.addToGameScore(10);
+            }
             else
                 answer3.setForeground(Color.RED);
             }
         if (answer4.isSelected()) {
-            if (answer4.getText().equals(this.correctAnswer))
+            if (answer4.getText().equals(this.correctAnswer)) {
                 answer4.setForeground(Color.GREEN);
+                Main.game.addToGameScore(10);
+            }
             else
                 answer4.setForeground(Color.RED);
             }
         if (answer5.isSelected()) {
-            if (answer5.getText().equals(this.correctAnswer))
+            if (answer5.getText().equals(this.correctAnswer)) {
                 answer5.setForeground(Color.GREEN);
+                Main.game.addToGameScore(10);
+            }
             else
                 answer5.setForeground(Color.RED);
             }
