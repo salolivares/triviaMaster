@@ -93,8 +93,8 @@ public class triviaCreateAccount {
                     JOptionPane.showMessageDialog(createdAccount,"Please choose a username","Account Creation",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                Main.player.createUser(loginField.getText(),passwordField.getText());
-                JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
+                String returnMessage = Main.player.createUser(loginField.getText(),passwordField.getText());
+                showMessageDialog(returnMessage);
                 frame.dispose();
             }
         });
@@ -107,11 +107,24 @@ public class triviaCreateAccount {
                         JOptionPane.showMessageDialog(createdAccount,"Please choose a username","Account Creation",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-                    Main.player.createUser(loginField.getText(),passwordField.getText());
-                    JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
+                    String returnMessage = Main.player.createUser(loginField.getText(),passwordField.getText());
+                    showMessageDialog(returnMessage);
                     frame.dispose();
                 }
             }
         });
+
+    }
+
+    public void showMessageDialog(String returnMessage){
+        if(returnMessage == "CREATED"){
+            JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(returnMessage == "NOTCREATED"){
+            JOptionPane.showMessageDialog(createdAccount,"Error Trying To Create Account","Account Creation",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(createdAccount,"Account Already Exists","Account Creation",JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 }
