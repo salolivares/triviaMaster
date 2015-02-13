@@ -17,28 +17,28 @@ public class QuestionAndAnswers {
 
     private int category;
     private int numberOfQuestions;
+    private ArrayList<Integer> questionIDList;
+    private String [] listOfQuestions;
 
     public QuestionAndAnswers(int category){
-        ArrayList<Integer> questionIDList = Main.qa.getQuestionIDs(category);
-        this.numberOfQuestions = questionIDList.size();
         this.category = category;
+        this.questionIDList = Main.qa.getQuestionIDs(category);
+        this.numberOfQuestions = questionIDList.size();
     }
 
     private int randomlySelectQuestionID(ArrayList<Integer> q){
         int arrayLength = q.size();
         System.out.println(arrayLength);
         Random rand = new Random();
-        int result = rand.nextInt(arrayLength);
-
-        q.remove(result);
-
+        int randomIndexInt = rand.nextInt(arrayLength);
+        int result = questionIDList.get(randomIndexInt);
+        q.remove(randomIndexInt);
         return result;
     }
 
     private void fetchAndSetQuestionAndAnswers(){
-        ArrayList<Integer> questionIDList = Main.qa.getQuestionIDs(category);
         int selectedQuestionID = randomlySelectQuestionID(questionIDList);
-        String [] listOfQuestions = Main.qa.getQuestionAndAnswer(selectedQuestionID);
+        this.listOfQuestions = Main.qa.getQuestionAndAnswer(selectedQuestionID);
 
         setQuestion(listOfQuestions[0]);
         setAnswerOne(listOfQuestions[1]);
