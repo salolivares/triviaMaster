@@ -47,7 +47,9 @@ public class QuestionAndAnswers {
         setAnswerThree(listOfQuestions[3]);
         setAnswerFour(listOfQuestions[4]);
         setAnswerFive(listOfQuestions[5]);
-        setCorrectAnswer(listOfQuestions[6]);
+
+        int correctAnswerIndex = Integer.parseInt(listOfQuestions[6]);
+        setCorrectAnswer(listOfQuestions[correctAnswerIndex]);
     }
 
     public String getQuestion() {
