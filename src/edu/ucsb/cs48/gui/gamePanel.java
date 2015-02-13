@@ -131,7 +131,7 @@ public class gamePanel extends JPanel{
                         && !(answer4.isSelected()) && !(answer5.isSelected()))
                     noAnsSelected.setVisible(true);
                 else {
-                    // gui singnals to game controller that is is done
+                    // gui signals to game controller that is is done
                     Game.latch.countDown();
                 }
             }

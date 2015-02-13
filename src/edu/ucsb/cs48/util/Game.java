@@ -1,6 +1,5 @@
 package edu.ucsb.cs48.util;
 
-import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.gui.countdownTimer;
 import edu.ucsb.cs48.gui.gamePanel;
 import edu.ucsb.cs48.gui.mainMenuPanel;
@@ -32,9 +31,9 @@ public class Game implements Runnable{
 
     // starts the main game
     public void gameStart() throws InterruptedException{
-        countdownTimer();
         QandA = new QuestionAndAnswers(category);
         int num = QandA.getNumberOfQuestions();
+        countdownTimer();
         while(num > 0){
             latch = new CountDownLatch(1);
             triviaMain.setCurrentPanel(new gamePanel(QandA.getQuestion(), QandA.getAnswerOne(), QandA.getAnswerTwo(),

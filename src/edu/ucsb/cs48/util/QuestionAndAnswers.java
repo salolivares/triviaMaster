@@ -50,6 +50,7 @@ public class QuestionAndAnswers {
 
     public String getQuestion() {
         fetchAndSetQuestionAndAnswers();
+        System.out.println(question);
         return question;
     }
     public String getAnswerOne() {
