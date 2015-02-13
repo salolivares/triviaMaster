@@ -24,7 +24,7 @@ public class gamePanel extends JPanel{
     JButton submit;
     JButton next;
     Action pressedEnter;
-    //Action pressedEnterNext;
+    Action pressedEnterNext;
     Action pressed1;
     Action pressed2;
     Action pressed3;
@@ -153,6 +153,16 @@ public class gamePanel extends JPanel{
                 }
             }
         );
+
+        pressedEnterNext = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Game.latch.countDown();
+            }
+        };
+
+        next.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ENTER"), "pressed");
+        next.getActionMap().put("pressed", pressedEnterNext);
 
         // Allow user to hit 1,2,3,4,5 to select an answer in addition to clicking enter
         pressed1 = new AbstractAction() {
