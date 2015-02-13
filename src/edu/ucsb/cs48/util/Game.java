@@ -37,7 +37,7 @@ public class Game implements Runnable {
         while(num > 0){
             latch = new CountDownLatch(1);
             triviaMain.setCurrentPanel(new gamePanel(QandA.getQuestion(), QandA.getAnswerOne(), QandA.getAnswerTwo(),
-                    QandA.getAnswerThree(), QandA.getAnswerFour(), QandA.getAnswerFive()/*, QandA.getCorrectAnswer()*/));
+                    QandA.getAnswerThree(), QandA.getAnswerFour(), QandA.getAnswerFive(), QandA.getCorrectAnswer()));
             latch.await();
             num--;
         }
