@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="triviaMaster" default="compile">
+
+    <target name="clean">
+        <delete dir="out" />
+    </target>
+
+    <target name="init">
+        <mkdir dir="out/production/triviaMaster"/>
+    </target>
+
+    <path id="compile.classpath">
+        <!-- Adds provided dependancies -->
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="project.class.path">
+        <pathelement location="out/production/triviaMaster"/>
+        <pathelement location="lib/mysql-connector-java-5.1.34-bin.jar"/>
+    </path>
+
+    <target name="compile" depends="init" >
+        <javac destdir="out/production/triviaMaster" debug="true" srcdir="src">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="edu.ucsb.cs48.Main" fork="true" classpathref="project.class.path"/>
+    </target>
+</project>
