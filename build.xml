@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="triviaMaster" default="compile">
 
-    <target name="clean">
+    <target name="clean" description="delete build files">
         <delete dir="out" />
     </target>
 
@@ -21,13 +21,13 @@
         <pathelement location="lib/mysql-connector-java-5.1.34-bin.jar"/>
     </path>
 
-    <target name="compile" depends="init" >
+    <target name="compile" depends="init" description="compile project">
         <javac destdir="out/production/triviaMaster" debug="true" srcdir="src">
             <classpath refid="compile.classpath"/>
         </javac>
     </target>
 
-    <target name="run" depends="compile">
+    <target name="run" depends="compile" description="run trivia master">
         <java classname="edu.ucsb.cs48.Main" fork="true" classpathref="project.class.path"/>
     </target>
 </project>
