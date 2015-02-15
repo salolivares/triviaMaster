@@ -2,10 +2,13 @@ package edu.ucsb.cs48.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class highscorePanel extends JPanel{
     //Java Gui Components
+    JButton backbutton;
     JLabel PlayerLabel;
     JLabel HighScoreheaderLabel;
     JLabel HighScoreLabel;
@@ -36,6 +39,7 @@ public class highscorePanel extends JPanel{
         P3HS = new JLabel("awesomest");
         P4HS = new JLabel("awesomeerest");
         P5HS = new JLabel("not awesome");
+        backbutton = new JButton("Back");
 
         this.setLayout(null);
 
@@ -81,7 +85,7 @@ public class highscorePanel extends JPanel{
         HighScoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
         HighScoreLabel.setVerticalAlignment(SwingConstants.CENTER);
 
-
+        this.add(backbutton);
         this.add(PlayerLabel);
         this.add(HighScoreheaderLabel);
         this.add(HighScoreLabel);
@@ -96,6 +100,7 @@ public class highscorePanel extends JPanel{
         this.add(P4HS);
         this.add(P5HS);
 
+        backbutton.setLocation(600,500);
         HighScoreLabel.setLocation(490,100);
         PlayerLabel.setLocation(90,100);
         HighScoreheaderLabel.setLocation(150,50);
@@ -110,6 +115,7 @@ public class highscorePanel extends JPanel{
         P4HS.setLocation(520,300);
         P5HS.setLocation(520,350);
 
+        backbutton.setSize(75,25);
         HighScoreLabel.setSize(200,50);
         PlayerLabel.setSize(150,50);
         HighScoreheaderLabel.setSize(500,50);
@@ -123,7 +129,13 @@ public class highscorePanel extends JPanel{
         P3HS.setSize(150,50);
         P4HS.setSize(150,50);
         P5HS.setSize(150,50);
-
+        /** Event manager **/
+        backbutton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                triviaMain.setCurrentPanel(new mainMenuPanel());
+            }
+        });
         /*gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.gridwidth = 1;

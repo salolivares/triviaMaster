@@ -4,7 +4,6 @@ package edu.ucsb.cs48.util;
 import edu.ucsb.cs48.Main;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -46,8 +45,8 @@ public class User {
 			select_stmt.executeQuery(query);
 			ResultSet rs = select_stmt.getResultSet();
 			if (!(rs.first())) { /* If user does not exist */
-				String ins = "INSERT into user (username, password) values ('"
-						+ username + "','" + password + "');";
+				String ins = "INSERT into user (username, password, points, highscore) values ('"
+						+ username + "','" + password + "','" + 0 + "','" + 0 + "');";
 				//System.out.println(ins);
 				Statement ins_stmt = (Statement) con.createStatement();
 				ins_stmt.executeUpdate(ins);
@@ -63,7 +62,7 @@ public class User {
 		return "NOTCREATED";
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		if (loginCheck("nivedita", "choudhuri"))
 			System.out.println("loginCheck: Success");
 		else
@@ -71,5 +70,5 @@ public class User {
 		
 		String msg = createUser("user", "password");
 		System.out.println("createUser: " + msg);
-	}
+		}*/
 }
