@@ -32,17 +32,13 @@ public class optionsPanel extends JPanel {
 
         */
 
+
         title = new JLabel("Options");
-        //topPanel = new JPanel(new BorderLayout());
         botPanel = new JPanel(new GridBagLayout());
         gbc = new GridBagConstraints();
-        //gbc.fill = GridBagConstraints.VERTICAL;
 
         //set layout manager
         setLayout(new BorderLayout());
-
-        //add components to top panel
-        //topPanel.add(title,BorderLayout.NORTH);
 
         //bottom panel
         title = new JLabel("Options");
@@ -94,6 +90,7 @@ public class optionsPanel extends JPanel {
 
 
         //add(e, BorderLayout.WEST);
+        botPanel.setBackground(Color.darkGray);
         add(botPanel, BorderLayout.CENTER);
 
         menu.addMouseListener(new MouseAdapter() {
