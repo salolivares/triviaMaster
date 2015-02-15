@@ -1,9 +1,12 @@
 package edu.ucsb.cs48.gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 
 public class optionsPanel extends JPanel {
     JPanel botPanel;
@@ -13,25 +16,24 @@ public class optionsPanel extends JPanel {
     JButton test;
     JSlider slider;
     GridBagConstraints gbc;
-
+    JLabel background;
+    JPanel p;
 
     public optionsPanel() {
 
-        /*BufferedImage image = null;
-        try {
-            image = ImageIO.read(new File("/Users/brand_000/Documents/GitHub/triviaMaster/src/edu/ucsb/cs48/gui/assets/water.jpg"));
-        } catch (IOException ex) {
-
+        Image image = null;
+        try{
+            URL url = new URL("http://www.oep.ucsb.edu/sites/www.oep.ucsb.edu/files/layout_images/19D_StorkePanorama001.jpg");
+            image = ImageIO.read(url);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
 
-
-        JLabel pic = new JLabel(new ImageIcon(image));
-
-        JPanel e = new JPanel(new BorderLayout());
-        e.add(pic, BorderLayout.NORTH);
-
-        */
-
+        background = new JLabel(new ImageIcon(image));
+        background.setOpaque(false);
+        add(background);
+        background.setLayout(new GridBagLayout());
 
         title = new JLabel("Options");
         botPanel = new JPanel(new GridBagLayout());
@@ -42,7 +44,7 @@ public class optionsPanel extends JPanel {
 
         //bottom panel
         title = new JLabel("Options");
-        title.setFont(new Font("Papyrus", Font.BOLD, 55));
+        title.setFont(new Font("Courier New", Font.BOLD, 70));
         title.setVerticalAlignment(SwingConstants.CENTER);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         gbc.anchor = GridBagConstraints.PAGE_START;
@@ -51,21 +53,22 @@ public class optionsPanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
-        botPanel.add(title, gbc);
+        background.add(title, gbc);
 
         volume = new JLabel("Volume Control", JLabel.CENTER);
-        volume.setFont(new Font("Papyrus", Font.BOLD, 25));
+        volume.setFont(new Font("Corier New", Font.BOLD, 25));
         gbc.insets = new Insets(75,0,0,0);
         gbc.weightx = 0.0;
         gbc.gridx = 0;
         gbc.gridy = 1;
-        botPanel.add(volume, gbc);
+        background.add(volume, gbc);
 
         slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
         slider.setMajorTickSpacing(10);
         slider.setMinorTickSpacing(2);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
+        slider.setBackground(Color.BLUE);
         slider.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLoweredBevelBorder(),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
@@ -73,25 +76,20 @@ public class optionsPanel extends JPanel {
         gbc.ipady = 40;
         gbc.gridx = 0;
         gbc.gridy = 2;
-        botPanel.add(slider, gbc);
+        background.add(slider, gbc);
 
         menu = new JButton("Return to Main Menu");
         gbc.anchor = GridBagConstraints.PAGE_END;
-        gbc.insets = new Insets(50,0,0,0);
+        gbc.insets = new Insets(50,600,0,0);
         gbc.ipady = 30;
-        gbc.ipadx = 50;
+        gbc.ipadx = 30;
         gbc.weighty = 1.0;
         gbc.gridx = 0;
         gbc.gridy = 3;
-        botPanel.add(menu, gbc);
+        background.add(menu, gbc);
 
-
-        //add the panels to the oPanel
-
-
-        //add(e, BorderLayout.WEST);
         botPanel.setBackground(Color.darkGray);
-        add(botPanel, BorderLayout.CENTER);
+        add(background, BorderLayout.CENTER);
 
         menu.addMouseListener(new MouseAdapter() {
             @Override
@@ -101,30 +99,6 @@ public class optionsPanel extends JPanel {
         });
 
 
-
-
-
     }
 
 }
-/*
-class iPanel extends JPanel {
-    private BufferedImage image;
-    public iPanel() {
-        try {
-            image = ImageIO.read(new File("/Users/brand_000/Documents/GitHub/triviaMaster/water.jpg"));
-        } catch (IOException ex) {
-
-        }
-
-    }
-
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, this);
-        //g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-    }
-}
-*/

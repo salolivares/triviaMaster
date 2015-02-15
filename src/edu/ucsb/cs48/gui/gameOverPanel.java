@@ -13,11 +13,12 @@ public class gameOverPanel extends JPanel {
     JLabel highScore;
 
     public gameOverPanel() {
-        this.setBackground(Color.yellow);
-
+        setBackground(Color.darkGray);
+        setLayout(new GridBagLayout());
         GridBagConstraints gbc;
         gbc = new GridBagConstraints();
-        setLayout(new GridBagLayout());
+        //setLayout(new GridBagLayout());
+
 
         mainMenu = new JButton("Return to Main Menu");
         gameOver = new JLabel("Game Over");
@@ -33,27 +34,29 @@ public class gameOverPanel extends JPanel {
 
 
         gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0,0,75,0);
         gbc.weighty = 0.0;
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
         add(gameOver, gbc);
 
-        gbc.insets = new Insets(150,0,0,0);
+        gbc.insets = new Insets(75,0,100,0);
         gbc.weightx = 0.0;
         gbc.gridx = 0;
         gbc.gridy = 1;
         add(highScore, gbc);
 
         gbc.anchor = GridBagConstraints.PAGE_END;
-        gbc.insets = new Insets(50,0,0,0);
+        gbc.insets = new Insets(0,0,0,0);
         gbc.ipady = 30;
         gbc.ipadx = 50;
         gbc.weighty = 1.0;
         gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridy = 2;
         add(mainMenu, gbc);
+
+
 
 
         mainMenu.addMouseListener(new MouseAdapter() {
