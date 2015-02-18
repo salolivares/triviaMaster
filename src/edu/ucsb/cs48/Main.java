@@ -10,12 +10,15 @@ import edu.ucsb.cs48.util.User;
 import java.sql.Connection;
 
 /**
- * Application launcher
+ * The Application Launcher
+ *   This is the launching off point for TriviaMaster
  */
 
 public class Main {
 
-    // player is a static variable so it can be accessed by all other classes at runtime
+    /**
+     * All of these variables are static so they can be accessed through out the program's classes
+     */
     public static User player;
     public static Database db;
     public static QuestionAccess qa;
@@ -23,6 +26,9 @@ public class Main {
     public static Thread gameThread;
 
     public static void main(String[] args){
+        /**
+         * Intialize all the static variables then create gui window
+         */
         triviaMain gui = new triviaMain();
         player = new User();
         db = new Database();
@@ -31,7 +37,6 @@ public class Main {
 
         gui.createWindow();
 
-        /* when program is closed */
     }
 
     /**

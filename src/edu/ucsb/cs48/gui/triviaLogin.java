@@ -9,8 +9,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
+/**
+ * Class that the login window look and behavior
+ */
 public class triviaLogin {
+
+    //Declare gui components
     JButton loginButton;
     JTextField loginField;
     JPasswordField passwordField;
@@ -24,6 +28,7 @@ public class triviaLogin {
     JFrame loginError;
 
     public void createWindow() {
+        // instantiate gui components
         frame            = new JFrame("Account Login");
         loginButton      = new JButton("Login");
         loginField       = new JTextField("Username", 20);
@@ -35,6 +40,7 @@ public class triviaLogin {
         panRight         = new JPanel(new BorderLayout());
         panBot           = new JPanel();
 
+        // Define behavior for window when it is closed
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         panLeft.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
@@ -58,6 +64,7 @@ public class triviaLogin {
         frame.setLocationRelativeTo(null);
 
         /* Event Managers */
+        // When login field is first pressed clear the text
         loginField.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -65,6 +72,8 @@ public class triviaLogin {
                 passwordField.setText("");
             }
         });
+
+        //when login field is first pressed clear the text
         loginField.addKeyListener(new KeyAdapter() {
             boolean notPressed = true;
             @Override
@@ -76,6 +85,7 @@ public class triviaLogin {
             }
         });
 
+        //when password is first pressed clear the text
         passwordField.addKeyListener(new KeyAdapter() {
             boolean notPressed = true;
             @Override
@@ -87,6 +97,11 @@ public class triviaLogin {
             }
         });
 
+        /**
+         * When login button is pressed, check if user inputted username and password
+         * is correct. If correct go to main menu. Else go display a prompt saying the
+         * credentials are wrong
+         */
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -102,7 +117,11 @@ public class triviaLogin {
                 }
             }
         });
-
+        /**
+         * When login button is pressed, check if user inputted username and password
+         * is correct. If correct go to main menu. Else go display a prompt saying the
+         * credentials are wrong
+         */
         passwordField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {

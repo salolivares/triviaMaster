@@ -7,21 +7,23 @@ import edu.ucsb.cs48.gui.triviaMain;
 
 import java.util.concurrent.CountDownLatch;
 
-
+/**
+ * Game class is the controller the defines gameplay behavior.
+ * It is ran in another thread so it can manipulate with GUI,
+ * therefore implements Runnable
+ */
 public class Game implements Runnable {
 
-    // Uninitialized constants used to choose questions
-    // GUI should initialize these
-    // Difficulty:
-    //        0 - easy
-    //        1 - hard
     private int category = 0;
     private double gameScore = 0;
     public static QuestionAndAnswers QandA;
     public static CountDownLatch latch;
 
 
-    //mandatory method to make a class run in separate thread
+    /**
+     * Needed by Runnable Interface.
+     * Used to Start the thread
+     */
     public void run(){
         try {
             gameStart();
@@ -30,7 +32,11 @@ public class Game implements Runnable {
         }
     }
 
-    // starts the main game
+    /**
+     * Starts the core game and sets GUI to gamePanels
+     * @see edu.ucsb.cs48.gui.gamePanel
+     * @throws InterruptedException Throws exception if thread cannot be put to sleep
+     */
     public void gameStart() throws InterruptedException{
         QandA = new QuestionAndAnswers(category);
         int num = QandA.getNumberOfQuestions();
@@ -44,11 +50,20 @@ public class Game implements Runnable {
         }
         gameEnd();
     }
+
+    /**
+     * Called at the gameStart
+     * For now it makes the GUI go back to main menu
+     * TODO: make it go to the endGamePanel
+     */
     public void gameEnd() {
         triviaMain.setCurrentPanel(new mainMenuPanel());
     }
 
-    // counts down on main JFrame
+    /**
+     * Displays a countdown on the GUI
+     * @throws InterruptedException throws exceptions if the thread cannot be put to sleep
+     */
     public void countdownTimer() throws InterruptedException{
         triviaMain.setCurrentPanel(new countdownTimer("3"));
         Thread.sleep(1000);
@@ -57,12 +72,30 @@ public class Game implements Runnable {
         triviaMain.setCurrentPanel(new countdownTimer("1"));
         Thread.sleep(1000);
     }
+
+    /**
+     * Allows external class or methods to set the game category
+     * Must be set before making and running a new game thread
+     * @param category An ID (int) that identifies the category in the database
+     */
     public void setCategory(int category){
         this.category = category;
     }
 
-    // functions to modify gamescore
+    /**
+     *
+     */
     public void resetGameScore() { this.gameScore = 0; }
+
+    /**
+     *
+     * @param score
+     */
     public void addToGameScore(double score) { this.gameScore += score; }
+
+    /**
+     *
+     * @return
+     */
     public double getGameScore() {return this.gameScore; }
 }

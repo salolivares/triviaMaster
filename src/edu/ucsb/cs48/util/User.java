@@ -11,7 +11,7 @@ import java.sql.Statement;
 // Make createAccount return a boolean
 
 public class User {
-		
+
 	public static boolean loginCheck(String username, String password) {
 		String query;
 		boolean login = false;

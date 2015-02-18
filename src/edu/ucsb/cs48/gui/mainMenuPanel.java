@@ -13,6 +13,7 @@ public class mainMenuPanel extends JPanel{
     JLabel welcomeToLabel;
     JPanel topPanel;
     JPanel botPanel;
+    JButton optionButton;
     GridBagConstraints gbc;
 
     public mainMenuPanel(){
@@ -22,6 +23,7 @@ public class mainMenuPanel extends JPanel{
         welcomeToLabel = new JLabel("Welcome to Trivia Master");
         topPanel = new JPanel(new BorderLayout());
         botPanel = new JPanel(new GridBagLayout());
+        optionButton = new JButton("Options");
         gbc = new GridBagConstraints();
 
         //set layout manager
@@ -47,6 +49,8 @@ public class mainMenuPanel extends JPanel{
         gbc.gridx = 3;
         gbc.gridy = 3;
         botPanel.add(viewHighScoreButton, gbc);
+        gbc.gridy = 4;
+        botPanel.add(optionButton,gbc);
 
         //add bot and top panel
         add(topPanel);

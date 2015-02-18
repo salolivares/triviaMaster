@@ -6,7 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * Class the starts it all
+ * The very first GUI class to be called
  * This class is the one that first initializes the JFrame and is updated with a new panel each time
  */
 public class triviaMain {
@@ -31,8 +31,11 @@ public class triviaMain {
     public static final String pathToFileOnDisk = "gui/assets/icon_256.png";
     public static final ImageIcon icon = new ImageIcon(pathToFileOnDisk);
 
+    /**
+     * Create the GUI window
+     */
     public void createWindow(){
-        //UI Design
+        // Select a UI design
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -50,7 +53,7 @@ public class triviaMain {
             // handle exception
         }
 
-        // Instantiate objects
+        // Instantiate GUI components
         mainFrame = new JFrame("Trivia Master");
         mainPanel = new JPanel(new GridLayout(2,1));
         topPanel = new JPanel(new BorderLayout());
@@ -105,7 +108,11 @@ public class triviaMain {
 
         mainFrame.setVisible(true);
 
-        /* Event manager */
+        /* Event managers */
+
+        /**
+         * An event listen to create a login window when pressed
+         */
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -113,6 +120,9 @@ public class triviaMain {
             }
         });
 
+        /**
+         * An event listener to create a "create an account" window when pressed
+         */
         createAccountButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -138,7 +148,7 @@ public class triviaMain {
 
     /**
      * Helper function to set current panel in main JFrame to avoid window clutter
-     * @param newPanel
+     * @param newPanel the panel to display on the GUI window
      */
     public static void setCurrentPanel(JPanel newPanel){
         mainFrame.setContentPane(newPanel);
