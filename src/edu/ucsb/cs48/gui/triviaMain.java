@@ -19,7 +19,7 @@ public class triviaMain {
     JPanel botPanel;
     JButton loginButton;
     JButton createAccountButton;
-    JButton options;
+
     JLabel triviaTitle;
     GridBagConstraints gbc;
     JButton testButton = new JButton("Test Your Panel");
@@ -60,7 +60,7 @@ public class triviaMain {
         botPanel = new JPanel(new GridBagLayout());
         loginButton = new JButton("Account Login");
         createAccountButton = new JButton("Create Account");
-        options = new JButton("Options");
+
         triviaTitle = new JLabel("Trivia Master");
         loginWindow = new triviaLogin();
         createAccountWindow = new triviaCreateAccount();
@@ -79,9 +79,6 @@ public class triviaMain {
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         botPanel.add(loginButton,gbc);
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        botPanel.add(options,gbc);
         gbc.gridx = 0;
         gbc.gridy = 1;
         botPanel.add(createAccountButton,gbc);
@@ -130,18 +127,12 @@ public class triviaMain {
             }
         });
 
-        options.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-        });
-
         // EDIT THIS TO TEST YOUR PANEL!!
         testButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 // CHANGE mainMenuPanel to your panel name to test!
-                setCurrentPanel(new mainMenuPanel());
+                //setCurrentPanel();
             }
         });
     }
