@@ -1,6 +1,8 @@
 package edu.ucsb.cs48.gui;
 
 
+import edu.ucsb.cs48.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -22,7 +24,7 @@ public class gameOverPanel extends JPanel {
 
         mainMenu = new JButton("Return to Main Menu");
         gameOver = new JLabel("Game Over");
-        highScore = new JLabel("Display High Score");
+        highScore = new JLabel(Double.toString(Main.game.getGameScore()));
 
         gameOver.setFont(new Font("Courier New", Font.BOLD, 90));
         gameOver.setVerticalAlignment(SwingConstants.CENTER);

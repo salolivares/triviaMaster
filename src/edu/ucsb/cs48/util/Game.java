@@ -1,9 +1,6 @@
 package edu.ucsb.cs48.util;
 
-import edu.ucsb.cs48.gui.countdownTimer;
-import edu.ucsb.cs48.gui.gamePanel;
-import edu.ucsb.cs48.gui.mainMenuPanel;
-import edu.ucsb.cs48.gui.triviaMain;
+import edu.ucsb.cs48.gui.*;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -57,7 +54,7 @@ public class Game implements Runnable {
      * TODO: make it go to the endGamePanel
      */
     public void gameEnd() {
-        triviaMain.setCurrentPanel(new mainMenuPanel());
+        triviaMain.setCurrentPanel(new gameOverPanel());
     }
 
     /**
