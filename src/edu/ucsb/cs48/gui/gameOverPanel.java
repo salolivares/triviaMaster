@@ -24,7 +24,7 @@ public class gameOverPanel extends JPanel {
 
         mainMenu = new JButton("Return to Main Menu");
         gameOver = new JLabel("Game Over");
-        highScore = new JLabel(Double.toString(Main.game.getGameScore()));
+        highScore = new JLabel("High Score: " + Double.toString(Main.game.getGameScore()));
 
         gameOver.setFont(new Font("Courier New", Font.BOLD, 90));
         gameOver.setVerticalAlignment(SwingConstants.CENTER);
