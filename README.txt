@@ -22,6 +22,7 @@ Requirements: Java, Ant (to build project)
 6) Click on an answer and press submit to submit your select, or use the number keys (1,2,3,4,5) to select an answer and press "Enter" to submit selection.
 
 ## Bugs, Special Info
+- must be connected to internet!!!
 - Time trial mode not implemented for this iteration.
 - The shop is not implemented for this iteration.
 - High Scores not implemented for this iteration.
