@@ -11,7 +11,7 @@ Requirements: Java, Ant (to build project)
 - enter "ant run" at command line at project root
 - enter "ant -p" to see available targets.
 
-### How to play our game:
+## How to play our game:
 1) Hit account login and login with the following credentials
      Username:
      Password:
@@ -24,7 +24,7 @@ Requirements: Java, Ant (to build project)
 
 5) Click start game!
 
-### Bugs, Special Info
+## Bugs, Special Info
 - Time trail mode not implemented for this iteration.
 - The shop is not implemented for this iteration.
 - High Scores not implemented for this iteration.
