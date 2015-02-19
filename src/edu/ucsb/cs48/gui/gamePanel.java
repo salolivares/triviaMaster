@@ -4,7 +4,6 @@ import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.util.Game;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 
