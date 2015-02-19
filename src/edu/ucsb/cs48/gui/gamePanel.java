@@ -33,6 +33,7 @@ public class gamePanel extends JPanel{
     Action pressed4;
     Action pressed5;
     String correctAnswer;
+    static final double VALUE = 10;
 
     public gamePanel(String q, String a1, String a2, String a3,
                      String a4, String a5,String cAnswer) {
@@ -235,7 +236,7 @@ public class gamePanel extends JPanel{
         if (answer1.isSelected()) {
             if (answer1.getText().equals(this.correctAnswer)) {
                 answer1.setForeground(Color.GREEN);
-                Main.game.addToGameScore(10);
+                Main.game.addToGameScore(VALUE);
             }
             else
                 answer1.setForeground(Color.RED);
@@ -243,7 +244,7 @@ public class gamePanel extends JPanel{
         if (answer2.isSelected()) {
             if (answer2.getText().equals(this.correctAnswer)) {
                 answer2.setForeground(Color.GREEN);
-                Main.game.addToGameScore(10);
+                Main.game.addToGameScore(VALUE);
             }
             else
                 answer2.setForeground(Color.RED);
@@ -251,7 +252,7 @@ public class gamePanel extends JPanel{
         if (answer3.isSelected()) {
             if (answer3.getText().equals(this.correctAnswer)) {
                 answer3.setForeground(Color.GREEN);
-                Main.game.addToGameScore(10);
+                Main.game.addToGameScore(VALUE);
             }
             else
                 answer3.setForeground(Color.RED);
@@ -259,7 +260,7 @@ public class gamePanel extends JPanel{
         if (answer4.isSelected()) {
             if (answer4.getText().equals(this.correctAnswer)) {
                 answer4.setForeground(Color.GREEN);
-                Main.game.addToGameScore(10);
+                Main.game.addToGameScore(VALUE);
             }
             else
                 answer4.setForeground(Color.RED);
@@ -267,7 +268,7 @@ public class gamePanel extends JPanel{
         if (answer5.isSelected()) {
             if (answer5.getText().equals(this.correctAnswer)) {
                 answer5.setForeground(Color.GREEN);
-                Main.game.addToGameScore(10);
+                Main.game.addToGameScore(VALUE);
             }
             else
                 answer5.setForeground(Color.RED);
