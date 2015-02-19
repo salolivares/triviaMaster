@@ -4,7 +4,6 @@ import edu.ucsb.cs48.gui.triviaMain;
 import edu.ucsb.cs48.util.Database;
 import edu.ucsb.cs48.util.QuestionAccess;
 import edu.ucsb.cs48.util.Game;
-import edu.ucsb.cs48.util.QuestionAndAnswers;
 import edu.ucsb.cs48.util.User;
 
 import java.sql.Connection;
