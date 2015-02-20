@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import edu.ucsb.cs48.Main;
 
 /**
  * shopPanel class where users can buy power ups using their earned points
@@ -52,7 +53,7 @@ public class shopPanel extends JPanel {
         infoButton = new JButton("Info");
         helpButton = new JButton("Help me");
         mainTitle = new JLabel("Trivia Shop: Work in progress");
-        pointsLabel = new JLabel("You have # points"); // TODO: update this via DB
+        pointsLabel = new JLabel("You have " + Main.player.getPoints() + " points"); // TODO: update this via DB
         botPanel = new JPanel(new BorderLayout());
         middlePanel = new JPanel(new GridBagLayout());
         midButtonPanel = new JPanel(new GridLayout(3,1));
