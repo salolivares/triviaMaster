@@ -113,6 +113,6 @@ public class QuestionAndAnswers {
     public void setAnswerThree(String answerThree) { this.answerThree = answerThree; }
 
     public void setAnswerFour(String answerFour) { this.answerFour = answerFour; }
-    
+
     public void setCorrectAnswer(String correctAnswer){ this.correctAnswer = correctAnswer; }
 }

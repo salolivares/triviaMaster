@@ -10,10 +10,10 @@ import java.sql.DriverManager;
 
 public class Database {
 
-    /**
+	/**
 	 * This function connects to our database, using the IP address and login
-     * information to access our tables.
-	 * @return connecetion to the database
+	 * information to access our tables.
+	 * @return connection to the database
 	 */
 	public static Connection createDBconnection() {
 		String url = "jdbc:mysql://104.236.175.85:3306/";
