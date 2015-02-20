@@ -5,7 +5,6 @@ import edu.ucsb.cs48.util.Database;
 import edu.ucsb.cs48.util.QuestionAccess;
 import edu.ucsb.cs48.util.Game;
 import edu.ucsb.cs48.util.User;
-import edu.ucsb.cs48.util.HighScore;
 
 import java.sql.Connection;
 
@@ -24,7 +23,6 @@ public class Main {
     public static QuestionAccess qa;
     public static Game game;
     public static Thread gameThread;
-    public static HighScore highScore;
 
     public static void main(String[] args){
         /**
@@ -35,7 +33,6 @@ public class Main {
         db = new Database();
         qa = new QuestionAccess();
         game = new Game();
-        highScore = new HighScore();
 
         gui.createWindow();
 

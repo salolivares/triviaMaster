@@ -9,9 +9,14 @@ import java.sql.Statement;
 
 /**
  * User class that deals with logging in and creating new accounts
+ * This class also modifies user's high score and points
  */
 
 public class User {
+
+
+
+    private String username;
 
     /**
      * This function checks if the login information given by the user is valid.
@@ -78,5 +83,48 @@ public class User {
             e.printStackTrace();
         }
         return "NOTCREATED";
+    }
+
+    /**
+     * Username getter
+     * @return username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Username setter
+     * @param username username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * getHighScore class gets user high score from database
+     * @return high score int
+     */
+    public int getHighScore() {
+        String query;
+        String username = getUsername();
+        int hs = 0;
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "SELECT highscore FROM user WHERE username='" + username + "';";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                hs = rs.getInt("highscore");
+            }
+
+            Main.db.closeDBconnection(con);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return hs;
     }
 }

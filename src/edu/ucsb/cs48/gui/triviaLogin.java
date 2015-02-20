@@ -132,6 +132,7 @@ public class triviaLogin {
                     String username = loginField.getText();
                     String password = passwordField.getText();
                     if(Main.player.loginCheck(username,password)){
+                        Main.player.setUsername(username);
                         triviaMain.setCurrentPanel(new mainMenuPanel());
                         frame.dispose();
                     }
