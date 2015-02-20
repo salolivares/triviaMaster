@@ -8,6 +8,9 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * optionsPanel class that allows users to adjust sound levels or mute sound
+ */
 public class optionsPanel extends JPanel {
     JPanel botPanel;
     JLabel title;
@@ -19,6 +22,9 @@ public class optionsPanel extends JPanel {
     JLabel background;
     JPanel p;
 
+    /**
+     * optionsPanel default constructor
+     */
     public optionsPanel() {
 
         Image image = null;
