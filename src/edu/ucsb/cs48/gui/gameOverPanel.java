@@ -8,12 +8,19 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * gameOverPanel class that is displayed when the game is over.
+ * This class displays the user's game score
+ */
 public class gameOverPanel extends JPanel {
 
     JButton mainMenu;
     JLabel gameOver;
     JLabel highScore;
 
+    /**
+     * gameOverPanel default constructor
+     */
     public gameOverPanel() {
         setBackground(Color.darkGray);
         setLayout(new GridBagLayout());
