@@ -16,10 +16,10 @@ public class mainMenuPanel extends JPanel{
     JButton viewHighScoreButton;
     JButton enterShopButton;
     JButton optionsButton;
+    JButton profile;
     JLabel welcomeToLabel;
     JPanel topPanel;
     JPanel botPanel;
-    JButton optionButton;
     GridBagConstraints gbc;
 
     /**
@@ -30,14 +30,14 @@ public class mainMenuPanel extends JPanel{
         viewHighScoreButton = new JButton("View High Scores");
         optionsButton = new JButton("Options");
         enterShopButton = new JButton("Enter Shop");
+        profile = new JButton("View Profile");
         welcomeToLabel = new JLabel("Welcome to Trivia Master");
         topPanel = new JPanel(new BorderLayout());
         botPanel = new JPanel(new GridBagLayout());
-        optionButton = new JButton("Options");
         gbc = new GridBagConstraints();
 
         //set layout manager
-        setLayout(new GridLayout(2,1));
+        setLayout(new GridLayout(2, 1));
 
         //set label font and size
         welcomeToLabel.setFont(new Font("Serif", Font.BOLD, 48));
@@ -62,6 +62,9 @@ public class mainMenuPanel extends JPanel{
         gbc.gridx = 3;
         gbc.gridy = 4;
         botPanel.add(optionsButton, gbc);
+        gbc.gridx = 3;
+        gbc.gridy = 5;
+        botPanel.add(profile, gbc);
 
         //add bot and top panel
         add(topPanel);
@@ -90,6 +93,13 @@ public class mainMenuPanel extends JPanel{
             @Override
             public void mouseReleased(MouseEvent e) {
                 triviaMain.setCurrentPanel(new optionsPanel());
+            }
+        });
+
+        profile.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                triviaMain.setCurrentPanel(new profilePanel());
             }
         });
     }
