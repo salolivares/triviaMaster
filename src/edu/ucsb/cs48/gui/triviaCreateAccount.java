@@ -9,6 +9,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * triviaCreateAccount class that allows user to create their own account
+ */
+
 public class triviaCreateAccount {
     JButton loginButton;
     JTextField loginField;
@@ -22,6 +26,10 @@ public class triviaCreateAccount {
     JPanel panBot;
     JFrame createdAccount;
 
+    /**
+     * createWindow method that creates a new window for user
+     * to input their desired username and password
+     */
     public void createWindow() {
         frame = new JFrame("Create Account");
         loginButton = new JButton("Create Account");
@@ -116,6 +124,10 @@ public class triviaCreateAccount {
 
     }
 
+    /**
+     * Returns message to user if account was successfully created or not
+     * @param returnMessage string identifying if account was successfully created or not
+     */
     public void showMessageDialog(String returnMessage){
         if(returnMessage == "CREATED"){
             JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
