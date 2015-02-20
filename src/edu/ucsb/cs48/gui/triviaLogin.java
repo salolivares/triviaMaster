@@ -27,6 +27,9 @@ public class triviaLogin {
     JPanel panBot;
     JFrame loginError;
 
+    /**
+     * createWindow method that creates the JFrame with correct look and behavior
+     */
     public void createWindow() {
         // instantiate gui components
         frame            = new JFrame("Account Login");
