@@ -88,48 +88,31 @@ public class QuestionAndAnswers {
      * The rest of the methods are setters and getters for the rest of class's private
      * variables.
      */
-    public String getAnswerOne() {
-        return answerOne;
-    }
-    public String getAnswerTwo() {
-        return answerTwo;
-    }
-    public String getAnswerThree() {
-        return answerThree;
-    }
-    public String getAnswerFour() {
-        return answerFour;
-    }
-    public String getAnswerFive() {
-        return answerFive;
-    }
+    public String getAnswerOne() { return answerOne; }
+
+    public String getAnswerTwo() { return answerTwo; }
+
+    public String getAnswerThree() { return answerThree; }
+
+    public String getAnswerFour() { return answerFour; }
+
+    public String getAnswerFive() { return answerFive; }
+
     public String getCorrectAnswer(){ return correctAnswer; }
+
     public int getNumberOfQuestions(){ return this.numberOfQuestions; }
 
-    public void setAnswerFive(String answerFive) {
-        this.answerFive = answerFive;
-    }
+    public void setAnswerFive(String answerFive) { this.answerFive = answerFive; }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
+    public void setQuestion(String question) { this.question = question; }
 
-    public void setAnswerOne(String answerOne) {
-        this.answerOne = answerOne;
-    }
+    public void setAnswerOne(String answerOne) { this.answerOne = answerOne; }
 
-    public void setAnswerTwo(String answerTwo) {
-        this.answerTwo = answerTwo;
-    }
+    public void setAnswerTwo(String answerTwo) { this.answerTwo = answerTwo; }
 
-    public void setAnswerThree(String answerThree) {
-        this.answerThree = answerThree;
-    }
+    public void setAnswerThree(String answerThree) { this.answerThree = answerThree; }
 
-    public void setAnswerFour(String answerFour) {
-        this.answerFour = answerFour;
-    }
-    public void setCorrectAnswer(String correctAnswer){
-        this.correctAnswer = correctAnswer;
-    }
+    public void setAnswerFour(String answerFour) { this.answerFour = answerFour; }
+    
+    public void setCorrectAnswer(String correctAnswer){ this.correctAnswer = correctAnswer; }
 }

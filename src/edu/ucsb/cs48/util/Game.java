@@ -50,8 +50,7 @@ public class Game implements Runnable {
 
     /**
      * Called at the gameStart
-     * For now it makes the GUI go back to main menu
-     * TODO: make it go to the endGamePanel
+     * Sets panel to gameOverPanel when game ends
      */
     public void gameEnd() {
         triviaMain.setCurrentPanel(new gameOverPanel());

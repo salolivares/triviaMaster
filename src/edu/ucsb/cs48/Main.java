@@ -10,7 +10,7 @@ import java.sql.Connection;
 
 /**
  * The Application Launcher
- *   This is the launching off point for TriviaMaster
+ * This is the launching off point for TriviaMaster
  */
 
 public class Main {

@@ -13,10 +13,18 @@ import java.util.HashMap;
  * instead of creating and closing a connection in each function. This way,
  * the connection can just be created and closed once, in the main function. */
 
+/**
+ * QuestionAccess class that is involved in accessing categories and questions
+ * from the remote database
+ */
+
 public class QuestionAccess {
 
-    /** This function returns an ArrayList of all of the possible categories created
-     * in the table category. **/
+    /**
+     * This function returns an ArrayList of all of the possible categories created
+     * in the table category.
+     * @return ArrayList populated with all possible categories
+     */
 
     public static ArrayList<String> getCategories() {
         String query;
@@ -40,10 +48,14 @@ public class QuestionAccess {
         return categories;
     }
 
-    /** This function is similar to getCategories() but instead of placing all of the
+    /**
+     * This function is similar to getCategories() but instead of placing all of the
      * categories into an ArrayList, the category names and the categoryIDs are placed
-     * into a HashMap as key-value pairs. **/
-    public static HashMap<String, Integer> getHashMap() {
+     * into a HashMap as key-value pairs.
+     * @return HashMap populated with category and categoryID pairs
+     */
+
+     public static HashMap<String, Integer> getHashMap() {
         String query;
         HashMap<String, Integer> catID = new HashMap<String, Integer>();
 
@@ -65,9 +77,13 @@ public class QuestionAccess {
         return catID;
     }
 
-    /** This function returns an ArrayList of all of the questionIDs for a specific
+    /**
+     * This function returns an ArrayList of all of the questionIDs for a specific
      * category. For example, if the user has chosen the category Sports, this function
-     * will return an ArrayList of all of the questionIDs contained in the category Sports **/
+     * will return an ArrayList of all of the questionIDs contained in the category Sports
+     * @param cID the category ID number corresponding to a question category
+     * @return ArrayList populated with all question IDs corresponding to the category
+     */
     public ArrayList<Integer> getQuestionIDs(int cID) {
         ArrayList<Integer> questions = new ArrayList<Integer>();
         String query;
@@ -94,10 +110,14 @@ public class QuestionAccess {
     question_id array returned by getQuestionIDs(), and you should now be entering a
     specific question_ID that you want the question, answers etc for */
 
-    /** This function takes in the parameter questionID, and accesses the question table
+    /**
+     * This function takes in the parameter questionID, and accesses the question table
      * to retrieve the question, possible answers, and correct answer for that questionID.
      * This information is stored in a String array, with each index representing a different
-     * value. This String array is returned. **/
+     * value. This String array is returned.
+     * @param qID the ID of the question
+     * @return an array of Strings containing question, possible answers, correct answer, and point value
+     */
     public String[] getQuestionAndAnswer(int qID) {
         String[] questionInfo = new String[8];
         String query;
