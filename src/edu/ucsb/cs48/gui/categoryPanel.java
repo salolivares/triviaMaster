@@ -7,6 +7,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
+/**
+ * categoryPanel class that displays potential categories for user to choose from
+ */
+
 public class categoryPanel extends JPanel {
     //Java GUI Components
 
@@ -16,6 +20,9 @@ public class categoryPanel extends JPanel {
     JButton backButton;
     JComboBox categoryMenu;
 
+    /**
+     * categoryPanel default constructor
+     */
 
     public categoryPanel() {
 

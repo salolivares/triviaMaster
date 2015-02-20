@@ -8,7 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * Created by Jordan Nguyen on 2/9/2015.
+ * This class creates the panel where the game is played.
+ * This panel contains the question and potential answers.
  */
 public class gamePanel extends JPanel{
 
@@ -33,6 +34,18 @@ public class gamePanel extends JPanel{
     Action pressed5;
     String correctAnswer;
     static final double VALUE = 10;
+
+    /**
+     * gamePanel constructor that sets up the panel with
+     * questions and answers
+     * @param q The question
+     * @param a1 Potential answer 1
+     * @param a2 Potential answer 2
+     * @param a3 Potential answer 3
+     * @param a4 Potential answer 4
+     * @param a5 Potential answer 5
+     * @param cAnswer Correct answer
+     */
 
     public gamePanel(String q, String a1, String a2, String a3,
                      String a4, String a5,String cAnswer) {
@@ -230,7 +243,10 @@ public class gamePanel extends JPanel{
 
     }
 
-    // A helper function to check if the user input the correct answer
+    /**
+     * A helper function to check if the user input the correct answer.
+     * Also sets font to green or red depending if selection is right or wrong.
+     */
     public void checkAnswer() {
         if (answer1.isSelected()) {
             if (answer1.getText().equals(this.correctAnswer)) {
