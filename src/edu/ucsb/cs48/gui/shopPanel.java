@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * shopPanel class where users can buy power ups using their earned points
+ */
 public class shopPanel extends JPanel {
     //Java GUI components
     JButton backButton;
@@ -48,7 +51,7 @@ public class shopPanel extends JPanel {
         purchaseButton = new JButton("Purchase");
         infoButton = new JButton("Info");
         helpButton = new JButton("Help me");
-        mainTitle = new JLabel("Trivia Shop");
+        mainTitle = new JLabel("Trivia Shop: Work in progress");
         pointsLabel = new JLabel("You have # points"); // TODO: update this via DB
         botPanel = new JPanel(new BorderLayout());
         middlePanel = new JPanel(new GridBagLayout());
@@ -111,6 +114,10 @@ public class shopPanel extends JPanel {
 
     }
 
+    /**
+     * purchaseHelper method that lets user purchase items
+     * @param index the index of the item the user wishes to purchase
+     */
     private void purchaseHelper(int index){
         if(index == -1 ){
             JOptionPane.showMessageDialog(dialogFrame, "Please select an item to purchase",
