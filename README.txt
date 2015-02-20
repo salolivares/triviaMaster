@@ -8,8 +8,9 @@ Requirements: Java, Ant (to build project)
 
 ## How to play our game:
 1) Hit account login and login with the following credentials
-     Username:
-     Password:
+     Username: test
+     Password: password
+   OR create your own account
 
 2) Click play game
 
