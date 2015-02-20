@@ -15,6 +15,9 @@ import java.util.HashMap;
 
 public class QuestionAccess {
 
+    /** This function returns an ArrayList of all of the possible categories created
+     * in the table category. **/
+
     public static ArrayList<String> getCategories() {
         String query;
         ArrayList<String> categories = new ArrayList<String>();
@@ -59,6 +62,9 @@ public class QuestionAccess {
         return catID;
     }
 
+    /** This function returns an ArrayList of all of the questionIDs for a specific
+     * category. For example, if the user has chosen the category Sports, this function
+     * will return an ArrayList of all of the questionIDs contained in the category Sports **/
     public ArrayList<Integer> getQuestionIDs(int cID) {
         ArrayList<Integer> questions = new ArrayList<Integer>();
         String query;
@@ -83,7 +89,12 @@ public class QuestionAccess {
 
     /* before calling getQuestionAndAnswer(), you should have already used rand on the
     question_id array returned by getQuestionIDs(), and you should now be entering a
-    specific question_ID that you want the question, answers etc for*/
+    specific question_ID that you want the question, answers etc for */
+
+    /** This function takes in the parameter questionID, and accesses the question table
+     * to retrieve the question, possible answers, and correct answer for that questionID.
+     * This information is stored in a String array, with each index representing a different
+     * value. This String array is returned. **/
     public String[] getQuestionAndAnswer(int qID) {
         String[] questionInfo = new String[8];
         String query;
