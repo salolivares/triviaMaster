@@ -40,6 +40,9 @@ public class QuestionAccess {
         return categories;
     }
 
+    /** This function is similar to getCategories() but instead of placing all of the
+     * categories into an ArrayList, the category names and the categoryIDs are placed
+     * into a HashMap as key-value pairs. **/
     public static HashMap<String, Integer> getHashMap() {
         String query;
         HashMap<String, Integer> catID = new HashMap<String, Integer>();
