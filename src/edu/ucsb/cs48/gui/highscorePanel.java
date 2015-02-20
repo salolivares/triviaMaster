@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import edu.ucsb.cs48.Main;
 
 /**
  * highscorePanel class that displays the top 5 high scores
@@ -41,7 +42,7 @@ public class highscorePanel extends JPanel{
         P5 = new JLabel("Sal");
         P1HS = new JLabel("0");
         P2HS = new JLabel("0");
-        P3HS = new JLabel("0");
+        P3HS = new JLabel("" + Main.player.getHighScore());
         P4HS = new JLabel("0");
         P5HS = new JLabel("0");
         backbutton = new JButton("Back");
