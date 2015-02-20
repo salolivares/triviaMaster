@@ -5,6 +5,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * mainMenuPanel class that presents the main menu after login
+ * Allows user to play game, view high scores, manage options, and enter the shop
+ */
+
 public class mainMenuPanel extends JPanel{
     //Java GUI Components
     JButton playGameButton;
@@ -17,6 +22,9 @@ public class mainMenuPanel extends JPanel{
     JButton optionButton;
     GridBagConstraints gbc;
 
+    /**
+     * mainMenuPanel default constructor
+     */
     public mainMenuPanel(){
         playGameButton = new JButton("Play Game");
         viewHighScoreButton = new JButton("View High Scores");
