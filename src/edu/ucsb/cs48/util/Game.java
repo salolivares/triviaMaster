@@ -80,19 +80,19 @@ public class Game implements Runnable {
     }
 
     /**
-     *
+     * Reset the game score to 0 each time a new game is started
      */
     public void resetGameScore() { this.gameScore = 0; }
 
     /**
-     *
-     * @param score
+     * Add to the current game score when a question is correctly answered
+     * @param score the amount of points added to the game score
      */
     public void addToGameScore(double score) { this.gameScore += score; }
 
     /**
-     *
-     * @return
+     * get the game score
+     * @return current game score
      */
     public double getGameScore() {return this.gameScore; }
 }
