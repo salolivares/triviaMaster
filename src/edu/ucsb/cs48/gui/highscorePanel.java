@@ -5,7 +5,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
+/**
+ * highscorePanel class that displays the top 5 high scores
+ */
 public class highscorePanel extends JPanel{
     //Java Gui Components
     JButton backbutton;
@@ -24,8 +26,11 @@ public class highscorePanel extends JPanel{
     JLabel P4HS;
     JLabel P5HS;
 
+    /**
+     * highscorePanel default constructor
+     */
     public highscorePanel(){
-        HighScoreheaderLabel = new JLabel("High Score Leaderboard");
+        HighScoreheaderLabel = new JLabel("High Score Leaderboard: Not yet working");
         PlayerLabel = new JLabel("Player");
         HighScoreLabel = new JLabel("High Score");
         HighScorePanel = new JPanel();
@@ -34,11 +39,11 @@ public class highscorePanel extends JPanel{
         P3 = new JLabel("Jordan");
         P4 = new JLabel("Brandon");
         P5 = new JLabel("Sal");
-        P1HS = new JLabel("awesome");
-        P2HS = new JLabel("awesomer");
-        P3HS = new JLabel("awesomest");
-        P4HS = new JLabel("awesomeerest");
-        P5HS = new JLabel("not awesome");
+        P1HS = new JLabel("0");
+        P2HS = new JLabel("0");
+        P3HS = new JLabel("0");
+        P4HS = new JLabel("0");
+        P5HS = new JLabel("0");
         backbutton = new JButton("Back");
 
         this.setLayout(null);
@@ -77,7 +82,8 @@ public class highscorePanel extends JPanel{
         PlayerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         PlayerLabel.setVerticalAlignment(SwingConstants.CENTER);
 
-        HighScoreheaderLabel.setFont(new Font("Serif", Font.BOLD, 32));
+        //HighScoreheaderLabel.setFont(new Font("Serif", Font.BOLD, 32));
+        HighScoreheaderLabel.setFont(new Font("Serif", Font.BOLD, 16));
         HighScoreheaderLabel.setHorizontalAlignment(SwingConstants.CENTER);
         HighScoreheaderLabel.setVerticalAlignment(SwingConstants.CENTER);
 
