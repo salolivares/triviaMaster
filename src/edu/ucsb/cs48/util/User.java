@@ -127,4 +127,31 @@ public class User {
         }
         return hs;
     }
+
+    /**
+     * getPoints class gets user points from database
+     * @return points int
+     */
+    public int getPoints() {
+        String query;
+        String username = getUsername();
+        int points = 0;
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "SELECT points FROM user WHERE username='" + username + "';";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                points = rs.getInt("points");
+            }
+
+            Main.db.closeDBconnection(con);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return points;
+    }
 }
