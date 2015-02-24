@@ -1,5 +1,6 @@
 package edu.ucsb.cs48.util;
 
+import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.gui.*;
 
 import java.util.concurrent.CountDownLatch;
@@ -53,6 +54,10 @@ public class Game implements Runnable {
      * Sets panel to gameOverPanel when game ends
      */
     public void gameEnd() {
+        if (Main.game.getGameScore() > Main.player.getHighScore())
+        {
+            Main.player.setHighscore(Main.game.getGameScore());
+        }
         triviaMain.setCurrentPanel(new gameOverPanel());
     }
 

@@ -4,6 +4,7 @@ package edu.ucsb.cs48.util;
 import edu.ucsb.cs48.Main;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -153,5 +154,31 @@ public class User {
             e.printStackTrace();
         }
         return points;
+    }
+
+    /**
+     * setHighscore method that sets the user's highscore
+     * @param hs highscore to input
+     */
+    public void setHighscore(double hs) {
+
+        String query;
+        String un = getUsername();
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "update user set highscore = ? where username = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ps.setDouble(1, hs);
+            ps.setString(2, un);
+            ps.executeUpdate();
+
+            Main.db.closeDBconnection(con);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
