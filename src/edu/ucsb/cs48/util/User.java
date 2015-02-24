@@ -167,7 +167,6 @@ public class User {
 
         try {
             Connection con = Main.db.createDBconnection();
-            Statement stmt = con.createStatement();
             query = "update user set highscore = ? where username = ?";
             PreparedStatement ps = con.prepareStatement(query);
 
