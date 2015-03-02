@@ -22,7 +22,6 @@ public class triviaMain {
 
     JLabel triviaTitle;
     GridBagConstraints gbc;
-    JButton testButton = new JButton("Test Your Panel");
 
     // GUI constants
     public static JFrame mainFrame;
@@ -83,11 +82,6 @@ public class triviaMain {
         gbc.gridy = 1;
         botPanel.add(createAccountButton,gbc);
 
-        //TEST BUTTON
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        botPanel.add(testButton,gbc);
-
         //add bot and top panels to main panel
         mainPanel.add(topPanel);
         mainPanel.add(botPanel);
@@ -127,14 +121,6 @@ public class triviaMain {
             }
         });
 
-        // EDIT THIS TO TEST YOUR PANEL!!
-        testButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                // CHANGE mainMenuPanel to your panel name to test!
-                //setCurrentPanel();
-            }
-        });
     }
 
     /**

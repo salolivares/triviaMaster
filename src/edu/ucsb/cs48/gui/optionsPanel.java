@@ -36,7 +36,7 @@ public class optionsPanel extends JPanel {
             e.printStackTrace();
         }
 
-        background = new JLabel(new ImageIcon(image));
+        background = new JLabel(/**new ImageIcon(image)*/);
         background.setOpaque(false);
         add(background);
         background.setLayout(new GridBagLayout());
