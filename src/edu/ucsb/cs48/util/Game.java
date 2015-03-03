@@ -62,7 +62,7 @@ public class Game implements Runnable {
         {
             Main.player.setHighscore(Main.game.getGameScore());
         }
-        TimerOverlayPanel.timerValue = 0;
+        TimerOverlayPanel.timerValue = 0; //clear timer from screen
         triviaMain.setCurrentPanel(new gameOverPanel());
     }
 

@@ -5,22 +5,30 @@ import java.awt.*;
 
 public class TimerOverlayPanel extends JPanel implements Runnable{
     JLabel timeLabel;
-    public static int timerValue = 60;
+    public static int timerValue = 30;
 
     public void paintComponent(Graphics g){
-        timeLabel = new JLabel(Integer.toString(timerValue));
-        timeLabel.setBounds(0,0,400,30);
+        if(timerValue <= 0){
+            timeLabel = new JLabel("");
+        }
+        else {
+            timeLabel = new JLabel(Integer.toString(timerValue));
+        }
+        timeLabel.setFont(new Font("Arial",Font.PLAIN, 30));
+        timeLabel.setBounds(100,100,400,30);
         timeLabel.paint(g);
     }
 
     public TimerOverlayPanel(){
-        timerValue = 60;
+        timerValue = 30;
+        setLayout(null);
     }
 
     @Override
     public void run() {
         setupTimerOverlay();
         runTimer();
+        triviaMain.setCurrentPanel(new gameOverPanel());
     }
 
     private synchronized void setupTimerOverlay(){
