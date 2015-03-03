@@ -2,6 +2,7 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.util.Game;
+import edu.ucsb.cs48.util.QuestionAccess;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +26,8 @@ public class gamePanel extends JPanel{
     JRadioButton answer5;
     JButton submit;
     JButton next;
+    JButton AutoAnswer;
+    JButton QEliminator;
     Action pressedEnter;
     Action pressedEnterNext;
     Action pressed1;
@@ -32,7 +35,10 @@ public class gamePanel extends JPanel{
     Action pressed3;
     Action pressed4;
     Action pressed5;
+    Action pressedQ;
+    Action pressedW;
     String correctAnswer;
+    JPanel southPanel;
     static final double VALUE = 10;
 
     /**
@@ -53,6 +59,7 @@ public class gamePanel extends JPanel{
         // Instantiate Components
         botPanel      = new JPanel(new GridBagLayout());
         topPanel      = new JPanel(new GridBagLayout());
+        southPanel      = new JPanel(new GridBagLayout());
         question      = new JLabel(q);
         score         = new JLabel("Score: " + Main.game.getGameScore());
         answer1       = new JRadioButton(a1);
@@ -60,6 +67,8 @@ public class gamePanel extends JPanel{
         answer3       = new JRadioButton(a3);
         answer4       = new JRadioButton(a4);
         answer5       = new JRadioButton(a5);
+        AutoAnswer    = new JButton("Auto Answer (Q): 0");
+        QEliminator   = new JButton("Question Eliminator (W): 0");
         submit        = new JButton("Submit Answer");
         next          = new JButton("Next");
         next.setVisible(false);
@@ -68,6 +77,9 @@ public class gamePanel extends JPanel{
         setLayout(new BorderLayout());
 
 
+        // set button size
+        AutoAnswer.setPreferredSize(new Dimension(300,100));
+        QEliminator.setPreferredSize(new Dimension(300,100));
 
         // Set font and allignment of question and answers
         question.setFont(new Font("Arial", Font.BOLD, 16));
@@ -100,7 +112,12 @@ public class gamePanel extends JPanel{
         // set up GBC and panels
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5,5,5,5);
-
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        southPanel.add(QEliminator, gbc);
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        southPanel.add(AutoAnswer, gbc);
         gbc.gridx = 3;
         gbc.gridy = 0;
         topPanel.add(score, gbc);
@@ -135,6 +152,7 @@ public class gamePanel extends JPanel{
         botPanel.add(noAnsSelected, gbc);
 
         add(topPanel, BorderLayout.NORTH);
+        add(southPanel, BorderLayout.SOUTH);
         add(botPanel, BorderLayout.CENTER);
 
 
@@ -239,7 +257,25 @@ public class gamePanel extends JPanel{
         answer5.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("5"), "pressed");
         answer5.getActionMap().put("pressed", pressed5);
 
+        pressedQ = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("STUB");
+            }
+        };
 
+        AutoAnswer.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("Q"), "pressed");
+        AutoAnswer.getActionMap().put("pressed", pressedQ);
+
+        pressedW = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("STUB");
+            }
+        };
+
+        QEliminator.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("W"), "pressed");
+        QEliminator.getActionMap().put("pressed", pressedW);
 
     }
 
