@@ -7,6 +7,8 @@ import edu.ucsb.cs48.util.QuestionAccess;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * This class creates the panel where the game is played.
@@ -260,7 +262,7 @@ public class gamePanel extends JPanel{
         pressedQ = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("STUB");
+                AutoAnswer();
             }
         };
 
@@ -270,7 +272,7 @@ public class gamePanel extends JPanel{
         pressedW = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("STUB");
+               QuestionEliminator();
             }
         };
 
@@ -278,17 +280,17 @@ public class gamePanel extends JPanel{
         QEliminator.getActionMap().put("pressed", pressedW);
 
         AutoAnswer.addMouseListener(new MouseAdapter() {
-                                  @Override
-                                  public void mouseReleased(MouseEvent e) {
-                                      System.out.println("STUB");
-                                  }
-                              }
+                                        @Override
+                                        public void mouseReleased(MouseEvent e) {
+                                            AutoAnswer();
+                                        }
+                                    }
         );
 
         QEliminator.addMouseListener(new MouseAdapter() {
                                   @Override
                                   public void mouseReleased(MouseEvent e) {
-                                      System.out.println("STUB");
+                                      QuestionEliminator();
                                   }
                               }
         );
@@ -299,7 +301,7 @@ public class gamePanel extends JPanel{
      * A helper function to check if the user input the correct answer.
      * Also sets font to green or red depending if selection is right or wrong.
      */
-    public void checkAnswer() {
+    private void checkAnswer() {
         if (answer1.isSelected()) {
             if (answer1.getText().equals(this.correctAnswer)) {
                 answer1.setForeground(Color.GREEN);
@@ -346,9 +348,70 @@ public class gamePanel extends JPanel{
 
         }
 
+    /**
+     * AutoAnswer methods that executes the AutoAnswer power-up
+     */
+    private void AutoAnswer() {
 
+        if (!next.isVisible()) {
+            if (answer1.getText().equals(this.correctAnswer)) {
+                answer1.setForeground(Color.GREEN);
+                Main.game.addToGameScore(VALUE);
+            }
 
+            if (answer2.getText().equals(this.correctAnswer)) {
+                answer2.setForeground(Color.GREEN);
+                Main.game.addToGameScore(VALUE);
+            }
+
+            if (answer3.getText().equals(this.correctAnswer)) {
+                answer3.setForeground(Color.GREEN);
+                Main.game.addToGameScore(VALUE);
+            }
+
+            if (answer4.getText().equals(this.correctAnswer)) {
+                answer4.setForeground(Color.GREEN);
+                Main.game.addToGameScore(VALUE);
+            }
+
+            if (answer5.getText().equals(this.correctAnswer)) {
+                answer5.setForeground(Color.GREEN);
+                Main.game.addToGameScore(VALUE);
+            }
+
+            submit.setVisible(false);
+            next.setVisible(true);
+        }
     }
+
+    private void QuestionEliminator() {
+        int count = 0;
+        ArrayList<Integer> holder = new ArrayList<Integer>();
+        holder.add(0);
+        HashMap<Integer, JRadioButton> answerName = new HashMap<Integer, JRadioButton>();
+        answerName.put(1, this.answer1);
+        answerName.put(2, this.answer2);
+        answerName.put(3, this.answer3);
+        answerName.put(4, this.answer4);
+        answerName.put(5, this.answer5);
+        while (count < 2) {
+            int answerID = (int) (Math.random() * 6);
+            if (!(holder.contains(answerID)) && !(answerName.get(answerID).equals(this.correctAnswer)))
+            {                                                                      // if the answerID is not the correct answer
+                                                                                   // AND the answer is not in holder
+                answerName.get(answerID).setForeground(Color.RED);                 // set that answer to red
+                holder.add(answerID);                                              // add that ID to holder
+                count++;                                                           // increment count
+            }
+
+            else
+                continue;
+        }
+    }
+}
+
+
+
 
 
 
