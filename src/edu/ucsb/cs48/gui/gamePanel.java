@@ -281,22 +281,22 @@ public class gamePanel extends JPanel{
         QEliminator.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("W"), "pressed");
         QEliminator.getActionMap().put("pressed", pressedW);
 
-        AutoAnswer.addMouseListener(new MouseAdapter() {
-                                        @Override
-                                        public void mouseReleased(MouseEvent e) {
-                                            AutoAnswer();
-                                            AutoAnswer.setEnabled(false);
-                                        }
-                                    }
+        AutoAnswer.addActionListener(new ActionListener() {
+                                         @Override
+                                         public void actionPerformed(ActionEvent ae) {
+                                             AutoAnswer();
+                                             AutoAnswer.setEnabled(false);
+                                         }
+                                     }
         );
 
-        QEliminator.addMouseListener(new MouseAdapter() {
-                                  @Override
-                                  public void mouseReleased(MouseEvent e) {
-                                      QuestionEliminator();
-                                      QEliminator.setEnabled(false);
-                                  }
-                              }
+        QEliminator.addActionListener(new ActionListener() {
+                                          @Override
+                                          public void actionPerformed(ActionEvent ae) {
+                                              QuestionEliminator();
+                                              QEliminator.setEnabled(false);
+                                          }
+                                      }
         );
 
     }
