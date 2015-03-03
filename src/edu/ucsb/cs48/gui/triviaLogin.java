@@ -83,6 +83,7 @@ public class triviaLogin {
             public void keyPressed(KeyEvent e) {
                 if(notPressed) {
                     loginField.setText("");
+                    passwordField.setText("");
                     notPressed = false;
                 }
             }

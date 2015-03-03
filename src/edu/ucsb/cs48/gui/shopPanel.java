@@ -3,7 +3,6 @@ package edu.ucsb.cs48.gui;
 import edu.ucsb.cs48.gui.guiUtils.ForcedListSelectionModel;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -33,17 +32,9 @@ public class shopPanel extends JPanel {
     String[] columnNames = {"Item",
             "Cost",
             "# you own",};
-    Object[][] data = {
+    Object[][] tableData = {
             {"Auto Answer", "30 Points",
                     new Integer(20)},
-            {"Some cool category", "20 Points",
-                    new Integer(20)},
-            {"null", "100 Points",
-                    new Integer(0)},
-            {"null", "300 Points",
-                    new Integer(20)},
-            {"null", "400 Points",
-                    new Integer(20)}
     };
 
     public shopPanel(){
@@ -52,8 +43,8 @@ public class shopPanel extends JPanel {
         purchaseButton = new JButton("Purchase");
         infoButton = new JButton("Info");
         helpButton = new JButton("Help me");
-        mainTitle = new JLabel("Trivia Shop: Work in progress");
-        pointsLabel = new JLabel("You have " + Main.player.getPoints() + " points"); // TODO: update this via DB
+        mainTitle = new JLabel("Trivia Shop");
+        pointsLabel = new JLabel("You have " + Main.player.getPoints() + " points");
         botPanel = new JPanel(new BorderLayout());
         middlePanel = new JPanel(new GridBagLayout());
         midButtonPanel = new JPanel(new GridLayout(3,1));
@@ -73,7 +64,7 @@ public class shopPanel extends JPanel {
         //configure middle components
 
         //table set up
-        itemsTable = new JTable(data,columnNames);
+        itemsTable = new JTable(tableData,columnNames);
         tablePanel = new JScrollPane(itemsTable);
         itemsTable.setFillsViewportHeight(true);
         itemsTable.setSelectionModel(new ForcedListSelectionModel());
@@ -112,6 +103,14 @@ public class shopPanel extends JPanel {
                 purchaseHelper(itemsTable.getSelectedRow());
             }
         });
+        infoButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                JOptionPane.showMessageDialog(dialogFrame, "Autoanswer - Automatically Answer Question for you\n" +
+                        "Question Eliminator - Highlights 2 wrong answers for you"
+                        ,"Item Information",JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
 
     }
 
@@ -126,7 +125,7 @@ public class shopPanel extends JPanel {
         }
         else{
             String dialogMessage;
-            dialogMessage = String.format("You purchased %s",data[index][0]);
+            dialogMessage = String.format("You purchased %s", tableData[index][0]);
             JOptionPane.showMessageDialog(dialogFrame, dialogMessage, "Purchase Successful",JOptionPane.INFORMATION_MESSAGE);
         }
     }
