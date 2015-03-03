@@ -192,10 +192,10 @@ public class User {
 
         try {
             Connection con = Main.db.createDBconnection();
-            query = "update user set highscore = ? where username = ?";
+            query = "update user set points = ? where username = ?";
             PreparedStatement ps = con.prepareStatement(query);
 
-            ps.setDouble(1, pts);
+            ps.setDouble(1, Main.player.getPoints() + pts);
             ps.setString(2, un);
             ps.executeUpdate();
 
