@@ -180,4 +180,29 @@ public class User {
             e.printStackTrace();
         }
     }
+
+    /**
+     * modifyPoints method that modifies (add or subract) to the user's points
+     * @param pts highscore to input
+     */
+    public void modifyPoints(double pts) {
+
+        String query;
+        String un = getUsername();
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            query = "update user set highscore = ? where username = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ps.setDouble(1, pts);
+            ps.setString(2, un);
+            ps.executeUpdate();
+
+            Main.db.closeDBconnection(con);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
