@@ -18,7 +18,9 @@ public class categoryPanel extends JPanel {
     JLabel selectCategory;
     JButton startGame;
     JButton backButton;
-    JComboBox categoryMenu;
+    //JComboBox categoryMenu;
+    JList categoryMenu;
+    JScrollPane scroller;
 
     /**
      * categoryPanel default constructor
@@ -36,7 +38,12 @@ public class categoryPanel extends JPanel {
         selectCategory = new JLabel("Choose a category");
         startGame = new JButton("Start Game!");
         backButton = new JButton("Go Back");
-        categoryMenu = new JComboBox(categories.toArray());
+        categoryMenu = new JList(categories.toArray());                               // test
+        categoryMenu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);           // test
+        categoryMenu.setVisibleRowCount(3);                                           // test
+        scroller = new JScrollPane(categoryMenu);                                     // test
+        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);     // test
+        scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);  // test
         mainPanel = new JPanel(new GridLayout(4,1));
 
         selectCategory.setFont(new Font("Serif", Font.BOLD, 32));
@@ -44,7 +51,8 @@ public class categoryPanel extends JPanel {
         selectCategory.setVerticalAlignment(SwingConstants.CENTER);
 
         mainPanel.add(selectCategory);
-        mainPanel.add(categoryMenu);
+        mainPanel.add(scroller);                                                     // test
+        //mainPanel.add(categoryMenu);
         mainPanel.add(startGame);
         mainPanel.add(backButton);
 
@@ -61,7 +69,7 @@ public class categoryPanel extends JPanel {
         startGame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                Main.game.setCategory(catID.get(categoryMenu.getSelectedItem()));
+                Main.game.setCategory(catID.get(categoryMenu.getSelectedValue()));
                 Main.game.resetGameScore();
                 Main.gameThread = new Thread(Main.game);
                 Main.gameThread.start();
