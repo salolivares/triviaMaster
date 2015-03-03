@@ -22,6 +22,7 @@ public class Main {
     public static Database db;
     public static QuestionAccess qa;
     public static Game game;
+    public static int gameMode; // 0 - normal mode, 1 - timedmode
     public static Thread gameThread;
 
     public static void main(String[] args){
@@ -33,6 +34,7 @@ public class Main {
         db = new Database();
         qa = new QuestionAccess();
         game = new Game();
+        gameMode = 0;
 
         gui.createWindow();
 

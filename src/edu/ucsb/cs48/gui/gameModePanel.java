@@ -1,6 +1,8 @@
 package edu.ucsb.cs48.gui;
 
 
+import edu.ucsb.cs48.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -53,14 +55,15 @@ public class gameModePanel extends JPanel{
             @Override
             public void mouseReleased(MouseEvent e) {
                 triviaMain.setCurrentPanel(new categoryPanel());
+                Main.gameMode = 0;
             }
         });
 
         mode2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                //triviaMain.setCurrentPanel(new categoryPanel());
-                notAvailable.setVisible(true);
+                triviaMain.setCurrentPanel(new categoryPanel());
+                Main.gameMode = 1;
             }
         });
 
