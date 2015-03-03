@@ -99,4 +99,6 @@ public class Game implements Runnable {
      * @return current game score
      */
     public double getGameScore() {return this.gameScore; }
+
+    public int getCategory() { return category; }
 }

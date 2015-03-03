@@ -1,6 +1,8 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.Game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -61,10 +63,14 @@ public class categoryPanel extends JPanel {
         startGame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                Main.game.setCategory(catID.get(categoryMenu.getSelectedItem()));
-                Main.game.resetGameScore();
-                Main.gameThread = new Thread(Main.game);
-                Main.gameThread.start();
+                //Main.game.setCategory(catID.get(categoryMenu.getSelectedItem()));
+                //Main.game.resetGameScore();
+                //Main.gameThread = new Thread(Main.game);
+                //Main.gameThread.start();
+
+                Game game = new Game();
+                game.setCategory(catID.get(categoryMenu.getSelectedItem()));
+
             }
         });
     }
