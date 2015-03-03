@@ -263,6 +263,7 @@ public class gamePanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 AutoAnswer();
+                AutoAnswer.setEnabled(false);
             }
         };
 
@@ -273,6 +274,7 @@ public class gamePanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                QuestionEliminator();
+               QEliminator.setEnabled(false);
             }
         };
 
@@ -283,6 +285,7 @@ public class gamePanel extends JPanel{
                                         @Override
                                         public void mouseReleased(MouseEvent e) {
                                             AutoAnswer();
+                                            AutoAnswer.setEnabled(false);
                                         }
                                     }
         );
@@ -291,6 +294,7 @@ public class gamePanel extends JPanel{
                                   @Override
                                   public void mouseReleased(MouseEvent e) {
                                       QuestionEliminator();
+                                      QEliminator.setEnabled(false);
                                   }
                               }
         );
@@ -396,7 +400,7 @@ public class gamePanel extends JPanel{
         answerName.put(5, this.answer5);
         while (count < 2) {
             int answerID = (int) (Math.random() * 6);
-            if (!(holder.contains(answerID)) && !(answerName.get(answerID).equals(this.correctAnswer)))
+            if (!(holder.contains(answerID)) && !(answerName.get(answerID).getText().equals(this.correctAnswer)))
             {                                                                      // if the answerID is not the correct answer
                                                                                    // AND the answer is not in holder
                 answerName.get(answerID).setForeground(Color.RED);                 // set that answer to red
