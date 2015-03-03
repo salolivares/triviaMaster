@@ -39,6 +39,10 @@ public class Game implements Runnable {
         QandA = new QuestionAndAnswers(category);
         int num = QandA.getNumberOfQuestions();
         countdownTimer();
+        if(Main.gameMode == 1){
+            Thread timerOverlayThread = new Thread(new TimerOverlayPanel());
+            timerOverlayThread.start();
+        }
         while(num > 0){
             latch = new CountDownLatch(1);
             triviaMain.setCurrentPanel(new gamePanel(QandA.getQuestion(), QandA.getAnswerOne(), QandA.getAnswerTwo(),
@@ -58,6 +62,7 @@ public class Game implements Runnable {
         {
             Main.player.setHighscore(Main.game.getGameScore());
         }
+        TimerOverlayPanel.timerValue = 0;
         triviaMain.setCurrentPanel(new gameOverPanel());
     }
 
@@ -73,6 +78,7 @@ public class Game implements Runnable {
         triviaMain.setCurrentPanel(new countdownTimer("1"));
         Thread.sleep(1000);
     }
+
 
     /**
      * Allows external class or methods to set the game category
