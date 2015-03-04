@@ -76,7 +76,7 @@ public class gamePanel extends JPanel{
         AutoAnswer    = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
 
         try{
-            Image autoanswerimg = ImageIO.read(getClass().getResource("assets/skip1.jpg"));
+            Image autoanswerimg = ImageIO.read(getClass().getResource("assets/Skip.jpg"));
             AutoAnswer.setIcon(new ImageIcon(autoanswerimg));
         } catch (java.io.IOException ex){
         }
