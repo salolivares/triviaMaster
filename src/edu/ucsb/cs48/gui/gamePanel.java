@@ -4,6 +4,7 @@ import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.util.Game;
 import edu.ucsb.cs48.util.QuestionAccess;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -29,7 +30,7 @@ public class gamePanel extends JPanel{
     JButton submit;
     JButton next;
     JButton AutoAnswer;
-    JButton QEliminator;
+    JButton Bomb;
     Action pressedEnter;
     Action pressedEnterNext;
     Action pressed1;
@@ -70,7 +71,19 @@ public class gamePanel extends JPanel{
         answer4       = new JRadioButton(a4);
         answer5       = new JRadioButton(a5);
         AutoAnswer    = new JButton("Auto Answer (Q): 0");
-        QEliminator   = new JButton("Question Eliminator (W): 0");
+        //set Bomb image to the Bomb button
+
+        Bomb          = new JButton("Bomb (W): 0");
+        try{
+            Image img = ImageIO.read(getClass().getResource("assets/bomb.jpg"));
+            Bomb.setIcon(new ImageIcon(img));
+        } catch (java.io.IOException ex) {
+        }
+        Bomb.setHorizontalAlignment(SwingConstants.LEFT);
+        Bomb.setHorizontalTextPosition(AbstractButton.CENTER);
+        Bomb.setVerticalTextPosition(AbstractButton.BOTTOM);
+
+
         submit        = new JButton("Submit Answer");
         next          = new JButton("Next");
         next.setVisible(false);
@@ -81,7 +94,9 @@ public class gamePanel extends JPanel{
 
         // set button size
         AutoAnswer.setPreferredSize(new Dimension(300,100));
-        QEliminator.setPreferredSize(new Dimension(300,100));
+        Bomb.setPreferredSize(new Dimension(110,110));
+        Bomb.setVerticalAlignment(SwingConstants.BOTTOM) ;
+        Bomb.setHorizontalAlignment(SwingConstants.LEFT) ;
 
         // Set font and allignment of question and answers
         question.setFont(new Font("Arial", Font.BOLD, 16));
@@ -116,7 +131,7 @@ public class gamePanel extends JPanel{
         gbc.insets = new Insets(5,5,5,5);
         gbc.gridx = 3;
         gbc.gridy = 0;
-        southPanel.add(QEliminator, gbc);
+        southPanel.add(Bomb, gbc);
         gbc.gridx = 2;
         gbc.gridy = 0;
         southPanel.add(AutoAnswer, gbc);
@@ -274,12 +289,12 @@ public class gamePanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                QuestionEliminator();
-               QEliminator.setEnabled(false);
+               Bomb.setEnabled(false);
             }
         };
 
-        QEliminator.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("W"), "pressed");
-        QEliminator.getActionMap().put("pressed", pressedW);
+        Bomb.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("W"), "pressed");
+        Bomb.getActionMap().put("pressed", pressedW);
 
         AutoAnswer.addActionListener(new ActionListener() {
                                          @Override
@@ -290,11 +305,11 @@ public class gamePanel extends JPanel{
                                      }
         );
 
-        QEliminator.addActionListener(new ActionListener() {
+        Bomb.addActionListener(new ActionListener() {
                                           @Override
                                           public void actionPerformed(ActionEvent ae) {
                                               QuestionEliminator();
-                                              QEliminator.setEnabled(false);
+                                              Bomb.setEnabled(false);
                                           }
                                       }
         );
