@@ -70,15 +70,29 @@ public class gamePanel extends JPanel{
         answer3       = new JRadioButton(a3);
         answer4       = new JRadioButton(a4);
         answer5       = new JRadioButton(a5);
-        AutoAnswer    = new JButton("Auto Answer (Q): 0");
+
+        // set AutoAnwer image
+       // AutoAnswer    = new JButton("<Auto Answer (Q): 0");
+        AutoAnswer    = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
+
+        try{
+            Image autoanswerimg = ImageIO.read(getClass().getResource("assets/skip1.jpg"));
+            AutoAnswer.setIcon(new ImageIcon(autoanswerimg));
+        } catch (java.io.IOException ex){
+        }
+        AutoAnswer.setBackground(Color.WHITE);
+        AutoAnswer.setHorizontalAlignment(SwingConstants.LEFT);
+        AutoAnswer.setHorizontalTextPosition(AbstractButton.CENTER);
+        AutoAnswer.setVerticalTextPosition(AbstractButton.BOTTOM);
         //set Bomb image to the Bomb button
 
         Bomb          = new JButton("Bomb (W): 0");
         try{
-            Image img = ImageIO.read(getClass().getResource("assets/bomb.jpg"));
-            Bomb.setIcon(new ImageIcon(img));
+            Image bombimg = ImageIO.read(getClass().getResource("assets/bomb.jpg"));
+            Bomb.setIcon(new ImageIcon(bombimg));
         } catch (java.io.IOException ex) {
         }
+        Bomb.setBackground(Color.WHITE);
         Bomb.setHorizontalAlignment(SwingConstants.LEFT);
         Bomb.setHorizontalTextPosition(AbstractButton.CENTER);
         Bomb.setVerticalTextPosition(AbstractButton.BOTTOM);
@@ -93,7 +107,7 @@ public class gamePanel extends JPanel{
 
 
         // set button size
-        AutoAnswer.setPreferredSize(new Dimension(300,100));
+        AutoAnswer.setPreferredSize(new Dimension(110,110));
         Bomb.setPreferredSize(new Dimension(110,110));
         Bomb.setVerticalAlignment(SwingConstants.BOTTOM) ;
         Bomb.setHorizontalAlignment(SwingConstants.LEFT) ;
