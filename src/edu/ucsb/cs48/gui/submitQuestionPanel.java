@@ -36,10 +36,12 @@ public class submitQuestionPanel extends JPanel {
     JComboBox correctAnswer;
     JButton submit;
     JButton mainMenu;
+    resultWindow window;
 
     public submitQuestionPanel() {
 
         // instantiate all JComponents
+        window             = new resultWindow();
         mainPanel          = new JPanel(new GridBagLayout());
         title              = new JLabel("Submit your own question!");
         questionLabel      = new JLabel("Question: ");
@@ -145,6 +147,11 @@ public class submitQuestionPanel extends JPanel {
         submit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
+                if (question.getText() == null || choice1.getText() == null || choice2.getText() == null
+                        || choice3.getText() == null || choice4.getText() == null || choice5.getText() == null)
+                    window.createWindow(2);
+                else
+                    window.createWindow(0);
             }
         });
 
@@ -170,4 +177,54 @@ public class submitQuestionPanel extends JPanel {
         }
     }
 
+    // inner class that pops up a new window based on
+    // result of "submit" button
+
+    public class resultWindow {
+
+        JFrame frame;
+        JLabel message;
+        JButton enter;
+        JPanel mainPan;
+
+        public void createWindow(int result) {
+
+            if (result == 0) {
+                frame = new JFrame("Success");
+                message = new JLabel("Submit Successful");
+            }
+
+            if (result == 1) {
+                frame = new JFrame("Failed");
+                message = new JLabel("Submit Failed");
+            }
+
+            if (result == 2) {
+                frame = new JFrame("Invalid");
+                message = new JLabel("Invalid submission due to empty text field");
+            }
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            mainPan = new JPanel(new GridLayout(2,1));
+            enter = new JButton("OK");
+            enter.setPreferredSize(new Dimension(100,50));
+            mainPan.add(message);
+            mainPan.add(enter);
+            frame.setContentPane(mainPan);
+            frame.setSize(300, 300);
+            frame.setVisible(true);
+            frame.setResizable(false);
+            frame.setLocationRelativeTo(null);
+
+            enter.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    frame.dispose();
+
+                }
+            });
+
+
+
+    }
+}
 }
