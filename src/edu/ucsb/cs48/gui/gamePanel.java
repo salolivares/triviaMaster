@@ -2,12 +2,17 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.util.Game;
-import edu.ucsb.cs48.util.QuestionAccess;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.applet.AudioClip;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,6 +21,10 @@ import java.util.HashMap;
  * This panel contains the question and potential answers.
  */
 public class gamePanel extends JPanel{
+    AudioClip correct;
+    AudioClip wrong;
+    URL ding;
+    URL beep;
 
     JPanel topPanel;
     JPanel botPanel;
@@ -58,6 +67,8 @@ public class gamePanel extends JPanel{
 
     public gamePanel(String q, String a1, String a2, String a3,
                      String a4, String a5,String cAnswer) {
+
+
 
         // Instantiate Components
         botPanel      = new JPanel(new GridBagLayout());
@@ -335,45 +346,75 @@ public class gamePanel extends JPanel{
      * Also sets font to green or red depending if selection is right or wrong.
      */
     private void checkAnswer() {
+
+        try {
+            ding = new URL("http://www.linksplace.com/wavsounds/wow.wav");
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        correct = java.applet.Applet.newAudioClip(ding);
+
+        try {
+            beep = new URL("http://www.externalharddrive.com/waves/sirens/sirentone.wav");
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        wrong = java.applet.Applet.newAudioClip(beep);
+
+
         if (answer1.isSelected()) {
             if (answer1.getText().equals(this.correctAnswer)) {
                 answer1.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
             else
                 answer1.setForeground(Color.RED);
+                wrong.play();
             }
         if (answer2.isSelected()) {
             if (answer2.getText().equals(this.correctAnswer)) {
                 answer2.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
             else
                 answer2.setForeground(Color.RED);
+                wrong.play();
             }
         if (answer3.isSelected()) {
             if (answer3.getText().equals(this.correctAnswer)) {
                 answer3.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
             else
                 answer3.setForeground(Color.RED);
+                wrong.play();
             }
         if (answer4.isSelected()) {
             if (answer4.getText().equals(this.correctAnswer)) {
                 answer4.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
             else
                 answer4.setForeground(Color.RED);
+                wrong.play();
             }
         if (answer5.isSelected()) {
             if (answer5.getText().equals(this.correctAnswer)) {
                 answer5.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
             else
                 answer5.setForeground(Color.RED);
+                wrong.play();
             }
 
         submit.setVisible(false);
