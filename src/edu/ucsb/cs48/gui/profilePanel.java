@@ -13,6 +13,8 @@ public class profilePanel extends JPanel{
     JLabel username;
     JLabel highscore;
     JLabel points;
+    JLabel bomb;
+    JLabel autoAnswer;
     JButton back;
     JPanel mainpanel;
 
@@ -22,6 +24,8 @@ public class profilePanel extends JPanel{
         username = new JLabel("Username: " + Main.player.getUsername());
         highscore = new JLabel("High Score: " + Main.player.getHighScore());
         points = new JLabel("Points Available: " + Main.player.getPoints());
+        bomb = new JLabel("Bombs Owned: " + Main.shop.numberOfQuestionEliminator(Main.player.getUsername()));
+        autoAnswer = new JLabel("Auto Answers Owned: " + Main.shop.numberOfAutoAnswer(Main.player.getUsername()));
         back = new JButton("Main Menu");
         mainpanel = new JPanel(new GridBagLayout());
         setLayout(new BorderLayout());
@@ -30,13 +34,21 @@ public class profilePanel extends JPanel{
         username.setVerticalAlignment(SwingConstants.CENTER);
         username.setHorizontalAlignment(SwingConstants.CENTER);
 
-        highscore.setFont(new Font("Courier New", Font.BOLD, 30));
+        highscore.setFont(new Font("Courier New", Font.BOLD, 24));
         highscore.setVerticalAlignment(SwingConstants.CENTER);
         highscore.setHorizontalAlignment(SwingConstants.CENTER);
 
-        points.setFont(new Font("Courier New", Font.BOLD, 30));
+        points.setFont(new Font("Courier New", Font.BOLD, 24));
         points.setVerticalAlignment(SwingConstants.CENTER);
         points.setHorizontalAlignment(SwingConstants.CENTER);
+
+        bomb.setFont(new Font("Courier New", Font.BOLD, 24));
+        bomb.setVerticalAlignment(SwingConstants.CENTER);
+        bomb.setHorizontalAlignment(SwingConstants.CENTER);
+
+        autoAnswer.setFont(new Font("Courier New", Font.BOLD, 24));
+        autoAnswer.setVerticalAlignment(SwingConstants.CENTER);
+        autoAnswer.setHorizontalAlignment(SwingConstants.CENTER);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(20,20,20,20);
@@ -47,8 +59,12 @@ public class profilePanel extends JPanel{
         mainpanel.add(highscore, gbc);
         gbc.gridy = 2;
         mainpanel.add(points, gbc);
-        gbc.gridx = 3;
         gbc.gridy = 3;
+        mainpanel.add(bomb, gbc);
+        gbc.gridy = 4;
+        mainpanel.add(autoAnswer, gbc);
+        gbc.gridx = 3;
+        gbc.gridy = 5;
         mainpanel.add(back, gbc);
 
         add(mainpanel, BorderLayout.CENTER);
