@@ -1,7 +1,11 @@
 package edu.ucsb.cs48;
 
 import edu.ucsb.cs48.gui.triviaMain;
-import edu.ucsb.cs48.util.*;
+import edu.ucsb.cs48.util.Database;
+import edu.ucsb.cs48.util.QuestionAccess;
+import edu.ucsb.cs48.util.Game;
+import edu.ucsb.cs48.util.User;
+import edu.ucsb.cs48.util.Shop;
 
 import java.sql.Connection;
 
@@ -31,6 +35,7 @@ public class Main {
         player = new User();
         db = new Database();
         qa = new QuestionAccess();
+        shop = new Shop();
         game = new Game();
         shop = new Shop();
         gameMode = 0;
