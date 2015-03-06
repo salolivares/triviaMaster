@@ -33,8 +33,8 @@ public class shopPanel extends JPanel {
             "Cost",
             "# you own",};
     Object[][] tableData = {
-            {"Auto Answer", "30 Points",
-                    new Integer(20)},
+            {"Auto Answer", "30 Points", new Integer(30),
+                    new Integer(20)}
     };
 
     public shopPanel(){
@@ -125,8 +125,22 @@ public class shopPanel extends JPanel {
         }
         else{
             String dialogMessage;
-            dialogMessage = String.format("You purchased %s", tableData[index][0]);
-            JOptionPane.showMessageDialog(dialogFrame, dialogMessage, "Purchase Successful",JOptionPane.INFORMATION_MESSAGE);
+            String titleMessage;
+            int points = Main.player.getPoints();
+            int powerupValue = (Integer)tableData[index][2];
+            int messageIcon;
+
+            if(points < powerupValue){
+                dialogMessage = "Not Enough Points to purchase";
+                titleMessage = "Purchase Unsuccessful";
+                messageIcon = JOptionPane.ERROR_MESSAGE;
+            }
+            else {
+                dialogMessage = String.format("You purchased %s", tableData[index][0]);
+                titleMessage = "Purchase Succussful";
+                messageIcon = JOptionPane.INFORMATION_MESSAGE;
+            }
+            JOptionPane.showMessageDialog(dialogFrame, dialogMessage, titleMessage,messageIcon);
         }
     }
 
