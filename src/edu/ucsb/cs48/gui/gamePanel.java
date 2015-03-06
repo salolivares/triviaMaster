@@ -81,10 +81,16 @@ public class gamePanel extends JPanel{
         answer3       = new JRadioButton(a3);
         answer4       = new JRadioButton(a4);
         answer5       = new JRadioButton(a5);
+        submit        = new JButton("Submit Answer");
+        next          = new JButton("Next");
+        next.setVisible(false);
+        noAnsSelected = new JLabel("Please select an answer!");
+        correctAnswer = cAnswer;
+        setLayout(new BorderLayout());
 
-        // set AutoAnwer image
+       // set AutoAnwer image
        // AutoAnswer    = new JButton("<Auto Answer (Q): 0");
-        AutoAnswer    = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
+        AutoAnswer = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
 
         try{
             Image autoanswerimg = ImageIO.read(getClass().getResource("assets/Skip.jpg"));
@@ -97,7 +103,7 @@ public class gamePanel extends JPanel{
         AutoAnswer.setVerticalTextPosition(AbstractButton.BOTTOM);
         //set Bomb image to the Bomb button
 
-        Bomb          = new JButton("Bomb (W): 0");
+        Bomb = new JButton("Bomb (W): 0");
         try{
             Image bombimg = ImageIO.read(getClass().getResource("assets/bomb.jpg"));
             Bomb.setIcon(new ImageIcon(bombimg));
@@ -107,14 +113,6 @@ public class gamePanel extends JPanel{
         Bomb.setHorizontalAlignment(SwingConstants.LEFT);
         Bomb.setHorizontalTextPosition(AbstractButton.CENTER);
         Bomb.setVerticalTextPosition(AbstractButton.BOTTOM);
-
-
-        submit        = new JButton("Submit Answer");
-        next          = new JButton("Next");
-        next.setVisible(false);
-        noAnsSelected = new JLabel("Please select an answer!");
-        correctAnswer = cAnswer;
-        setLayout(new BorderLayout());
 
 
         // set button size
