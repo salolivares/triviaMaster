@@ -37,6 +37,7 @@ public class Main {
         qa = new QuestionAccess();
         shop = new Shop();
         game = new Game();
+        shop = new Shop();
         gameMode = 0;
 
         gui.createWindow();
