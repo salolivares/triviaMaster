@@ -90,20 +90,25 @@ public class gamePanel extends JPanel{
 
        // set AutoAnwer image
        // AutoAnswer    = new JButton("<Auto Answer (Q): 0");
-        AutoAnswer = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
+        //AutoAnswer = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
+        AutoAnswer = new JButton("<html>AutoAnswer <br/>(Q): " + Main.shop.numberOfAutoAnswer(Main.player.getUsername()) + "</html>");
         AutoAnswer.setIcon(new ImageIcon("assets/Skip.jpg"));
         AutoAnswer.setBackground(Color.WHITE);
         AutoAnswer.setHorizontalAlignment(SwingConstants.LEFT);
         AutoAnswer.setHorizontalTextPosition(AbstractButton.CENTER);
         AutoAnswer.setVerticalTextPosition(AbstractButton.BOTTOM);
+        if (Main.shop.numberOfAutoAnswer(Main.player.getUsername()) == 0)
+            AutoAnswer.setEnabled(false);
         //set Bomb image to the Bomb button
 
-        Bomb = new JButton("Bomb (W): 0");
+        Bomb = new JButton("Bomb (W): " + Main.shop.numberOfQuestionEliminator(Main.player.getUsername()));
         Bomb.setIcon(new ImageIcon("assets/bomb.jpg"));
         Bomb.setBackground(Color.WHITE);
         Bomb.setHorizontalAlignment(SwingConstants.LEFT);
         Bomb.setHorizontalTextPosition(AbstractButton.CENTER);
         Bomb.setVerticalTextPosition(AbstractButton.BOTTOM);
+        if (Main.shop.numberOfQuestionEliminator(Main.player.getUsername()) == 0)
+            Bomb.setEnabled(false);
 
 
         // set button size
@@ -315,7 +320,6 @@ public class gamePanel extends JPanel{
                                          public void actionPerformed(ActionEvent ae) {
                                              AutoAnswer();
                                              AutoAnswer.setEnabled(false);
-                                             Bomb.setEnabled(false);
                                          }
                                      }
         );
@@ -324,7 +328,6 @@ public class gamePanel extends JPanel{
                                           @Override
                                           public void actionPerformed(ActionEvent ae) {
                                               QuestionEliminator();
-                                              AutoAnswer.setEnabled(false);
                                               Bomb.setEnabled(false);
                                           }
                                       }
@@ -447,6 +450,8 @@ public class gamePanel extends JPanel{
             submit.setVisible(false);
             next.setVisible(true);
         }
+
+        Main.shop.decreaseNumberOfAutoAnswer(Main.player.getUsername());
     }
 
     private void QuestionEliminator() {
@@ -472,6 +477,8 @@ public class gamePanel extends JPanel{
             else
                 continue;
         }
+
+        Main.shop.decreaseNumberOfQuestionEliminator(Main.player.getUsername());
     }
 }
 
