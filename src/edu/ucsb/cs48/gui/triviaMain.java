@@ -27,8 +27,10 @@ public class triviaMain {
     public static JFrame mainFrame;
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
-    public static final String pathToFileOnDisk = "gui/assets/icon_256.png";
-    public static final ImageIcon icon = new ImageIcon(pathToFileOnDisk);
+
+    // Icon for GUI
+    String pathToFileOnDisk = "assets/icon.png";
+    ImageIcon icon = new ImageIcon(pathToFileOnDisk);
 
     /**
      * Create the GUI window
