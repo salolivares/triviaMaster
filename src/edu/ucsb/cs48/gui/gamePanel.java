@@ -348,7 +348,7 @@ public class gamePanel extends JPanel{
     private void checkAnswer() {
 
         try {
-            ding = new URL("http://www.linksplace.com/wavsounds/wow.wav");
+            ding = new URL("file:assets/wow.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -357,7 +357,7 @@ public class gamePanel extends JPanel{
         correct = java.applet.Applet.newAudioClip(ding);
 
         try {
-            beep = new URL("http://www.externalharddrive.com/waves/sirens/sirentone.wav");
+            beep = new URL("file:assets/sirentone.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
