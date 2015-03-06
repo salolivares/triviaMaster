@@ -103,6 +103,7 @@ public class shopPanel extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 purchaseHelper(itemsTable.getSelectedRow());
+                triviaMain.setCurrentPanel(new shopPanel());
             }
         });
         infoButton.addMouseListener(new MouseAdapter() {
@@ -110,7 +111,7 @@ public class shopPanel extends JPanel {
             public void mouseReleased(MouseEvent e) {
                 JOptionPane.showMessageDialog(dialogFrame, "Autoanswer - Automatically Answer Question for you\n" +
                         "Question Eliminator - Highlights 2 wrong answers for you"
-                        ,"Item Information",JOptionPane.INFORMATION_MESSAGE);
+                        , "Item Information", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -140,15 +141,17 @@ public class shopPanel extends JPanel {
             else {
                 if(index == 0){
                     Main.shop.increaseNumberOfAutoAnswer(Main.player.getUsername());
+                    Main.player.modifyPoints(-10);
                 }
                 else{
                     Main.shop.increaseNumberOfQuestionEliminator(Main.player.getUsername());
+                    Main.player.modifyPoints(-5);
                 }
                 dialogMessage = String.format("You purchased %s", tableData[index][0]);
                 titleMessage = "Purchase Successful";
                 messageIcon = JOptionPane.INFORMATION_MESSAGE;
             }
-            JOptionPane.showMessageDialog(dialogFrame, dialogMessage, titleMessage,messageIcon);
+            JOptionPane.showMessageDialog(dialogFrame, dialogMessage, titleMessage, messageIcon);
         }
     }
 
