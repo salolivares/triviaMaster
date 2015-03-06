@@ -326,6 +326,7 @@ public class gamePanel extends JPanel{
                                          public void actionPerformed(ActionEvent ae) {
                                              AutoAnswer();
                                              AutoAnswer.setEnabled(false);
+                                             Bomb.setEnabled(false);
                                          }
                                      }
         );
@@ -334,6 +335,7 @@ public class gamePanel extends JPanel{
                                           @Override
                                           public void actionPerformed(ActionEvent ae) {
                                               QuestionEliminator();
+                                              AutoAnswer.setEnabled(false);
                                               Bomb.setEnabled(false);
                                           }
                                       }
