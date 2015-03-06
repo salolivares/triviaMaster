@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 /**
  * This panel allows user to submit their own questions
@@ -55,12 +58,12 @@ public class submitQuestionPanel extends JPanel {
         choice5            = new JTextField(50);
         submit             = new JButton("Submit");
         mainMenu           = new JButton("Main Menu");
-        question.setText("Question");
-        choice1.setText("Choice 1");
-        choice2.setText("Choice 2");
-        choice3.setText("Choice 3");
-        choice4.setText("Choice 4");
-        choice5.setText("Choice 5");
+        question.setDocument(new JTextFieldLimit(75));
+        choice1.setDocument(new JTextFieldLimit(40));
+        choice2.setDocument(new JTextFieldLimit(40));
+        choice3.setDocument(new JTextFieldLimit(40));
+        choice4.setDocument(new JTextFieldLimit(40));
+        choice5.setDocument(new JTextFieldLimit(40));
 
         ArrayList<String> categories = Main.qa.getCategories();
         Collections.sort(categories);
@@ -131,49 +134,6 @@ public class submitQuestionPanel extends JPanel {
 
         add(mainPanel);
 
-        // clear text fields when clicked
-        question.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                question.setText("");
-            }
-        });
-
-        choice1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                choice1.setText("");
-            }
-        });
-
-        choice2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                choice2.setText("");
-            }
-        });
-
-        choice3.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                choice3.setText("");
-            }
-        });
-
-        choice4.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                choice4.setText("");
-            }
-        });
-
-        choice5.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                choice5.setText("");
-            }
-        });
-
         // set action listeners for buttons
         mainMenu.addMouseListener(new MouseAdapter() {
             @Override
@@ -182,6 +142,32 @@ public class submitQuestionPanel extends JPanel {
             }
         });
 
+        submit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+        });
+
+    }
+
+
+    // inner class to limit JTextField character
+    // class taken from online http://www.rgagnon.com/javadetails/java-0198.html
+    public class JTextFieldLimit extends PlainDocument {
+        private int limit;
+
+        JTextFieldLimit(int limit) {
+            super();
+            this.limit = limit;
+        }
+
+        public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
+            if (str == null) return;
+
+            if ((getLength() + str.length()) <= limit) {
+                super.insertString(offset, str, attr);
+            }
+        }
     }
 
 }
