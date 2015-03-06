@@ -91,12 +91,7 @@ public class gamePanel extends JPanel{
        // set AutoAnwer image
        // AutoAnswer    = new JButton("<Auto Answer (Q): 0");
         AutoAnswer = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
-
-        try{
-            Image autoanswerimg = ImageIO.read(getClass().getResource("assets/Skip.jpg"));
-            AutoAnswer.setIcon(new ImageIcon(autoanswerimg));
-        } catch (java.io.IOException ex){
-        }
+        AutoAnswer.setIcon(new ImageIcon("assets/Skip.jpg"));
         AutoAnswer.setBackground(Color.WHITE);
         AutoAnswer.setHorizontalAlignment(SwingConstants.LEFT);
         AutoAnswer.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -104,11 +99,7 @@ public class gamePanel extends JPanel{
         //set Bomb image to the Bomb button
 
         Bomb = new JButton("Bomb (W): 0");
-        try{
-            Image bombimg = ImageIO.read(getClass().getResource("assets/bomb.jpg"));
-            Bomb.setIcon(new ImageIcon(bombimg));
-        } catch (java.io.IOException ex) {
-        }
+        Bomb.setIcon(new ImageIcon("assets/bomb.jpg"));
         Bomb.setBackground(Color.WHITE);
         Bomb.setHorizontalAlignment(SwingConstants.LEFT);
         Bomb.setHorizontalTextPosition(AbstractButton.CENTER);
