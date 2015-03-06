@@ -29,7 +29,7 @@ public class optionsPanel extends JPanel {
 
         Image image = null;
         try{
-            URL url = new URL("http://www.oep.ucsb.edu/sites/www.oep.ucsb.edu/files/layout_images/19D_StorkePanorama001.jpg");
+            URL url = new URL("http://www.oep.ucsb.edu/sites/files/layout_images/19D_StorkePanorama001.jpg");
             image = ImageIO.read(url);
         }
         catch (IOException e) {

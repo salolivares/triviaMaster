@@ -1,10 +1,7 @@
 package edu.ucsb.cs48;
 
 import edu.ucsb.cs48.gui.triviaMain;
-import edu.ucsb.cs48.util.Database;
-import edu.ucsb.cs48.util.QuestionAccess;
-import edu.ucsb.cs48.util.Game;
-import edu.ucsb.cs48.util.User;
+import edu.ucsb.cs48.util.*;
 
 import java.sql.Connection;
 
@@ -24,6 +21,7 @@ public class Main {
     public static Game game;
     public static int gameMode; // 0 - normal mode, 1 - timedmode
     public static Thread gameThread;
+    public static Shop shop;
 
     public static void main(String[] args){
         /**
@@ -34,6 +32,7 @@ public class Main {
         db = new Database();
         qa = new QuestionAccess();
         game = new Game();
+        shop = new Shop();
         gameMode = 0;
 
         gui.createWindow();

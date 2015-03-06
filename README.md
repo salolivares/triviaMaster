@@ -29,9 +29,7 @@ Requirements: Java, Ant (to build project)
 
 ## Bugs, Special Info
 - Must be connected to internet
-- Time trial mode not implemented for this iteration.
+- One letter usernames do not work
 - The shop is not implemented for this iteration.
 - High Scores not implemented for this iteration.
 - Music is not implemented for this iteration.
-- Custom user questions not implemented for this iteration.
-- power ups not implemented for this iteration.
