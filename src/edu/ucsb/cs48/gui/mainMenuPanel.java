@@ -15,6 +15,7 @@ public class mainMenuPanel extends JPanel{
     JButton playGameButton;
     JButton viewHighScoreButton;
     JButton enterShopButton;
+    JButton submitQuestion;
     JButton optionsButton;
     JButton profile;
     JLabel welcomeToLabel;
@@ -30,6 +31,7 @@ public class mainMenuPanel extends JPanel{
         viewHighScoreButton = new JButton("View High Scores");
         optionsButton = new JButton("Options");
         enterShopButton = new JButton("Enter Shop");
+        submitQuestion = new JButton("Submit Questions");
         profile = new JButton("View Profile");
         welcomeToLabel = new JLabel("Welcome to Trivia Master");
         topPanel = new JPanel(new BorderLayout());
@@ -58,13 +60,15 @@ public class mainMenuPanel extends JPanel{
         botPanel.add(enterShopButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 3;
-        botPanel.add(viewHighScoreButton, gbc);
+        botPanel.add(submitQuestion, gbc);
         gbc.gridx = 3;
         gbc.gridy = 4;
-        botPanel.add(optionsButton, gbc);
+        botPanel.add(viewHighScoreButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 5;
         botPanel.add(profile, gbc);
+        gbc.gridy = 6;
+        botPanel.add(optionsButton, gbc);
 
         //add bot and top panel
         add(topPanel);
@@ -100,6 +104,13 @@ public class mainMenuPanel extends JPanel{
             @Override
             public void mouseReleased(MouseEvent e) {
                 triviaMain.setCurrentPanel(new profilePanel());
+            }
+        });
+
+        submitQuestion.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                triviaMain.setCurrentPanel(new submitQuestionPanel());
             }
         });
     }
