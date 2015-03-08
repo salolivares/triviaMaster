@@ -1,9 +1,14 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+
 import javax.swing.*;
+import java.applet.AudioClip;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by Jordan Nguyen on 2/20/2015.
@@ -17,8 +22,12 @@ public class profilePanel extends JPanel{
     JLabel autoAnswer;
     JButton back;
     JPanel mainpanel;
+    URL url;
+    AudioClip sound;
 
     public profilePanel() {
+
+
 
         // instantiate components
         username = new JLabel("Username: " + Main.player.getUsername());
@@ -68,6 +77,17 @@ public class profilePanel extends JPanel{
         mainpanel.add(back, gbc);
 
         add(mainpanel, BorderLayout.CENTER);
+
+        try {
+            url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/fanfare.wav");
+            //url = new URL("file:assets/fanfare.wav");
+        }
+        catch (MalformedURLException es) {
+            es.printStackTrace();
+        }
+
+        sound = java.applet.Applet.newAudioClip(url);
+        sound.play();
 
         back.addMouseListener(new MouseAdapter() {
             @Override

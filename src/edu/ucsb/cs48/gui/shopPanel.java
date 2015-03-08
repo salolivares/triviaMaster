@@ -1,12 +1,15 @@
 package edu.ucsb.cs48.gui;
 
+import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.gui.guiUtils.ForcedListSelectionModel;
 
 import javax.swing.*;
+import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import edu.ucsb.cs48.Main;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * shopPanel class where users can buy power ups using their earned points
@@ -27,6 +30,8 @@ public class shopPanel extends JPanel {
     JScrollPane tablePanel;
     GridBagConstraints gbc;
     JFrame dialogFrame;
+    URL url;
+    AudioClip sound;
 
     // table properties
     String[] columnNames = {"Item",
@@ -102,6 +107,18 @@ public class shopPanel extends JPanel {
         purchaseButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
+
+                try {
+                    url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/coin.wav");
+                    //url = new URL("file:assets/coin.wav");
+                }
+                catch (MalformedURLException es) {
+                    es.printStackTrace();
+                }
+
+                sound = java.applet.Applet.newAudioClip(url);
+                sound.play();
+
                 purchaseHelper(itemsTable.getSelectedRow());
                 triviaMain.setCurrentPanel(new shopPanel());
             }

@@ -4,9 +4,12 @@ package edu.ucsb.cs48.gui;
 import edu.ucsb.cs48.Main;
 
 import javax.swing.*;
+import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * gameOverPanel class that is displayed when the game is over.
@@ -17,11 +20,25 @@ public class gameOverPanel extends JPanel {
     JButton mainMenu;
     JLabel gameOver;
     JLabel highScore;
+    URL url;
+    AudioClip sound;
 
     /**
      * gameOverPanel default constructor
      */
     public gameOverPanel() {
+
+        try {
+            url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/cheering.wav");
+            //url = new URL("file:assets/cheering.wav");
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        sound = java.applet.Applet.newAudioClip(url);
+        sound.play();
+
         setBackground(Color.darkGray);
         setLayout(new GridBagLayout());
         GridBagConstraints gbc;

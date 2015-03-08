@@ -3,7 +3,6 @@ package edu.ucsb.cs48.gui;
 import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.util.Game;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.applet.AudioClip;
 import java.awt.*;
@@ -23,8 +22,11 @@ import java.util.HashMap;
 public class gamePanel extends JPanel{
     AudioClip correct;
     AudioClip wrong;
+    AudioClip bombs;
     URL ding;
     URL beep;
+    URL boom;
+
 
     JPanel topPanel;
     JPanel botPanel;
@@ -92,7 +94,8 @@ public class gamePanel extends JPanel{
        // AutoAnswer    = new JButton("<Auto Answer (Q): 0");
         //AutoAnswer = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
         AutoAnswer = new JButton("<html>AutoAnswer <br/>(Q): " + Main.shop.numberOfAutoAnswer(Main.player.getUsername()) + "</html>");
-        AutoAnswer.setIcon(new ImageIcon("assets/Skip.jpg"));
+        //AutoAnswer.setIcon(new ImageIcon("assets/Skip.jpg"));
+        AutoAnswer.setIcon(new ImageIcon("C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/Skip.jpg"));
         AutoAnswer.setBackground(Color.WHITE);
         AutoAnswer.setHorizontalAlignment(SwingConstants.LEFT);
         AutoAnswer.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -102,7 +105,8 @@ public class gamePanel extends JPanel{
         //set Bomb image to the Bomb button
 
         Bomb = new JButton("Bomb (W): " + Main.shop.numberOfQuestionEliminator(Main.player.getUsername()));
-        Bomb.setIcon(new ImageIcon("assets/bomb.jpg"));
+        //Bomb.setIcon(new ImageIcon("assets/bomb.jpg"));
+        Bomb.setIcon(new ImageIcon("C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.jpg"));
         Bomb.setBackground(Color.WHITE);
         Bomb.setHorizontalAlignment(SwingConstants.LEFT);
         Bomb.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -342,7 +346,8 @@ public class gamePanel extends JPanel{
     private void checkAnswer() {
 
         try {
-            ding = new URL("file:assets/wow.wav");
+            ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
+            //ding = new URL("file:assets/wow.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -351,7 +356,8 @@ public class gamePanel extends JPanel{
         correct = java.applet.Applet.newAudioClip(ding);
 
         try {
-            beep = new URL("file:assets/sirentone.wav");
+            beep = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/sirentone.wav");
+            //beep = new URL("file:assets/sirentone.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -421,29 +427,55 @@ public class gamePanel extends JPanel{
      */
     private void AutoAnswer() {
 
+
+        try {
+            ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
+            //ding = new URL("file:assets/wow.wav");
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        correct = java.applet.Applet.newAudioClip(ding);
+
+        try {
+            beep = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/sirentone.wav");
+            //beep = new URL("file:assets/sirentone.wav");
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        wrong = java.applet.Applet.newAudioClip(beep);
+
         if (!next.isVisible()) {
             if (answer1.getText().equals(this.correctAnswer)) {
                 answer1.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
             if (answer2.getText().equals(this.correctAnswer)) {
                 answer2.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
             if (answer3.getText().equals(this.correctAnswer)) {
                 answer3.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
             if (answer4.getText().equals(this.correctAnswer)) {
                 answer4.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
             if (answer5.getText().equals(this.correctAnswer)) {
                 answer5.setForeground(Color.GREEN);
+                correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
@@ -455,6 +487,17 @@ public class gamePanel extends JPanel{
     }
 
     private void QuestionEliminator() {
+        try {
+            boom = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.wav");
+            //boom = new URL("file:assets/bomb.wav");
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        bombs = java.applet.Applet.newAudioClip(boom);
+        bombs.play();
+
         int count = 0;
         ArrayList<Integer> holder = new ArrayList<Integer>();
         holder.add(0);
