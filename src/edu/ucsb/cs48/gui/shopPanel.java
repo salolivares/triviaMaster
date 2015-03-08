@@ -35,7 +35,7 @@ public class shopPanel extends JPanel {
     Object[][] tableData = {
             {"Auto Answer", "10 Points",
                     Main.shop.numberOfAutoAnswer(Main.player.getUsername()), new Integer(10)},
-            {"Question Eliminator", "5 Points",
+            {"Bomb", "5 Points",
                     Main.shop.numberOfQuestionEliminator(Main.player.getUsername()), new Integer(5)}
     };
 
@@ -110,7 +110,7 @@ public class shopPanel extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 JOptionPane.showMessageDialog(dialogFrame, "Autoanswer - Automatically Answer Question for you\n" +
-                        "Question Eliminator - Highlights 2 wrong answers for you"
+                        "Bomb - Highlights 2 wrong answers for you"
                         , "Item Information", JOptionPane.INFORMATION_MESSAGE);
             }
         });
