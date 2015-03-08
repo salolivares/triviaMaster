@@ -1,10 +1,14 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
 /**
@@ -20,12 +24,30 @@ public class categoryPanel extends JPanel {
     JButton backButton;
     JComboBox categoryMenu;
     JScrollPane scroller;
+    JLabel background;
+    GridBagConstraints gbc;
 
     /**
      * categoryPanel default constructor
      */
 
     public categoryPanel() {
+
+        Image image = null;
+        try{
+            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
+            URL url = new URL("file:/assets/background.jpg");
+            image = ImageIO.read(url);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        background = new JLabel(new ImageIcon(image));
+        background.setOpaque(false);
+        background.setLayout(new GridBagLayout());
+        gbc = new GridBagConstraints();
+        setLayout(new BorderLayout());
 
         //fill up ArrayList with categories from database
         ArrayList<String> categories = Main.qa.getCategories();
@@ -39,19 +61,40 @@ public class categoryPanel extends JPanel {
         backButton = new JButton("Go Back");
         categoryMenu = new JComboBox(categories.toArray());
         categoryMenu.setMaximumRowCount(5);
-        mainPanel = new JPanel(new GridLayout(4,1));
+        //mainPanel = new JPanel(new GridLayout(4,1));
 
-        selectCategory.setFont(new Font("Serif", Font.BOLD, 32));
+        selectCategory.setFont(new Font("Serif", Font.BOLD, 36));
         selectCategory.setHorizontalAlignment(SwingConstants.CENTER);
         selectCategory.setVerticalAlignment(SwingConstants.CENTER);
 
-        mainPanel.add(selectCategory);
-        mainPanel.add(categoryMenu);
-        mainPanel.add(startGame);
-        mainPanel.add(backButton);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(25,0,50,0);
+        background.add(selectCategory, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.ipadx = 100;
+        gbc.ipady = 30;
+        gbc.insets = new Insets(0,0,30,0);
+        background.add(categoryMenu, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.ipadx = 10;
+        gbc.ipady = 10;
+        gbc.insets = new Insets(0,0,0,0);
+        background.add(startGame, gbc);
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(50,600,0,0);
+        gbc.ipady = 30;
+        gbc.ipadx = 30;
+        gbc.weighty = 1.0;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        background.add(backButton, gbc);
 
 
-        add(mainPanel);
+        add(background, BorderLayout.CENTER);
 
         backButton.addMouseListener(new MouseAdapter() {
             @Override

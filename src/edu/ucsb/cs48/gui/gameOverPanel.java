@@ -3,11 +3,13 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -20,8 +22,10 @@ public class gameOverPanel extends JPanel {
     JButton mainMenu;
     JLabel gameOver;
     JLabel highScore;
+    JLabel background;
     URL url;
     AudioClip sound;
+    GridBagConstraints gbc;
 
     /**
      * gameOverPanel default constructor
@@ -29,8 +33,8 @@ public class gameOverPanel extends JPanel {
     public gameOverPanel() {
 
         try {
-            url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/cheering.wav");
-            //url = new URL("file:assets/cheering.wav");
+            //url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/cheering.wav");
+            url = new URL("file:assets/cheering.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -39,13 +43,24 @@ public class gameOverPanel extends JPanel {
         sound = java.applet.Applet.newAudioClip(url);
         sound.play();
 
-        setBackground(Color.darkGray);
-        setLayout(new GridBagLayout());
-        GridBagConstraints gbc;
+
+        Image image = null;
+        try{
+            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
+            URL url = new URL("file:/assets/background.jpg");
+            image = ImageIO.read(url);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        background = new JLabel(new ImageIcon(image));
+        background.setOpaque(false);
+        background.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
-        //setLayout(new GridBagLayout());
 
 
+        setLayout(new BorderLayout());
         mainMenu = new JButton("Return to Main Menu");
         gameOver = new JLabel("Game Over");
         highScore = new JLabel("Your Score: " + Double.toString(Main.game.getGameScore()));
@@ -60,28 +75,29 @@ public class gameOverPanel extends JPanel {
 
 
         gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(0,0,75,0);
+        gbc.insets = new Insets(25,0,75,0);
         gbc.weighty = 0.0;
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
-        add(gameOver, gbc);
+        background.add(gameOver, gbc);
 
-        gbc.insets = new Insets(75,0,100,0);
+        gbc.insets = new Insets(66,0,50,0);
         gbc.weightx = 0.0;
         gbc.gridx = 0;
         gbc.gridy = 1;
-        add(highScore, gbc);
+        background.add(highScore, gbc);
 
         gbc.anchor = GridBagConstraints.PAGE_END;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(50,600,0,0);
         gbc.ipady = 30;
-        gbc.ipadx = 50;
+        gbc.ipadx = 30;
         gbc.weighty = 1.0;
         gbc.gridx = 0;
         gbc.gridy = 2;
-        add(mainMenu, gbc);
+        background.add(mainMenu, gbc);
 
+        add(background, BorderLayout.CENTER);
 
 
 

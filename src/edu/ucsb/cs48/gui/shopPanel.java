@@ -32,6 +32,7 @@ public class shopPanel extends JPanel {
     JFrame dialogFrame;
     URL url;
     AudioClip sound;
+    JLabel background;
 
     // table properties
     String[] columnNames = {"Item",
@@ -66,7 +67,7 @@ public class shopPanel extends JPanel {
 
         //add components to top panel
         topPanel.add(mainTitle, BorderLayout.NORTH);
-        topPanel.add(pointsLabel,BorderLayout.CENTER);
+        topPanel.add(pointsLabel, BorderLayout.CENTER);
 
         //configure middle components
 
@@ -109,8 +110,8 @@ public class shopPanel extends JPanel {
             public void mouseReleased(MouseEvent e) {
 
                 try {
-                    url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/coin.wav");
-                    //url = new URL("file:assets/coin.wav");
+                    //url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/coin.wav");
+                    url = new URL("file:assets/coin.wav");
                 }
                 catch (MalformedURLException es) {
                     es.printStackTrace();

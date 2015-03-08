@@ -2,11 +2,13 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -24,10 +26,25 @@ public class profilePanel extends JPanel{
     JPanel mainpanel;
     URL url;
     AudioClip sound;
+    JLabel background;
 
     public profilePanel() {
 
 
+        Image image = null;
+        try{
+            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
+            URL url = new URL("file:/assets/background.jpg");
+            image = ImageIO.read(url);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        background = new JLabel(new ImageIcon(image));
+        background.setOpaque(false);
+        //add(background);
+        background.setLayout(new GridBagLayout());
 
         // instantiate components
         username = new JLabel("Username: " + Main.player.getUsername());
@@ -36,7 +53,7 @@ public class profilePanel extends JPanel{
         bomb = new JLabel("Bombs Owned: " + Main.shop.numberOfQuestionEliminator(Main.player.getUsername()));
         autoAnswer = new JLabel("Auto Answers Owned: " + Main.shop.numberOfAutoAnswer(Main.player.getUsername()));
         back = new JButton("Main Menu");
-        mainpanel = new JPanel(new GridBagLayout());
+        //mainpanel = new JPanel(new GridBagLayout());
         setLayout(new BorderLayout());
 
         username.setFont(new Font("Courier New", Font.BOLD, 30));
@@ -63,24 +80,24 @@ public class profilePanel extends JPanel{
         gbc.insets = new Insets(20,20,20,20);
         gbc.gridx = 0;
         gbc.gridy = 0;
-        mainpanel.add(username, gbc);
+        background.add(username, gbc);
         gbc.gridy = 1;
-        mainpanel.add(highscore, gbc);
+        background.add(highscore, gbc);
         gbc.gridy = 2;
-        mainpanel.add(points, gbc);
+        background.add(points, gbc);
         gbc.gridy = 3;
-        mainpanel.add(bomb, gbc);
+        background.add(bomb, gbc);
         gbc.gridy = 4;
-        mainpanel.add(autoAnswer, gbc);
+        background.add(autoAnswer, gbc);
         gbc.gridx = 3;
         gbc.gridy = 5;
-        mainpanel.add(back, gbc);
+        background.add(back, gbc);
 
-        add(mainpanel, BorderLayout.CENTER);
+        add(background, BorderLayout.CENTER);
 
         try {
-            url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/fanfare.wav");
-            //url = new URL("file:assets/fanfare.wav");
+            //url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/fanfare.wav");
+            url = new URL("file:assets/fanfare.wav");
         }
         catch (MalformedURLException es) {
             es.printStackTrace();

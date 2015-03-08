@@ -94,8 +94,8 @@ public class gamePanel extends JPanel{
        // AutoAnswer    = new JButton("<Auto Answer (Q): 0");
         //AutoAnswer = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
         AutoAnswer = new JButton("<html>AutoAnswer <br/>(Q): " + Main.shop.numberOfAutoAnswer(Main.player.getUsername()) + "</html>");
-        //AutoAnswer.setIcon(new ImageIcon("assets/Skip.jpg"));
-        AutoAnswer.setIcon(new ImageIcon("C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/Skip.jpg"));
+        AutoAnswer.setIcon(new ImageIcon("assets/Skip.jpg"));
+        //AutoAnswer.setIcon(new ImageIcon("C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/Skip.jpg"));
         AutoAnswer.setBackground(Color.WHITE);
         AutoAnswer.setHorizontalAlignment(SwingConstants.LEFT);
         AutoAnswer.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -105,8 +105,8 @@ public class gamePanel extends JPanel{
         //set Bomb image to the Bomb button
 
         Bomb = new JButton("Bomb (W): " + Main.shop.numberOfQuestionEliminator(Main.player.getUsername()));
-        //Bomb.setIcon(new ImageIcon("assets/bomb.jpg"));
-        Bomb.setIcon(new ImageIcon("C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.jpg"));
+        Bomb.setIcon(new ImageIcon("assets/bomb.jpg"));
+        //Bomb.setIcon(new ImageIcon("C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.jpg"));
         Bomb.setBackground(Color.WHITE);
         Bomb.setHorizontalAlignment(SwingConstants.LEFT);
         Bomb.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -346,8 +346,8 @@ public class gamePanel extends JPanel{
     private void checkAnswer() {
 
         try {
-            ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
-            //ding = new URL("file:assets/wow.wav");
+            //ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
+            ding = new URL("file:assets/wow.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -356,8 +356,8 @@ public class gamePanel extends JPanel{
         correct = java.applet.Applet.newAudioClip(ding);
 
         try {
-            beep = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/sirentone.wav");
-            //beep = new URL("file:assets/sirentone.wav");
+            //beep = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/sirentone.wav");
+            beep = new URL("file:assets/sirentone.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -429,8 +429,8 @@ public class gamePanel extends JPanel{
 
 
         try {
-            ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
-            //ding = new URL("file:assets/wow.wav");
+            //ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
+            ding = new URL("file:assets/wow.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -439,8 +439,8 @@ public class gamePanel extends JPanel{
         correct = java.applet.Applet.newAudioClip(ding);
 
         try {
-            beep = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/sirentone.wav");
-            //beep = new URL("file:assets/sirentone.wav");
+            //beep = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/sirentone.wav");
+            beep = new URL("file:assets/sirentone.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -488,8 +488,8 @@ public class gamePanel extends JPanel{
 
     private void QuestionEliminator() {
         try {
-            boom = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.wav");
-            //boom = new URL("file:assets/bomb.wav");
+            //boom = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.wav");
+            boom = new URL("file:assets/bomb.wav");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();

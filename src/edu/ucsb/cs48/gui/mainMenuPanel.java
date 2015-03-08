@@ -1,9 +1,12 @@
 package edu.ucsb.cs48.gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * mainMenuPanel class that presents the main menu after login
@@ -18,6 +21,7 @@ public class mainMenuPanel extends JPanel{
     JButton optionsButton;
     JButton profile;
     JLabel welcomeToLabel;
+    JLabel background;
     JPanel topPanel;
     JPanel botPanel;
     GridBagConstraints gbc;
@@ -36,8 +40,23 @@ public class mainMenuPanel extends JPanel{
         botPanel = new JPanel(new GridBagLayout());
         gbc = new GridBagConstraints();
 
+        Image image = null;
+        try{
+            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
+            URL url = new URL("file:/assets/background.jpg");
+            image = ImageIO.read(url);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        background = new JLabel(new ImageIcon(image));
+        background.setOpaque(false);
+        add(background);
+        background.setLayout(new GridBagLayout());
+
         //set layout manager
-        setLayout(new GridLayout(2, 1));
+        setLayout(new BorderLayout());
 
         //set label font and size
         welcomeToLabel.setFont(new Font("Serif", Font.BOLD, 48));
@@ -45,30 +64,47 @@ public class mainMenuPanel extends JPanel{
         welcomeToLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         //add components to top panel
-        topPanel.add(welcomeToLabel,BorderLayout.CENTER);
+        //topPanel.add(welcomeToLabel,BorderLayout.CENTER);
 
         //add objects to bot panel and configure GBC constrains
         gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        botPanel.add(playGameButton, gbc);
+        //gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(0,0,175,0);
+        background.add(welcomeToLabel, gbc);
         gbc.gridx = 3;
         gbc.gridy = 2;
-        botPanel.add(enterShopButton, gbc);
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipady = 10;
+        gbc.ipadx = 50;
+        background.add(playGameButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 3;
-        botPanel.add(viewHighScoreButton, gbc);
+        gbc.ipady = 10;
+        gbc.ipadx = 50;
+        background.add(enterShopButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 4;
-        botPanel.add(optionsButton, gbc);
+        gbc.ipady = 10;
+        gbc.ipadx = 15;
+        background.add(viewHighScoreButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 5;
-        botPanel.add(profile, gbc);
+        gbc.ipady = 10;
+        gbc.ipadx = 70;
+        background.add(optionsButton, gbc);
+        gbc.gridx = 3;
+        gbc.gridy = 6;
+        gbc.ipady = 10;
+        gbc.ipadx = 50;
+        gbc.insets = new Insets(0,0,50,0);
+        background.add(profile, gbc);
 
         //add bot and top panel
-        add(topPanel);
-        add(botPanel);
+        //add(topPanel);
+        //add(botPanel);
+        add(background);
 
         // event manager
         playGameButton.addMouseListener(new MouseAdapter() {

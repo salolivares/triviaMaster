@@ -1,9 +1,12 @@
 package edu.ucsb.cs48.gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * The very first GUI class to be called
@@ -14,12 +17,9 @@ public class triviaMain {
     //Java GUI components
     triviaLogin loginWindow;
     triviaCreateAccount createAccountWindow;
-    JPanel mainPanel;
-    JPanel topPanel;
-    JPanel botPanel;
     JButton loginButton;
     JButton createAccountButton;
-
+    JLabel background;
     JLabel triviaTitle;
     GridBagConstraints gbc;
 
@@ -54,11 +54,25 @@ public class triviaMain {
             // handle exception
         }
 
+        // background image
+        Image image = null;
+        try{
+            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
+            URL url = new URL("file:/assets/background.jpg");
+            image = ImageIO.read(url);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        background = new JLabel(new ImageIcon(image));
+        background.setOpaque(false);
+        background.setLayout(new GridBagLayout());
+
+
+
         // Instantiate GUI components
         mainFrame = new JFrame("Trivia Master");
-        mainPanel = new JPanel(new GridLayout(2,1));
-        topPanel = new JPanel(new BorderLayout());
-        botPanel = new JPanel(new GridBagLayout());
         loginButton = new JButton("Account Login");
         createAccountButton = new JButton("Create Account");
 
@@ -72,24 +86,32 @@ public class triviaMain {
         triviaTitle.setVerticalAlignment(SwingConstants.CENTER);
         triviaTitle.setHorizontalAlignment(SwingConstants.CENTER);
 
-        //add components to top panel
-        topPanel.add(triviaTitle,BorderLayout.CENTER);
+        //add background image
+        mainFrame.add(background);
+
 
         //configure gridbaglayout and add to bot panel
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        botPanel.add(loginButton,gbc);
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        //gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(0,0,170,0);
+        background.add(triviaTitle, gbc);
+        gbc.insets = new Insets(0,0,0,0);
         gbc.gridx = 0;
         gbc.gridy = 1;
-        botPanel.add(createAccountButton,gbc);
-
-        //add bot and top panels to main panel
-        mainPanel.add(topPanel);
-        mainPanel.add(botPanel);
+        gbc.ipady = 20;
+        gbc.ipadx = 45;
+        background.add(loginButton, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.ipady = 20;
+        gbc.ipadx = 40;
+        gbc.insets = new Insets(0,0,100,0);
+        background.add(createAccountButton, gbc);
 
         //add main panel to JFrame
-        mainFrame.setContentPane(mainPanel);
+        mainFrame.setContentPane(background);
 
         // Set Jframe properties
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

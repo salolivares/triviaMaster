@@ -12,15 +12,12 @@ import java.net.URL;
  * optionsPanel class that allows users to adjust sound levels or mute sound
  */
 public class optionsPanel extends JPanel {
-    JPanel botPanel;
     JLabel title;
     JLabel volume;
     JButton menu;
-    JButton test;
     JSlider slider;
     GridBagConstraints gbc;
     JLabel background;
-    JPanel p;
 
     /**
      * optionsPanel default constructor
@@ -29,26 +26,25 @@ public class optionsPanel extends JPanel {
 
         Image image = null;
         try{
-            URL url = new URL("http://www.oep.ucsb.edu/sites/files/layout_images/19D_StorkePanorama001.jpg");
+            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
+            URL url = new URL("file:/assets/background.jpg");
             image = ImageIO.read(url);
         }
         catch (IOException e) {
             e.printStackTrace();
         }
 
-        background = new JLabel(/**new ImageIcon(image)*/);
+        background = new JLabel(new ImageIcon(image));
         background.setOpaque(false);
         add(background);
         background.setLayout(new GridBagLayout());
 
         title = new JLabel("Options");
-        botPanel = new JPanel(new GridBagLayout());
         gbc = new GridBagConstraints();
 
         //set layout manager
         setLayout(new BorderLayout());
 
-        //bottom panel
         title = new JLabel("Options");
         title.setFont(new Font("Courier New", Font.BOLD, 70));
         title.setVerticalAlignment(SwingConstants.CENTER);
@@ -94,7 +90,6 @@ public class optionsPanel extends JPanel {
         gbc.gridy = 3;
         background.add(menu, gbc);
 
-        botPanel.setBackground(Color.darkGray);
         add(background, BorderLayout.CENTER);
 
         menu.addMouseListener(new MouseAdapter() {
