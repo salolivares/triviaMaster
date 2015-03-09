@@ -31,7 +31,6 @@ public class TimerOverlayPanel extends JPanel implements Runnable{
         setupTimerOverlay();
         runTimer();
         Main.game.gameEnd();
-        triviaMain.setCurrentPanel(new gameOverPanel());
     }
 
     private synchronized void setupTimerOverlay(){
