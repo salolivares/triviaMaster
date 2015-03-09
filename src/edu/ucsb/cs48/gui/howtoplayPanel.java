@@ -10,7 +10,6 @@ public class howtoplayPanel extends JPanel {
     JLabel background;
     JLabel description;
     JButton menu;
-    JPanel playPanel;
     GridBagConstraints gbc;
 
 
