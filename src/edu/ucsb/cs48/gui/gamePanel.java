@@ -451,30 +451,35 @@ public class gamePanel extends JPanel{
         if (!next.isVisible()) {
             if (answer1.getText().equals(this.correctAnswer)) {
                 answer1.setForeground(Color.GREEN);
+                answer1.setSelected(true);
                 correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
             if (answer2.getText().equals(this.correctAnswer)) {
                 answer2.setForeground(Color.GREEN);
+                answer2.setSelected(true);
                 correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
             if (answer3.getText().equals(this.correctAnswer)) {
                 answer3.setForeground(Color.GREEN);
+                answer3.setSelected(true);
                 correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
             if (answer4.getText().equals(this.correctAnswer)) {
                 answer4.setForeground(Color.GREEN);
+                answer4.setSelected(true);
                 correct.play();
                 Main.game.addToGameScore(VALUE);
             }
 
             if (answer5.getText().equals(this.correctAnswer)) {
                 answer5.setForeground(Color.GREEN);
+                answer5.setSelected(true);
                 correct.play();
                 Main.game.addToGameScore(VALUE);
             }

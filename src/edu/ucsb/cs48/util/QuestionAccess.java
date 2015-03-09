@@ -146,4 +146,47 @@ public class QuestionAccess {
         }
         return questionInfo;
     }
+
+    public boolean createQuestion(int qID, int cID, String q, String a1, String a2, String a3, String a4, String a5, int correctAns) {
+        try {
+            Connection con = Main.db.createDBconnection();
+            //Statement select_stmt = (Statement) con.createStatement();
+            //String query = "SELECT username FROM user WHERE username='" + username + "';";
+            //select_stmt.executeQuery(query);
+            //ResultSet rs = select_stmt.getResultSet();
+            String ins = "INSERT into question (question_ID, category_ID, question, ans1, ans2, ans3, ans4, ans5, correct_answer, point_value) values ('"
+                        + qID + "','" + cID + "','" + q + "','" + a1 + "','" + a2 + "','" + a3 + "','" + a4 + "','" + a5 + "','" + correctAns + "','" + 10 + "');";
+            Statement ins_stmt = (Statement) con.createStatement();
+            ins_stmt.executeUpdate(ins);
+
+            Main.db.closeDBconnection(con);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public int getNewQuestionID(){
+        int qID = 0;
+        String query;
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "SELECT question_ID FROM question";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                if ( (rs.getInt("question_ID")) >= qID)
+                    qID = rs.getInt("question_ID") + 1;
+            }
+
+            Main.db.closeDBconnection(con);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return qID;
+    }
 }
