@@ -1,5 +1,7 @@
 package edu.ucsb.cs48.gui;
 
+import edu.ucsb.cs48.Main;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,6 +30,7 @@ public class TimerOverlayPanel extends JPanel implements Runnable{
     public void run() {
         setupTimerOverlay();
         runTimer();
+        Main.game.gameEnd();
         triviaMain.setCurrentPanel(new gameOverPanel());
     }
 
