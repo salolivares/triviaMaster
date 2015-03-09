@@ -18,11 +18,8 @@ public class mainMenuPanel extends JPanel{
     JButton playGameButton;
     JButton viewHighScoreButton;
     JButton enterShopButton;
-<<<<<<< HEAD
     JButton howtoplaybutton;
-=======
     JButton submitButton;
->>>>>>> f7feb843ac418e49c738fdad9f731e997b44938f
     JButton profile;
     JLabel welcomeToLabel;
     JLabel background;
@@ -36,11 +33,8 @@ public class mainMenuPanel extends JPanel{
     public mainMenuPanel(){
         playGameButton = new JButton("Play Game");
         viewHighScoreButton = new JButton("View High Scores");
-<<<<<<< HEAD
         howtoplaybutton = new JButton(    "How To Play");
-=======
         submitButton = new JButton("Add Questions");
->>>>>>> f7feb843ac418e49c738fdad9f731e997b44938f
         enterShopButton = new JButton("Enter Shop");
         profile = new JButton("View Profile");
         welcomeToLabel = new JLabel("Welcome to Trivia Master");
@@ -78,45 +72,30 @@ public class mainMenuPanel extends JPanel{
         gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        //gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(0,0,175,0);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         background.add(welcomeToLabel, gbc);
         gbc.gridx = 3;
         gbc.gridy = 2;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.ipady = 10;
-        gbc.ipadx = 50;
         background.add(playGameButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 3;
-        gbc.ipady = 10;
-        gbc.ipadx = 50;
         background.add(enterShopButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 4;
-        gbc.ipady = 10;
-        gbc.ipadx = 15;
         background.add(viewHighScoreButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 5;
-        gbc.ipady = 10;
-<<<<<<< HEAD
-        gbc.ipadx = 50;
         background.add(howtoplaybutton, gbc);
-=======
-        gbc.ipadx = 32;
-        background.add(submitButton, gbc);
->>>>>>> f7feb843ac418e49c738fdad9f731e997b44938f
         gbc.gridx = 3;
         gbc.gridy = 6;
-        gbc.ipady = 10;
-        gbc.ipadx = 50;
-        gbc.insets = new Insets(0,0,50,0);
+        background.add(submitButton,gbc);
+        gbc.gridx = 3;
+        gbc.gridy = 7;
         background.add(profile, gbc);
 
         //add bot and top panel
-        //add(topPanel);
-        //add(botPanel);
+        background.add(topPanel);
+        background.add(botPanel);
         add(background);
 
         // event manager
@@ -138,17 +117,10 @@ public class mainMenuPanel extends JPanel{
                 triviaMain.setCurrentPanel(new shopPanel());
             }
         });
-<<<<<<< HEAD
-        howtoplaybutton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                triviaMain.setCurrentPanel(new howtoplayPanel());
-=======
         submitButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 triviaMain.setCurrentPanel(new submitQuestionPanel());
->>>>>>> f7feb843ac418e49c738fdad9f731e997b44938f
             }
         });
 
@@ -156,6 +128,12 @@ public class mainMenuPanel extends JPanel{
             @Override
             public void mouseReleased(MouseEvent e) {
                 triviaMain.setCurrentPanel(new profilePanel());
+            }
+        });
+        howtoplaybutton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                triviaMain.setCurrentPanel(new howtoplayPanel());
             }
         });
     }
