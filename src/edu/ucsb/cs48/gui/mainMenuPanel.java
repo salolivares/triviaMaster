@@ -72,30 +72,44 @@ public class mainMenuPanel extends JPanel{
         gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(0,0,175,0);
         background.add(welcomeToLabel, gbc);
         gbc.gridx = 3;
         gbc.gridy = 2;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipady = 10;
+        gbc.ipadx = 50;
         background.add(playGameButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 3;
+        gbc.ipady = 10;
+        gbc.ipadx = 50;
         background.add(enterShopButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 4;
+        gbc.ipady = 10;
+        gbc.ipadx = 15;
         background.add(viewHighScoreButton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 5;
+        gbc.ipady = 10;
+        gbc.ipadx = 50;
         background.add(howtoplaybutton, gbc);
         gbc.gridx = 3;
+        gbc.ipadx = 30;
+        gbc.ipady = 10;
         gbc.gridy = 6;
         background.add(submitButton,gbc);
         gbc.gridx = 3;
         gbc.gridy = 7;
+        gbc.ipady = 10;
+        gbc.ipadx = 50;
+        gbc.insets = new Insets(0,0,50,0);
         background.add(profile, gbc);
 
         //add bot and top panel
-        background.add(topPanel);
-        background.add(botPanel);
+        //add(topPanel);
+        //add(botPanel);
         add(background);
 
         // event manager
