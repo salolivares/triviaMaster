@@ -206,13 +206,20 @@ public class submitQuestionPanel extends JPanel {
             }
 
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            mainPan = new JPanel(new GridLayout(2, 1));
+            //mainPan = new JPanel(new GridLayout(2, 1));
+            mainPan = new JPanel(new GridBagLayout());
+            GridBagConstraints gbc = new GridBagConstraints();
             OK = new JButton("OK");
-            OK.setPreferredSize(new Dimension(100, 50));
-            mainPan.add(message);
-            mainPan.add(OK);
+            //OK.setPreferredSize(new Dimension(100, 50));
+            gbc.insets = new Insets(10,10,10,10);
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            mainPan.add(message, gbc);
+            gbc.gridx = 0;
+            gbc.gridy = 1;
+            mainPan.add(OK, gbc);
             frame.setContentPane(mainPan);
-            frame.setSize(300, 300);
+            frame.setSize(200, 125);
             frame.setVisible(true);
             frame.setResizable(false);
             frame.setLocationRelativeTo(null);
@@ -221,7 +228,6 @@ public class submitQuestionPanel extends JPanel {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     frame.dispose();
-
                 }
             });
         }
