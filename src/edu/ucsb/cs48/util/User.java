@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * User class that deals with logging in and creating new accounts
@@ -130,6 +131,33 @@ public class User {
     }
 
     /**
+     * getHighScore overloaded to get any high score from database
+     * @param username username of high score desired
+     * @return high score int
+     */
+    public int getHighScore(String username) {
+        String query;
+        int hs = 0;
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "SELECT highscore FROM user WHERE username='" + username + "';";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                hs = rs.getInt("highscore");
+            }
+
+            Main.db.closeDBconnection(con);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return hs;
+    }
+
+    /**
      * getPoints class gets user points from database
      * @return points int
      */
@@ -204,5 +232,27 @@ public class User {
         catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<String> getTopFiveUsers() {
+        String query;
+        ArrayList<String> usernames = new ArrayList<String>();
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "SELECT username FROM user ORDER by highscore DESC limit 5;";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                usernames.add(rs.getString("username"));
+            }
+
+            Main.db.closeDBconnection(con);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return usernames;
     }
 }

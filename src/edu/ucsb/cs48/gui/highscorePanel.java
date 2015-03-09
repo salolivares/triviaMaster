@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import edu.ucsb.cs48.Main;
 
 /**
@@ -26,26 +28,29 @@ public class highscorePanel extends JPanel{
     JLabel P3HS;
     JLabel P4HS;
     JLabel P5HS;
+    ArrayList<String> usernames;
 
     /**
      * highscorePanel default constructor
      */
     public highscorePanel(){
-        HighScoreheaderLabel = new JLabel("High Score Leaderboard: Not yet working");
+        usernames = Main.player.getTopFiveUsers();
+        HighScoreheaderLabel = new JLabel("High Score Leaderboard");
         PlayerLabel = new JLabel("Player");
         HighScoreLabel = new JLabel("High Score");
         HighScorePanel = new JPanel();
-        P1 = new JLabel("Brian");
-        P2 = new JLabel("Niv");
-        P3 = new JLabel("Jordan");
-        P4 = new JLabel("Brandon");
-        P5 = new JLabel("Sal");
-        P1HS = new JLabel("0");
-        P2HS = new JLabel("0");
-        P3HS = new JLabel("" + Main.player.getHighScore());
-        P4HS = new JLabel("0");
-        P5HS = new JLabel("0");
+        P1 = new JLabel("" + usernames.get(0));
+        P2 = new JLabel("" + usernames.get(1));
+        P3 = new JLabel("" + usernames.get(2));
+        P4 = new JLabel("" + usernames.get(3));
+        P5 = new JLabel("" + usernames.get(4));
+        P1HS = new JLabel("" + Main.player.getHighScore(usernames.get(0)));
+        P2HS = new JLabel("" + Main.player.getHighScore(usernames.get(1)));
+        P3HS = new JLabel("" + Main.player.getHighScore(usernames.get(2)));
+        P4HS = new JLabel("" + Main.player.getHighScore(usernames.get(3)));
+        P5HS = new JLabel("" + Main.player.getHighScore(usernames.get(4)));
         backbutton = new JButton("Back");
+
 
         this.setLayout(null);
 
