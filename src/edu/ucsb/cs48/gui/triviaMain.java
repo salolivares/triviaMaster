@@ -6,7 +6,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * The very first GUI class to be called
@@ -55,17 +54,14 @@ public class triviaMain {
         }
 
         // background image
-       // Image image = null;
-        //try{
-            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
-        //    URL url = new URL("file:/assets/background.jpg");
-        //    image = ImageIO.read(url);
-        //}
-        //catch (IOException e) {
-          //  e.printStackTrace();
-        //}
-        ///ImageIcon image = new ImageIcon("assets/Skip.jpg"));
-        background = new JLabel(new ImageIcon("assets/background.jpg"));
+        Image image = null;
+        try{
+            image = ImageIO.read(this.getClass().getResource("/background.jpg"));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        background = new JLabel(new ImageIcon(image));
         background.setOpaque(false);
         background.setLayout(new GridBagLayout());
 
