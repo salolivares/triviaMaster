@@ -45,7 +45,7 @@ public class howtoplayPanel extends JPanel {
         description = new JLabel("<html> 1) Click Play Game <br/>" +
                 "2) Choose a game mode <br/>" +
                 "3) Next, pick a category and start game <br/>" +
-                "4) Use keys (1,2,3,4,5) to select an answer <br/>" +
+                "4) Use keys (1,2,3,4,5) or mouse to select an answer <br/>" +
                 "and press \"Enter\" to submit selection. <br/>" +
                 "</html>", JLabel.CENTER);
         description.setFont(new Font("Corier New", Font.BOLD, 20));
