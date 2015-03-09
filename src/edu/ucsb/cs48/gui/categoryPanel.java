@@ -33,17 +33,17 @@ public class categoryPanel extends JPanel {
 
     public categoryPanel() {
 
-        Image image = null;
-        try{
-            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
-            URL url = new URL("file:/assets/background.jpg");
-            image = ImageIO.read(url);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+//        Image image = null;
+//        try{
+//            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
+//            URL url = new URL("file:/assets/background.jpg");
+//            image = ImageIO.read(url);
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        background = new JLabel(new ImageIcon(image));
+        background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         background.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();

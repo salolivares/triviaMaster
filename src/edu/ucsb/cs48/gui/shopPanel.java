@@ -32,7 +32,7 @@ public class shopPanel extends JPanel {
     JFrame dialogFrame;
     URL url;
     AudioClip sound;
-    JLabel background;
+
 
     // table properties
     String[] columnNames = {"Item",
