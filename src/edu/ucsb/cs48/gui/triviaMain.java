@@ -1,11 +1,9 @@
 package edu.ucsb.cs48.gui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 /**
  * The very first GUI class to be called
@@ -54,14 +52,15 @@ public class triviaMain {
         }
 
         // background image
-        Image image = null;
+        /*Image image = null;
         try{
             image = ImageIO.read(this.getClass().getResource("/background.jpg"));
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-        background = new JLabel(new ImageIcon(image));
+        */
+        background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         background.setLayout(new GridBagLayout());
 
