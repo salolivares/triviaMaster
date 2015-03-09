@@ -10,7 +10,7 @@ import java.net.URL;
 
 /**
  * mainMenuPanel class that presents the main menu after login
- * Allows user to play game, view high scores, manage options, and enter the shop
+ * Allows user to play game, view high scores, learn how to play, and enter the shop
  */
 
 public class mainMenuPanel extends JPanel{
@@ -18,7 +18,7 @@ public class mainMenuPanel extends JPanel{
     JButton playGameButton;
     JButton viewHighScoreButton;
     JButton enterShopButton;
-    JButton optionsButton;
+    JButton howtoplaybutton;
     JButton profile;
     JLabel welcomeToLabel;
     JLabel background;
@@ -32,7 +32,7 @@ public class mainMenuPanel extends JPanel{
     public mainMenuPanel(){
         playGameButton = new JButton("Play Game");
         viewHighScoreButton = new JButton("View High Scores");
-        optionsButton = new JButton("Options");
+        howtoplaybutton = new JButton(    "How To Play");
         enterShopButton = new JButton("Enter Shop");
         profile = new JButton("View Profile");
         welcomeToLabel = new JLabel("Welcome to Trivia Master");
@@ -92,8 +92,8 @@ public class mainMenuPanel extends JPanel{
         gbc.gridx = 3;
         gbc.gridy = 5;
         gbc.ipady = 10;
-        gbc.ipadx = 70;
-        background.add(optionsButton, gbc);
+        gbc.ipadx = 50;
+        background.add(howtoplaybutton, gbc);
         gbc.gridx = 3;
         gbc.gridy = 6;
         gbc.ipady = 10;
@@ -125,10 +125,10 @@ public class mainMenuPanel extends JPanel{
                 triviaMain.setCurrentPanel(new shopPanel());
             }
         });
-        optionsButton.addMouseListener(new MouseAdapter() {
+        howtoplaybutton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                triviaMain.setCurrentPanel(new optionsPanel());
+                triviaMain.setCurrentPanel(new howtoplayPanel());
             }
         });
 
