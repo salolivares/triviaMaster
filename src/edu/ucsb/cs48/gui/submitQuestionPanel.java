@@ -155,10 +155,17 @@ public class submitQuestionPanel extends JPanel {
                 if (question.getText().trim().isEmpty() || choice1.getText().trim().isEmpty() || choice2.getText().trim().isEmpty()
                         || choice3.getText().trim().isEmpty() || choice4.getText().trim().isEmpty() || choice5.getText().trim().isEmpty())
                     window.createWindow(false);
-                else
+                else {
                     window.createWindow(Main.qa.createQuestion(Main.qa.getNewQuestionID(), catID.get(categoryList.getSelectedItem()),
                             question.getText(), choice1.getText(), choice2.getText(), choice3.getText(),
-                            choice4.getText(), choice5.getText(), correctAnswer.getSelectedIndex()+1));
+                            choice4.getText(), choice5.getText(), correctAnswer.getSelectedIndex() + 1));
+                    question.setText("");
+                    choice1.setText("");
+                    choice2.setText("");
+                    choice3.setText("");
+                    choice4.setText("");
+                    choice5.setText("");
+                }
             }
         });
 
