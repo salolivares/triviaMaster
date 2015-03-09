@@ -40,17 +40,17 @@ public class mainMenuPanel extends JPanel{
         botPanel = new JPanel(new GridBagLayout());
         gbc = new GridBagConstraints();
 
-        Image image = null;
-        try{
-            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
-            URL url = new URL("file:/assets/background.jpg");
-            image = ImageIO.read(url);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+//        Image image = null;
+//        try{
+//            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
+//            URL url = new URL("file:/assets/background.jpg");
+//            image = ImageIO.read(url);
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        background = new JLabel(new ImageIcon(image));
+        background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         add(background);
         background.setLayout(new GridBagLayout());

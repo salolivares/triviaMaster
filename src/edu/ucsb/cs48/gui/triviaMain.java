@@ -55,17 +55,17 @@ public class triviaMain {
         }
 
         // background image
-        Image image = null;
-        try{
+       // Image image = null;
+        //try{
             //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
-            URL url = new URL("file:/assets/background.jpg");
-            image = ImageIO.read(url);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        background = new JLabel(new ImageIcon(image));
+        //    URL url = new URL("file:/assets/background.jpg");
+        //    image = ImageIO.read(url);
+        //}
+        //catch (IOException e) {
+          //  e.printStackTrace();
+        //}
+        ///ImageIcon image = new ImageIcon("assets/Skip.jpg"));
+        background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         background.setLayout(new GridBagLayout());
 
