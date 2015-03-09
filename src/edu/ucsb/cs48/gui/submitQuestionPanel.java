@@ -6,8 +6,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
 /**
@@ -41,31 +44,33 @@ public class submitQuestionPanel extends JPanel {
     public submitQuestionPanel() {
 
         // instantiate all JComponents
-        window             = new resultWindow();
-        mainPanel          = new JPanel(new GridBagLayout());
-        title              = new JLabel("Submit your own question!");
-        questionLabel      = new JLabel("Question: ");
-        choiceLabel1       = new JLabel("Choice 1: ");
-        choiceLabel2       = new JLabel("Choice 2: ");
-        choiceLabel3       = new JLabel("Choice 3: ");
-        choiceLabel4       = new JLabel("Choice 4: ");
-        choiceLabel5       = new JLabel("Choice 5: ");
-        categoryListLabel  = new JLabel("Category: ");
+        window = new resultWindow();
+        mainPanel = new JPanel(new GridBagLayout());
+        title = new JLabel("Submit your own question!");
+        questionLabel = new JLabel("Question: ");
+        choiceLabel1 = new JLabel("Choice 1: ");
+        choiceLabel2 = new JLabel("Choice 2: ");
+        choiceLabel3 = new JLabel("Choice 3: ");
+        choiceLabel4 = new JLabel("Choice 4: ");
+        choiceLabel5 = new JLabel("Choice 5: ");
+        categoryListLabel = new JLabel("Category: ");
         correctAnswerLabel = new JLabel("Answer #: ");
-        question           = new JTextField(50);
-        choice1            = new JTextField(50);
-        choice2            = new JTextField(50);
-        choice3            = new JTextField(50);
-        choice4            = new JTextField(50);
-        choice5            = new JTextField(50);
-        submit             = new JButton("Submit");
-        mainMenu           = new JButton("Main Menu");
+        question = new JTextField(50);
+        choice1 = new JTextField(50);
+        choice2 = new JTextField(50);
+        choice3 = new JTextField(50);
+        choice4 = new JTextField(50);
+        choice5 = new JTextField(50);
+        submit = new JButton("Submit");
+        mainMenu = new JButton("Main Menu");
         question.setDocument(new JTextFieldLimit(75));
         choice1.setDocument(new JTextFieldLimit(40));
         choice2.setDocument(new JTextFieldLimit(40));
         choice3.setDocument(new JTextFieldLimit(40));
         choice4.setDocument(new JTextFieldLimit(40));
         choice5.setDocument(new JTextFieldLimit(40));
+
+        final HashMap<String, Integer> catID= Main.qa.getHashMap();
 
         ArrayList<String> categories = Main.qa.getCategories();
         Collections.sort(categories);
@@ -74,11 +79,11 @@ public class submitQuestionPanel extends JPanel {
 
         Integer[] answers = {1, 2, 3, 4, 5};
         correctAnswer = new JComboBox(answers);
-        correctAnswer.setPreferredSize(new Dimension(40,20));
+        correctAnswer.setPreferredSize(new Dimension(40, 20));
 
         // set up panel layout and constraints
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10,5,10,5);
+        gbc.insets = new Insets(10, 5, 10, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -147,20 +152,21 @@ public class submitQuestionPanel extends JPanel {
         submit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (question.getText() == null || choice1.getText() == null || choice2.getText() == null
-                        || choice3.getText() == null || choice4.getText() == null || choice5.getText() == null)
-                    window.createWindow(2);
+                if (question.getText().trim().isEmpty() || choice1.getText().trim().isEmpty() || choice2.getText().trim().isEmpty()
+                        || choice3.getText().trim().isEmpty() || choice4.getText().trim().isEmpty() || choice5.getText().trim().isEmpty())
+                    window.createWindow(false);
                 else
-                    window.createWindow(0);
+                    window.createWindow(Main.qa.createQuestion(Main.qa.getNewQuestionID(), catID.get(categoryList.getSelectedItem()),
+                            question.getText(), choice1.getText(), choice2.getText(), choice3.getText(),
+                            choice4.getText(), choice5.getText(), correctAnswer.getSelectedIndex()+1));
             }
         });
 
     }
 
-
     // inner class to limit JTextField character
     // class taken from online http://www.rgagnon.com/javadetails/java-0198.html
-    public class JTextFieldLimit extends PlainDocument {
+    class JTextFieldLimit extends PlainDocument {
         private int limit;
 
         JTextFieldLimit(int limit) {
@@ -168,7 +174,7 @@ public class submitQuestionPanel extends JPanel {
             this.limit = limit;
         }
 
-        public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
+        public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
             if (str == null) return;
 
             if ((getLength() + str.length()) <= limit) {
@@ -184,47 +190,46 @@ public class submitQuestionPanel extends JPanel {
 
         JFrame frame;
         JLabel message;
-        JButton enter;
+        JButton OK;
         JPanel mainPan;
 
-        public void createWindow(int result) {
+        public void createWindow(boolean result) {
 
-            if (result == 0) {
+            if (result == true) {
                 frame = new JFrame("Success");
                 message = new JLabel("Submit Successful");
             }
 
-            if (result == 1) {
+            if (result == false) {
                 frame = new JFrame("Failed");
                 message = new JLabel("Submit Failed");
             }
 
-            if (result == 2) {
-                frame = new JFrame("Invalid");
-                message = new JLabel("Invalid submission due to empty text field");
-            }
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            mainPan = new JPanel(new GridLayout(2,1));
-            enter = new JButton("OK");
-            enter.setPreferredSize(new Dimension(100,50));
+            mainPan = new JPanel(new GridLayout(2, 1));
+            OK = new JButton("OK");
+            OK.setPreferredSize(new Dimension(100, 50));
             mainPan.add(message);
-            mainPan.add(enter);
+            mainPan.add(OK);
             frame.setContentPane(mainPan);
             frame.setSize(300, 300);
             frame.setVisible(true);
             frame.setResizable(false);
             frame.setLocationRelativeTo(null);
 
-            enter.addMouseListener(new MouseAdapter() {
+            OK.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     frame.dispose();
 
                 }
             });
-
-
-
+        }
     }
+
 }
-}
+
+
+
+
+
