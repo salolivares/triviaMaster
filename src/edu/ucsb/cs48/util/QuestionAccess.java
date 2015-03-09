@@ -166,4 +166,27 @@ public class QuestionAccess {
         }
         return false;
     }
+
+    public int getNewQuestionID(){
+        int qID = 0;
+        String query;
+
+        try {
+            Connection con = Main.db.createDBconnection();
+            Statement stmt = con.createStatement();
+            query = "SELECT question_ID FROM question";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                if ( (rs.getInt("question_ID")) >= qID)
+                    qID = rs.getInt("question_ID") + 1;
+            }
+
+            Main.db.closeDBconnection(con);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return qID;
+    }
 }
