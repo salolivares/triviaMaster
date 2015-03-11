@@ -31,6 +31,8 @@ public class triviaCreateAccount {
      * to input their desired username and password
      */
     public void createWindow() {
+
+        //Instantiate all components of jframe
         frame = new JFrame("Create Account");
         loginButton = new JButton("Create Account");
         loginField = new JTextField("Username", 20);
@@ -42,6 +44,7 @@ public class triviaCreateAccount {
         panRight = new JPanel(new BorderLayout());
         panBot = new JPanel();
 
+        //configure gui frame properties
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         panLeft.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));

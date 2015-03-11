@@ -39,10 +39,19 @@ public class Game implements Runnable {
         QandA = new QuestionAndAnswers(category);
         int num = QandA.getNumberOfQuestions();
         countdownTimer();
+
+        /*********************************************************************
+         * If the user selected timer mode, instantiate a timer overlay thread
+         * to display a countdown timer on screen
+         * @see edu.ucsb.cs48.gui.TimerOverlayPanel
+         */
         if(Main.gameMode == 1){
             Thread timerOverlayThread = new Thread(new TimerOverlayPanel());
             timerOverlayThread.start();
         }
+        /*********************************************************************/
+
+
         while(num > 0){
             latch = new CountDownLatch(1);
             triviaMain.setCurrentPanel(new gamePanel(QandA.getQuestion(), QandA.getAnswerOne(), QandA.getAnswerTwo(),

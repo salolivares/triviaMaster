@@ -38,7 +38,7 @@ public class Main {
         shop = new Shop();
         game = new Game();
         shop = new Shop();
-        gameMode = 0;
+        gameMode = 0; //default game mode is normal mode
 
         gui.createWindow();
 

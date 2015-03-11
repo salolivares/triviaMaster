@@ -8,7 +8,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- * Shop class. Work in Progress
+ * Adapter class for items database
+ *
  */
 public class Shop {
     public int numberOfAutoAnswer(String username) {
