@@ -1,6 +1,7 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.QuestionAccess;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -50,11 +51,11 @@ public class categoryPanel extends JPanel {
         setLayout(new BorderLayout());
 
         //fill up ArrayList with categories from database
-        ArrayList<String> categories = Main.qa.getCategories();
+        ArrayList<String> categories = QuestionAccess.getCategories();
         Collections.sort(categories);
 
         //fill up a HashMap with categories that map to their category ID
-        final HashMap<String, Integer> catID= Main.qa.getHashMap();
+        final HashMap<String, Integer> catID= QuestionAccess.getHashMap();
 
         selectCategory = new JLabel("Choose a category");
         startGame = new JButton("Start Game!");

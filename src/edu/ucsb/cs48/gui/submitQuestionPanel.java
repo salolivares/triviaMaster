@@ -1,6 +1,8 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.QuestionAccess;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -70,9 +72,9 @@ public class submitQuestionPanel extends JPanel {
         choice4.setDocument(new JTextFieldLimit(40));
         choice5.setDocument(new JTextFieldLimit(40));
 
-        final HashMap<String, Integer> catID= Main.qa.getHashMap();
+        final HashMap<String, Integer> catID= QuestionAccess.getHashMap();
 
-        ArrayList<String> categories = Main.qa.getCategories();
+        ArrayList<String> categories = QuestionAccess.getCategories();
         Collections.sort(categories);
         categoryList = new JComboBox(categories.toArray());
         categoryList.setMaximumRowCount(3);

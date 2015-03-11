@@ -1,6 +1,7 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -112,7 +113,7 @@ public class triviaLogin {
                 //Authenticate User
                 String username = loginField.getText();
                 String password = passwordField.getText();
-                if(Main.player.loginCheck(username,password)){
+                if(User.loginCheck(username, password)){
                     Main.player.setUsername(username);
                     triviaMain.setCurrentPanel(new mainMenuPanel());
                     frame.dispose();
@@ -133,7 +134,7 @@ public class triviaLogin {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     String username = loginField.getText();
                     String password = passwordField.getText();
-                    if(Main.player.loginCheck(username,password)){
+                    if(User.loginCheck(username, password)){
                         Main.player.setUsername(username);
                         triviaMain.setCurrentPanel(new mainMenuPanel());
                         frame.dispose();

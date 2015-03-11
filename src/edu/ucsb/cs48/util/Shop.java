@@ -19,9 +19,9 @@ public class Shop {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
 
-            Statement stmt = (Statement) con.createStatement();
+            Statement stmt = con.createStatement();
             query = "SELECT AutoAnswer FROM user WHERE username='" + username + "';";
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
@@ -42,9 +42,9 @@ public class Shop {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
 
-            Statement stmt = (Statement) con.createStatement();
+            Statement stmt = con.createStatement();
             query = "SELECT QuestionEliminator FROM user WHERE username='" + username + "';";
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
@@ -62,7 +62,7 @@ public class Shop {
         String query;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             query = "UPDATE user SET AutoAnswer = ? WHERE username = ?";
             PreparedStatement ps = con.prepareStatement(query);
 
@@ -70,7 +70,7 @@ public class Shop {
             ps.setString(2, username);
             ps.executeUpdate();
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class Shop {
         String query;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             query = "UPDATE user SET AutoAnswer = ? WHERE username = ?";
             PreparedStatement ps = con.prepareStatement(query);
 
@@ -92,7 +92,7 @@ public class Shop {
             ps.setString(2, username);
             ps.executeUpdate();
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -103,7 +103,7 @@ public class Shop {
         String query;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             query = "UPDATE user SET QuestionEliminator = ? WHERE username = ?";
             PreparedStatement ps = con.prepareStatement(query);
 
@@ -111,7 +111,7 @@ public class Shop {
             ps.setString(2, username);
             ps.executeUpdate();
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -122,7 +122,7 @@ public class Shop {
         String query;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             query = "UPDATE user SET QuestionEliminator = ? WHERE username = ?";
             PreparedStatement ps = con.prepareStatement(query);
 
@@ -132,7 +132,7 @@ public class Shop {
             ps.setString(2, username);
             ps.executeUpdate();
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();

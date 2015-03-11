@@ -1,6 +1,7 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -104,7 +105,7 @@ public class triviaCreateAccount {
                     JOptionPane.showMessageDialog(createdAccount,"Please choose a username","Account Creation",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                String returnMessage = Main.player.createUser(loginField.getText(),passwordField.getText());
+                String returnMessage = User.createUser(loginField.getText(), passwordField.getText());
                 showMessageDialog(returnMessage);
                 frame.dispose();
             }
@@ -118,7 +119,7 @@ public class triviaCreateAccount {
                         JOptionPane.showMessageDialog(createdAccount,"Please choose a username","Account Creation",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-                    String returnMessage = Main.player.createUser(loginField.getText(),passwordField.getText());
+                    String returnMessage = User.createUser(loginField.getText(), passwordField.getText());
                     showMessageDialog(returnMessage);
                     frame.dispose();
                 }
