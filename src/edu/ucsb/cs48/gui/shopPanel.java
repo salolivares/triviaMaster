@@ -39,9 +39,9 @@ public class shopPanel extends JPanel {
             "# you own",};
     Object[][] tableData = {
             {"Auto Answer", "10 Points",
-                    Main.shop.numberOfAutoAnswer(Main.player.getUsername()), new Integer(10)},
+                    Main.shop.numberOfAutoAnswer(Main.player.getUsername()), 10},
             {"Bomb", "5 Points",
-                    Main.shop.numberOfQuestionEliminator(Main.player.getUsername()), new Integer(5)}
+                    Main.shop.numberOfQuestionEliminator(Main.player.getUsername()), 5}
     };
 
     public shopPanel(){

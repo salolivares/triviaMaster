@@ -521,9 +521,6 @@ public class gamePanel extends JPanel{
                 holder.add(answerID);                                              // add that ID to holder
                 count++;                                                           // increment count
             }
-
-            else
-                continue;
         }
 
         Main.shop.decreaseNumberOfQuestionEliminator(Main.player.getUsername());

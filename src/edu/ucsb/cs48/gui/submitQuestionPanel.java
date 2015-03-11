@@ -8,11 +8,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
 /**
@@ -204,12 +201,12 @@ public class submitQuestionPanel extends JPanel {
 
         public void createWindow(boolean result) {
 
-            if (result == true) {
+            if (result) {
                 frame = new JFrame("Success");
                 message = new JLabel("Submit Successful");
             }
 
-            if (result == false) {
+            if (!result) {
                 frame = new JFrame("Failed");
                 message = new JLabel("Submit Failed");
             }

@@ -1,6 +1,5 @@
 package edu.ucsb.cs48.gui;
 
-import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.util.User;
 
 import javax.swing.*;
@@ -133,10 +132,10 @@ public class triviaCreateAccount {
      * @param returnMessage string identifying if account was successfully created or not
      */
     public void showMessageDialog(String returnMessage){
-        if(returnMessage == "CREATED"){
+        if(returnMessage.equals("CREATED")){
             JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
         }
-        else if(returnMessage == "NOTCREATED"){
+        else if(returnMessage.equals("NOTCREATED")){
             JOptionPane.showMessageDialog(createdAccount,"Error Trying To Create Account","Account Creation",JOptionPane.INFORMATION_MESSAGE);
         }
         else {

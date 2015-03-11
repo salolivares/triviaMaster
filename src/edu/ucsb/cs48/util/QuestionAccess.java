@@ -1,7 +1,5 @@
 package edu.ucsb.cs48.util;
 
-import edu.ucsb.cs48.Main;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;

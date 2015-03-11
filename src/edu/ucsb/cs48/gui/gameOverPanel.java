@@ -3,13 +3,11 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 

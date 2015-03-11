@@ -3,17 +3,13 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.URL;
 
 /**
  * gameModePanel class that lets users select which game mode to play
- * Version 1.0: only Classic mode works.
  */
 
 public class gameModePanel extends JPanel{

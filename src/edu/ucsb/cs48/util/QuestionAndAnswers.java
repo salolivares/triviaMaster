@@ -25,7 +25,6 @@ public class QuestionAndAnswers {
 
     private int numberOfQuestions;
     private ArrayList<Integer> questionIDList;
-    private String [] listOfQuestions;
 
 
     /**
@@ -58,7 +57,7 @@ public class QuestionAndAnswers {
      */
     private void fetchAndSetQuestionAndAnswers(){
         int selectedQuestionID = randomlySelectQuestionID(questionIDList);
-        this.listOfQuestions = Main.qa.getQuestionAndAnswer(selectedQuestionID);
+        String[] listOfQuestions = Main.qa.getQuestionAndAnswer(selectedQuestionID);
 
         setQuestion(listOfQuestions[0]);
         setAnswerOne(listOfQuestions[1]);

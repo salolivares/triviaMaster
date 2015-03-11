@@ -3,13 +3,10 @@ package edu.ucsb.cs48.gui;
 import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.util.QuestionAccess;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 
 /**
@@ -19,12 +16,10 @@ import java.util.*;
 public class categoryPanel extends JPanel {
     //Java GUI Components
 
-    JPanel mainPanel;
     JLabel selectCategory;
     JButton startGame;
     JButton backButton;
     JComboBox categoryMenu;
-    JScrollPane scroller;
     JLabel background;
     GridBagConstraints gbc;
 

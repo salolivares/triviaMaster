@@ -1,12 +1,9 @@
 package edu.ucsb.cs48.gui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.URL;
 
 /**
  * mainMenuPanel class that presents the main menu after login

@@ -7,8 +7,6 @@ import edu.ucsb.cs48.util.Game;
 import edu.ucsb.cs48.util.User;
 import edu.ucsb.cs48.util.Shop;
 
-import java.sql.Connection;
-
 /**
  * The Application Launcher
  * This is the launching off point for TriviaMaster
