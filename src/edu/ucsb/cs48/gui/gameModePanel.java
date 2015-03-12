@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 
 /**
  * gameModePanel class that lets users select which game mode to play
- * Version 1.0: only Classic mode works.
  */
 
 public class gameModePanel extends JPanel{

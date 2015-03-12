@@ -35,15 +35,15 @@ public class User {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			Connection con = Main.db.createDBconnection();
+			Connection con = Database.createDBconnection();
 
-			Statement stmt = (Statement) con.createStatement();
+			Statement stmt = con.createStatement();
 			query = "SELECT username, password FROM user WHERE username='"
 					+ username + "' AND password='" + password + "';";
 			stmt.executeQuery(query);
 			ResultSet rs = stmt.getResultSet();
 			login = rs.first();
-			Main.db.closeDBconnection(con);
+			Database.closeDBconnection(con);
 			return login;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,8 +63,8 @@ public class User {
      */
 	public static String createUser(String username, String password) {
         try {
-            Connection con = Main.db.createDBconnection();
-            Statement select_stmt = (Statement) con.createStatement();
+            Connection con = Database.createDBconnection();
+            Statement select_stmt = con.createStatement();
             String query = "SELECT username FROM user WHERE username='"
                     + username + "';";
             //System.out.println(query);
@@ -74,12 +74,12 @@ public class User {
                 String ins = "INSERT into user (username, password, points, highscore, AutoAnswer, QuestionEliminator) values ('"
                         + username + "','" + password + "','" + 0 + "','" + 0 + "','" + 0 + "','" + 0 + "');";
                 //System.out.println(ins);
-                Statement ins_stmt = (Statement) con.createStatement();
+                Statement ins_stmt = con.createStatement();
                 ins_stmt.executeUpdate(ins);
             } else { /* If user already exists */
                 return "DUPLICATE";
             }
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
             return "CREATED";
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,7 +113,7 @@ public class User {
         int hs = 0;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT highscore FROM user WHERE username='" + username + "';";
             ResultSet rs = stmt.executeQuery(query);
@@ -122,7 +122,7 @@ public class User {
                 hs = rs.getInt("highscore");
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -140,7 +140,7 @@ public class User {
         int hs = 0;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT highscore FROM user WHERE username='" + username + "';";
             ResultSet rs = stmt.executeQuery(query);
@@ -149,7 +149,7 @@ public class User {
                 hs = rs.getInt("highscore");
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -167,7 +167,7 @@ public class User {
         int points = 0;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT points FROM user WHERE username='" + username + "';";
             ResultSet rs = stmt.executeQuery(query);
@@ -176,7 +176,7 @@ public class User {
                 points = rs.getInt("points");
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -194,7 +194,7 @@ public class User {
         String un = getUsername();
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             query = "update user set highscore = ? where username = ?";
             PreparedStatement ps = con.prepareStatement(query);
 
@@ -202,7 +202,7 @@ public class User {
             ps.setString(2, un);
             ps.executeUpdate();
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -219,7 +219,7 @@ public class User {
         String un = getUsername();
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             query = "update user set points = ? where username = ?";
             PreparedStatement ps = con.prepareStatement(query);
 
@@ -227,7 +227,7 @@ public class User {
             ps.setString(2, un);
             ps.executeUpdate();
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -239,7 +239,7 @@ public class User {
         ArrayList<String> usernames = new ArrayList<String>();
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT username FROM user ORDER by highscore DESC limit 5;";
             ResultSet rs = stmt.executeQuery(query);
@@ -248,7 +248,7 @@ public class User {
                 usernames.add(rs.getString("username"));
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();

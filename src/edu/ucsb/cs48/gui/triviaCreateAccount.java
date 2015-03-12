@@ -1,6 +1,6 @@
 package edu.ucsb.cs48.gui;
 
-import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +31,8 @@ public class triviaCreateAccount {
      * to input their desired username and password
      */
     public void createWindow() {
+
+        //Instantiate all components of jframe
         frame = new JFrame("Create Account");
         loginButton = new JButton("Create Account");
         loginField = new JTextField("Username", 20);
@@ -42,6 +44,7 @@ public class triviaCreateAccount {
         panRight = new JPanel(new BorderLayout());
         panBot = new JPanel();
 
+        //configure gui frame properties
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         panLeft.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -101,7 +104,7 @@ public class triviaCreateAccount {
                     JOptionPane.showMessageDialog(createdAccount,"Please choose a username","Account Creation",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                String returnMessage = Main.player.createUser(loginField.getText(),passwordField.getText());
+                String returnMessage = User.createUser(loginField.getText(), passwordField.getText());
                 showMessageDialog(returnMessage);
                 frame.dispose();
             }
@@ -115,7 +118,7 @@ public class triviaCreateAccount {
                         JOptionPane.showMessageDialog(createdAccount,"Please choose a username","Account Creation",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-                    String returnMessage = Main.player.createUser(loginField.getText(),passwordField.getText());
+                    String returnMessage = User.createUser(loginField.getText(), passwordField.getText());
                     showMessageDialog(returnMessage);
                     frame.dispose();
                 }
@@ -129,10 +132,10 @@ public class triviaCreateAccount {
      * @param returnMessage string identifying if account was successfully created or not
      */
     public void showMessageDialog(String returnMessage){
-        if(returnMessage == "CREATED"){
+        if(returnMessage.equals("CREATED")){
             JOptionPane.showMessageDialog(createdAccount,"Account Created","Account Creation",JOptionPane.INFORMATION_MESSAGE);
         }
-        else if(returnMessage == "NOTCREATED"){
+        else if(returnMessage.equals("NOTCREATED")){
             JOptionPane.showMessageDialog(createdAccount,"Error Trying To Create Account","Account Creation",JOptionPane.INFORMATION_MESSAGE);
         }
         else {

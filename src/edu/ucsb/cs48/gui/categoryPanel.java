@@ -1,14 +1,19 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.QuestionAccess;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+=======
+import java.util.*;
+>>>>>>> c7584720d2e838a4a2c442063ee78dc75e1ace9b
 
 /**
  * categoryPanel class that displays potential categories for user to choose from
@@ -17,12 +22,10 @@ import java.util.HashMap;
 public class categoryPanel extends JPanel {
     //Java GUI Components
 
-    JPanel mainPanel;
     JLabel selectCategory;
     JButton startGame;
     JButton backButton;
     JComboBox categoryMenu;
-    JScrollPane scroller;
     JLabel background;
     GridBagConstraints gbc;
 
@@ -51,11 +54,11 @@ public class categoryPanel extends JPanel {
         setLayout(new BorderLayout());
 
         //fill up ArrayList with categories from database
-        ArrayList<String> categories = Main.qa.getCategories();
+        ArrayList<String> categories = QuestionAccess.getCategories();
         Collections.sort(categories);
 
         //fill up a HashMap with categories that map to their category ID
-        final HashMap<String, Integer> catID= Main.qa.getHashMap();
+        final HashMap<String, Integer> catID= QuestionAccess.getHashMap();
 
         selectCategory = new JLabel("Choose a category");
         startGame = new JButton("Start Game!");

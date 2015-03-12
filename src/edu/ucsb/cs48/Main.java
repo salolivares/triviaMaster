@@ -7,8 +7,6 @@ import edu.ucsb.cs48.util.Game;
 import edu.ucsb.cs48.util.User;
 import edu.ucsb.cs48.util.Shop;
 
-import java.sql.Connection;
-
 /**
  * The Application Launcher
  * This is the launching off point for TriviaMaster
@@ -38,7 +36,7 @@ public class Main {
         shop = new Shop();
         game = new Game();
         shop = new Shop();
-        gameMode = 0;
+        gameMode = 0; //default game mode is normal mode
 
         gui.createWindow();
 

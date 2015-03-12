@@ -1,16 +1,15 @@
 package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
+import edu.ucsb.cs48.util.QuestionAccess;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
 /**
@@ -70,9 +69,9 @@ public class submitQuestionPanel extends JPanel {
         choice4.setDocument(new JTextFieldLimit(40));
         choice5.setDocument(new JTextFieldLimit(40));
 
-        final HashMap<String, Integer> catID= Main.qa.getHashMap();
+        final HashMap<String, Integer> catID= QuestionAccess.getHashMap();
 
-        ArrayList<String> categories = Main.qa.getCategories();
+        ArrayList<String> categories = QuestionAccess.getCategories();
         Collections.sort(categories);
         categoryList = new JComboBox(categories.toArray());
         categoryList.setMaximumRowCount(3);
@@ -202,12 +201,12 @@ public class submitQuestionPanel extends JPanel {
 
         public void createWindow(boolean result) {
 
-            if (result == true) {
+            if (result) {
                 frame = new JFrame("Success");
                 message = new JLabel("Submit Successful");
             }
 
-            if (result == false) {
+            if (!result) {
                 frame = new JFrame("Failed");
                 message = new JLabel("Submit Failed");
             }

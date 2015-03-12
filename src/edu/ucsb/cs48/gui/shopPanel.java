@@ -19,7 +19,6 @@ public class shopPanel extends JPanel {
     JButton backButton;
     JButton purchaseButton;
     JButton infoButton;
-    JButton helpButton;
     JLabel mainTitle;
     JLabel pointsLabel;
     JTable itemsTable;
@@ -40,9 +39,9 @@ public class shopPanel extends JPanel {
             "# you own",};
     Object[][] tableData = {
             {"Auto Answer", "10 Points",
-                    Main.shop.numberOfAutoAnswer(Main.player.getUsername()), new Integer(10)},
+                    Main.shop.numberOfAutoAnswer(Main.player.getUsername()), 10},
             {"Bomb", "5 Points",
-                    Main.shop.numberOfQuestionEliminator(Main.player.getUsername()), new Integer(5)}
+                    Main.shop.numberOfQuestionEliminator(Main.player.getUsername()), 5}
     };
 
     public shopPanel(){
@@ -50,7 +49,6 @@ public class shopPanel extends JPanel {
         backButton = new JButton("Back to menu");
         purchaseButton = new JButton("Purchase");
         infoButton = new JButton("Info");
-        helpButton = new JButton("Help me");
         mainTitle = new JLabel("Trivia Shop");
         pointsLabel = new JLabel("You have " + Main.player.getPoints() + " points");
         botPanel = new JPanel(new BorderLayout());
@@ -80,7 +78,6 @@ public class shopPanel extends JPanel {
         //button set up
         midButtonPanel.add(purchaseButton);
         midButtonPanel.add(infoButton);
-        midButtonPanel.add(helpButton);
 
         //add components to middle panel
         gbc.gridx = 0;
@@ -98,6 +95,10 @@ public class shopPanel extends JPanel {
         add(botPanel,BorderLayout.PAGE_END);
 
         /** Event manager **/
+
+        /**
+         * Go back to main menu if this button is hit
+         */
         backButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -108,10 +109,14 @@ public class shopPanel extends JPanel {
         purchaseButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
+<<<<<<< HEAD
 
                 //load sound effects
+=======
+                //whenever the user hits this button,
+                //make a sound
+>>>>>>> c7584720d2e838a4a2c442063ee78dc75e1ace9b
                 try {
-                    //url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/coin.wav");
                     url = new URL("file:assets/coin.wav");
                 }
                 catch (MalformedURLException es) {
@@ -121,10 +126,21 @@ public class shopPanel extends JPanel {
                 sound = java.applet.Applet.newAudioClip(url);
                 sound.play();
 
+                /**
+                 * itemsTable.getSelectedRow:
+                 * Returns the index of the row selected
+                 * Returns -1 if user selected no row
+                 */
                 purchaseHelper(itemsTable.getSelectedRow());
+
+                //refresh shop panel
                 triviaMain.setCurrentPanel(new shopPanel());
             }
         });
+
+        /**
+         * When user hits this button, display information about the power ups
+         */
         infoButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -141,6 +157,9 @@ public class shopPanel extends JPanel {
      * @param index the index of the item the user wishes to purchase
      */
     private void purchaseHelper(int index){
+        /**
+         * Display error message if user did not select a item to purchase
+         */
         if(index == -1 ){
             JOptionPane.showMessageDialog(dialogFrame, "Please select an item to purchase",
                     "Error",JOptionPane.ERROR_MESSAGE);
@@ -152,12 +171,20 @@ public class shopPanel extends JPanel {
             int powerupValue = (Integer)tableData[index][3];
             int messageIcon;
 
+            /**
+             * Display error message if user does not have enough points
+             * to purchase the powerup
+             */
             if(points < powerupValue){
                 dialogMessage = "Not Enough Points to purchase";
                 titleMessage = "Purchase Unsuccessful";
                 messageIcon = JOptionPane.ERROR_MESSAGE;
             }
+
             else {
+                /**
+                 * Deduct points from user profile depending on power up selected
+                 */
                 if(index == 0){
                     Main.shop.increaseNumberOfAutoAnswer(Main.player.getUsername());
                     Main.player.modifyPoints(-10);

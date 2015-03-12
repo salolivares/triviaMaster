@@ -1,7 +1,5 @@
 package edu.ucsb.cs48.util;
 
-import edu.ucsb.cs48.Main;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -31,7 +29,7 @@ public class QuestionAccess {
         ArrayList<String> categories = new ArrayList<String>();
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT category FROM category;";
             ResultSet rs = stmt.executeQuery(query);
@@ -40,7 +38,7 @@ public class QuestionAccess {
                 categories.add(rs.getString("category"));
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -60,7 +58,7 @@ public class QuestionAccess {
         HashMap<String, Integer> catID = new HashMap<String, Integer>();
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT category_id, category FROM category;";
             ResultSet rs = stmt.executeQuery(query);
@@ -69,7 +67,7 @@ public class QuestionAccess {
                 catID.put(rs.getString("category"), rs.getInt("category_id"));
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -89,7 +87,7 @@ public class QuestionAccess {
         String query;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT question_ID FROM question WHERE category_ID='" + cID + "';";
             ResultSet rs = stmt.executeQuery(query);
@@ -98,7 +96,7 @@ public class QuestionAccess {
                 questions.add(rs.getInt("question_ID"));
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -123,7 +121,7 @@ public class QuestionAccess {
         String query;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT question, ans1, ans2, ans3, ans4, ans5, correct_answer, point_value FROM question WHERE question_ID='" + qID + "';";
             ResultSet rs = stmt.executeQuery(query);
@@ -139,7 +137,7 @@ public class QuestionAccess {
                 questionInfo[7] = rs.getString("point_value"); // the point value
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -149,17 +147,17 @@ public class QuestionAccess {
 
     public boolean createQuestion(int qID, int cID, String q, String a1, String a2, String a3, String a4, String a5, int correctAns) {
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             //Statement select_stmt = (Statement) con.createStatement();
             //String query = "SELECT username FROM user WHERE username='" + username + "';";
             //select_stmt.executeQuery(query);
             //ResultSet rs = select_stmt.getResultSet();
             String ins = "INSERT into question (question_ID, category_ID, question, ans1, ans2, ans3, ans4, ans5, correct_answer, point_value) values ('"
                         + qID + "','" + cID + "','" + q + "','" + a1 + "','" + a2 + "','" + a3 + "','" + a4 + "','" + a5 + "','" + correctAns + "','" + 10 + "');";
-            Statement ins_stmt = (Statement) con.createStatement();
+            Statement ins_stmt = con.createStatement();
             ins_stmt.executeUpdate(ins);
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -172,7 +170,7 @@ public class QuestionAccess {
         String query;
 
         try {
-            Connection con = Main.db.createDBconnection();
+            Connection con = Database.createDBconnection();
             Statement stmt = con.createStatement();
             query = "SELECT question_ID FROM question";
             ResultSet rs = stmt.executeQuery(query);
@@ -182,7 +180,7 @@ public class QuestionAccess {
                     qID = rs.getInt("question_ID") + 1;
             }
 
-            Main.db.closeDBconnection(con);
+            Database.closeDBconnection(con);
         }
         catch (Exception e) {
             e.printStackTrace();

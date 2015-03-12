@@ -89,7 +89,7 @@ public class triviaMain {
         mainFrame.add(background);
 
 
-        //configure gridbaglayout and add to bot panel
+        //configure gridbaglayout and add buttons to background panel
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.PAGE_START;
