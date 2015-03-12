@@ -2,18 +2,14 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 import edu.ucsb.cs48.util.QuestionAccess;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-=======
-import java.util.*;
->>>>>>> c7584720d2e838a4a2c442063ee78dc75e1ace9b
+
 
 /**
  * categoryPanel class that displays potential categories for user to choose from

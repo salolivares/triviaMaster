@@ -109,13 +109,12 @@ public class shopPanel extends JPanel {
         purchaseButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-<<<<<<< HEAD
+
 
                 //load sound effects
-=======
+
                 //whenever the user hits this button,
                 //make a sound
->>>>>>> c7584720d2e838a4a2c442063ee78dc75e1ace9b
                 try {
                     url = new URL("file:assets/coin.wav");
                 }
