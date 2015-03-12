@@ -1,12 +1,9 @@
 package edu.ucsb.cs48.gui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.URL;
 
 /**
  * mainMenuPanel class that presents the main menu after login
@@ -52,6 +49,8 @@ public class mainMenuPanel extends JPanel{
 //            e.printStackTrace();
 //        }
 
+
+        //load the background image
         background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         add(background);
@@ -107,9 +106,7 @@ public class mainMenuPanel extends JPanel{
         gbc.insets = new Insets(0,0,50,0);
         background.add(profile, gbc);
 
-        //add bot and top panel
-        //add(topPanel);
-        //add(botPanel);
+        //add background to frame
         add(background);
 
         // event manager

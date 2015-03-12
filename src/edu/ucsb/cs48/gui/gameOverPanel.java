@@ -3,13 +3,11 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -32,6 +30,7 @@ public class gameOverPanel extends JPanel {
      */
     public gameOverPanel() {
 
+        //load the sound effects
         try {
             //url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/cheering.wav");
             url = new URL("file:assets/cheering.wav");
@@ -44,6 +43,7 @@ public class gameOverPanel extends JPanel {
         sound.play();
 
 
+
 //        Image image = null;
 //        try{
 //            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
@@ -54,6 +54,8 @@ public class gameOverPanel extends JPanel {
 //            e.printStackTrace();
 //        }
 
+
+        //load the background image
         background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         background.setLayout(new GridBagLayout());

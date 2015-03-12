@@ -51,6 +51,8 @@ public class triviaMain {
             // handle exception
         }
 
+
+
         // background image
         /*Image image = null;
         try{
@@ -60,6 +62,8 @@ public class triviaMain {
             e.printStackTrace();
         }
         */
+
+        // load the background image
         background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         background.setLayout(new GridBagLayout());

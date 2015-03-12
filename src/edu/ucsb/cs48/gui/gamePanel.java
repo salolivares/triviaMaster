@@ -345,6 +345,7 @@ public class gamePanel extends JPanel{
      */
     private void checkAnswer() {
 
+        //load sound effects
         try {
             //ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
             ding = new URL("file:assets/wow.wav");
@@ -492,6 +493,8 @@ public class gamePanel extends JPanel{
     }
 
     private void QuestionEliminator() {
+
+        //load sound effects
         try {
             //boom = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.wav");
             boom = new URL("file:assets/bomb.wav");

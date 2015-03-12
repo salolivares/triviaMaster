@@ -2,14 +2,13 @@ package edu.ucsb.cs48.gui;
 
 import edu.ucsb.cs48.Main;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * categoryPanel class that displays potential categories for user to choose from
@@ -43,6 +42,8 @@ public class categoryPanel extends JPanel {
 //            e.printStackTrace();
 //        }
 
+
+        //load and add the background image
         background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         background.setLayout(new GridBagLayout());

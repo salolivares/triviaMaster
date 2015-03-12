@@ -109,6 +109,7 @@ public class shopPanel extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
 
+                //load sound effects
                 try {
                     //url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/coin.wav");
                     url = new URL("file:assets/coin.wav");
