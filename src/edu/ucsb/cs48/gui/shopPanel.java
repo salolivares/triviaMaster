@@ -111,20 +111,6 @@ public class shopPanel extends JPanel {
             public void mouseReleased(MouseEvent e) {
 
 
-                //load sound effects
-
-                //whenever the user hits this button,
-                //make a sound
-                try {
-                    url = new URL("file:assets/coin.wav");
-                }
-                catch (MalformedURLException es) {
-                    es.printStackTrace();
-                }
-
-                sound = java.applet.Applet.newAudioClip(url);
-                sound.play();
-
                 /**
                  * itemsTable.getSelectedRow:
                  * Returns the index of the row selected
@@ -192,9 +178,20 @@ public class shopPanel extends JPanel {
                     Main.shop.increaseNumberOfQuestionEliminator(Main.player.getUsername());
                     Main.player.modifyPoints(-5);
                 }
+
+                //load sound effects and play when a purchase is successful
+                try {
+                    url = new URL("file:assets/coin.wav");
+                }
+                catch (MalformedURLException es) {
+                    es.printStackTrace();
+                }
+                sound = java.applet.Applet.newAudioClip(url);
+                sound.play();
                 dialogMessage = String.format("You purchased %s", tableData[index][0]);
                 titleMessage = "Purchase Successful";
                 messageIcon = JOptionPane.INFORMATION_MESSAGE;
+
             }
             JOptionPane.showMessageDialog(dialogFrame, dialogMessage, titleMessage, messageIcon);
         }
