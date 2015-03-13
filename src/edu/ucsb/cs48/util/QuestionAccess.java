@@ -6,11 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-/* TO DO: modify database functions to take Connection con as a parameter,
- * instead of creating and closing a connection in each function. This way,
- * the connection can just be created and closed once, in the main function. */
-
 /**
  * QuestionAccess class that is involved in accessing categories and questions
  * from the remote database
@@ -145,6 +140,19 @@ public class QuestionAccess {
         return questionInfo;
     }
 
+    /**
+     * This function allows questions to be added to the question class in the database.
+     * @param qID question ID
+     * @param cID category ID
+     * @param q question
+     * @param a1 possible answer 1
+     * @param a2 possible answer 2
+     * @param a3 possible answer 3
+     * @param a4 possible answer 4
+     * @param a5 possible answer 5
+     * @param correctAns the possible answer number for the correct answer
+     * @return true if question is successfully created, false if there is a problem.
+     */
     public boolean createQuestion(int qID, int cID, String q, String a1, String a2, String a3, String a4, String a5, int correctAns) {
         try {
             Connection con = Database.createDBconnection();

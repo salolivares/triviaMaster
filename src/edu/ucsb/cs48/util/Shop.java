@@ -10,6 +10,11 @@ import java.sql.Statement;
  *
  */
 public class Shop {
+    /**
+     * This function checks how many AutoAnswer power ups a user currently has.
+     * @param username
+     * @return number of AutoAnswer power ups
+     */
     public int numberOfAutoAnswer(String username) {
         String query;
         int num = 0;
@@ -33,6 +38,11 @@ public class Shop {
         return num;
     }
 
+    /**
+     * This function checks how many QuestionEliminator power ups a user currently has.
+     * @param username
+     * @return number of QuestionEliminator power ups
+     */
     public int numberOfQuestionEliminator(String username) {
         String query;
         int num = 0;
@@ -56,6 +66,10 @@ public class Shop {
         return num;
     }
 
+    /**
+     * This function increases a user's number of AutoAnswer power ups by 1.
+     * @param username
+     */
     public void increaseNumberOfAutoAnswer(String username) {
         String query;
 
@@ -75,7 +89,10 @@ public class Shop {
         }
     }
 
-
+    /**
+     * This function decreases a user's number of AutoAnswer power ups by 1.
+     * @param username
+     */
     public void decreaseNumberOfAutoAnswer(String username) {
         String query;
 
@@ -97,6 +114,10 @@ public class Shop {
         }
     }
 
+    /**
+     * This function increases a user's number of QuestionEliminator power ups by 1.
+     * @param username
+     */
     public void increaseNumberOfQuestionEliminator(String username) {
         String query;
 
@@ -116,6 +137,10 @@ public class Shop {
         }
     }
 
+    /**
+     * This function decreases a user's number of QuestionEliminator power ups by 1.
+     * @param username
+     */
     public void decreaseNumberOfQuestionEliminator(String username) {
         String query;
 
