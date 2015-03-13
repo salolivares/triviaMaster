@@ -11,8 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by Jordan Nguyen on 2/20/2015.
- * This class allows user to view their high score and points
+ * This class allows user to view their high score, points, and available power-ups
  */
 public class profilePanel extends JPanel{
     JLabel username;
@@ -21,23 +20,12 @@ public class profilePanel extends JPanel{
     JLabel bomb;
     JLabel autoAnswer;
     JButton back;
-    JPanel mainpanel;
     URL url;
     AudioClip sound;
     JLabel background;
 
     public profilePanel() {
 
-
-//        Image image = null;
-//        try{
-//            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
-//            URL url = new URL("file:/assets/background.jpg");
-//            image = ImageIO.read(url);
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
         //load the background image
         background = new JLabel(new ImageIcon("assets/background.jpg"));
@@ -51,7 +39,6 @@ public class profilePanel extends JPanel{
         bomb = new JLabel("Bombs Owned: " + Main.shop.numberOfQuestionEliminator(Main.player.getUsername()));
         autoAnswer = new JLabel("Auto Answers Owned: " + Main.shop.numberOfAutoAnswer(Main.player.getUsername()));
         back = new JButton("Main Menu");
-        //mainpanel = new JPanel(new GridBagLayout());
         setLayout(new BorderLayout());
 
         username.setFont(new Font("Courier New", Font.BOLD, 30));
@@ -95,7 +82,6 @@ public class profilePanel extends JPanel{
 
         //load the sound effect
         try {
-            //url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/fanfare.wav");
             url = new URL("file:assets/fanfare.wav");
         }
         catch (MalformedURLException es) {

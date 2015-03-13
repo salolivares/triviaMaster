@@ -16,8 +16,8 @@ import java.util.HashMap;
  */
 
 public class categoryPanel extends JPanel {
-    //Java GUI Components
 
+    //Java GUI Components
     JLabel selectCategory;
     JButton startGame;
     JButton backButton;
@@ -30,16 +30,6 @@ public class categoryPanel extends JPanel {
      */
 
     public categoryPanel() {
-
-//        Image image = null;
-//        try{
-//            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
-//            URL url = new URL("file:/assets/background.jpg");
-//            image = ImageIO.read(url);
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
 
         //load and add the background image
@@ -61,13 +51,13 @@ public class categoryPanel extends JPanel {
         backButton = new JButton("Go Back");
         categoryMenu = new JComboBox(categories.toArray());
         categoryMenu.setMaximumRowCount(5);
-        //mainPanel = new JPanel(new GridLayout(4,1));
+
 
         selectCategory.setFont(new Font("Serif", Font.BOLD, 36));
         selectCategory.setHorizontalAlignment(SwingConstants.CENTER);
         selectCategory.setVerticalAlignment(SwingConstants.CENTER);
 
-
+        // set up panel layout
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(25,0,50,0);

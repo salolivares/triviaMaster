@@ -156,10 +156,6 @@ public class QuestionAccess {
     public boolean createQuestion(int qID, int cID, String q, String a1, String a2, String a3, String a4, String a5, int correctAns) {
         try {
             Connection con = Database.createDBconnection();
-            //Statement select_stmt = (Statement) con.createStatement();
-            //String query = "SELECT username FROM user WHERE username='" + username + "';";
-            //select_stmt.executeQuery(query);
-            //ResultSet rs = select_stmt.getResultSet();
             String ins = "INSERT into question (question_ID, category_ID, question, ans1, ans2, ans3, ans4, ans5, correct_answer, point_value) values ('"
                         + qID + "','" + cID + "','" + q + "','" + a1 + "','" + a2 + "','" + a3 + "','" + a4 + "','" + a5 + "','" + correctAns + "','" + 10 + "');";
             Statement ins_stmt = con.createStatement();
@@ -173,6 +169,10 @@ public class QuestionAccess {
         return false;
     }
 
+    /**
+     * This functions returns a new question ID for the user to use when they submit a new question
+     * @return int representing an available question ID
+     */
     public int getNewQuestionID(){
         int qID = 0;
         String query;

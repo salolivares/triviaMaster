@@ -19,20 +19,11 @@ public class gameModePanel extends JPanel{
     JLabel selectMode;
     JLabel background;
     GridBagConstraints gbc;
+
     /**
      * gameModePanel default constructor
      */
     gameModePanel() {
-
-//        Image image = null;
-//        try{
-//            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
-//            URL url = new URL("file:/assets/background.jpg");
-//            image = ImageIO.read(url);
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
 
         //load and add the background image
@@ -51,11 +42,10 @@ public class gameModePanel extends JPanel{
         selectMode.setHorizontalAlignment(SwingConstants.CENTER);
         selectMode.setVerticalAlignment(SwingConstants.CENTER);
 
-        //mainPanel = new JPanel(new GridLayout(5,1))
+        // set up panel
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(25,0,75,0);
-        //gbc.fill = GridBagConstraints.HORIZONTAL;
         background.add(selectMode, gbc);
         gbc.gridx = 0;
         gbc.gridy = 1;

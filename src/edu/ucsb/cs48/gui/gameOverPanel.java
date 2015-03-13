@@ -21,6 +21,7 @@ public class gameOverPanel extends JPanel {
     JLabel gameOver;
     JLabel highScore;
     JLabel background;
+    JLabel points;
     URL url;
     AudioClip sound;
     GridBagConstraints gbc;
@@ -32,7 +33,6 @@ public class gameOverPanel extends JPanel {
 
         //load the sound effects
         try {
-            //url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/cheering.wav");
             url = new URL("file:assets/cheering.wav");
         }
         catch (MalformedURLException e) {
@@ -41,18 +41,6 @@ public class gameOverPanel extends JPanel {
 
         sound = java.applet.Applet.newAudioClip(url);
         sound.play();
-
-
-
-//        Image image = null;
-//        try{
-//            //URL url = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/background.jpg");
-//            URL url = new URL("file:/assets/background.jpg");
-//            image = ImageIO.read(url);
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
 
         //load the background image
@@ -66,6 +54,7 @@ public class gameOverPanel extends JPanel {
         mainMenu = new JButton("Return to Main Menu");
         gameOver = new JLabel("Game Over");
         highScore = new JLabel("Your Score: " + Double.toString(Main.game.getGameScore()));
+        points = new JLabel("Points Earned: " + 1 + (Main.game.getGameScore()/10));
 
         gameOver.setFont(new Font("Courier New", Font.BOLD, 90));
         gameOver.setVerticalAlignment(SwingConstants.CENTER);
@@ -75,7 +64,11 @@ public class gameOverPanel extends JPanel {
         highScore.setVerticalAlignment(SwingConstants.CENTER);
         highScore.setHorizontalAlignment(SwingConstants.CENTER);
 
+        points.setFont(new Font("Courier New", Font.BOLD, 35));
+        points.setVerticalAlignment(SwingConstants.CENTER);
+        points.setHorizontalAlignment(SwingConstants.CENTER);
 
+        // set up the panel
         gbc.anchor = GridBagConstraints.PAGE_START;
         gbc.insets = new Insets(25,0,75,0);
         gbc.weighty = 0.0;
@@ -89,6 +82,11 @@ public class gameOverPanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 1;
         background.add(highScore, gbc);
+        gbc.insets = new Insets(20,0,20,0);
+        gbc.weightx = 0.0;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        background.add(points, gbc);
 
         gbc.anchor = GridBagConstraints.PAGE_END;
         gbc.insets = new Insets(50,600,0,0);
@@ -96,7 +94,7 @@ public class gameOverPanel extends JPanel {
         gbc.ipadx = 30;
         gbc.weighty = 1.0;
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         background.add(mainMenu, gbc);
 
         add(background, BorderLayout.CENTER);

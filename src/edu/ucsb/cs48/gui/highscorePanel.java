@@ -88,7 +88,6 @@ public class highscorePanel extends JPanel{
         PlayerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         PlayerLabel.setVerticalAlignment(SwingConstants.CENTER);
 
-        //HighScoreheaderLabel.setFont(new Font("Serif", Font.BOLD, 32));
         HighScoreheaderLabel.setFont(new Font("Serif", Font.BOLD, 34));
         HighScoreheaderLabel.setHorizontalAlignment(SwingConstants.CENTER);
         HighScoreheaderLabel.setVerticalAlignment(SwingConstants.CENTER);
@@ -141,27 +140,17 @@ public class highscorePanel extends JPanel{
         P3HS.setSize(150,50);
         P4HS.setSize(150,50);
         P5HS.setSize(150,50);
-        /** Event manager **/
+
         backbutton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 triviaMain.setCurrentPanel(new mainMenuPanel());
             }
         });
-        /*gbc.gridx = 1;
-        gbc.gridy = 3;
-        gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        HighScoreBotPanel.add(PlayerLabel, gbc);
-        gbc.gridx = 10;
-        gbc.gridy = 3;
-        HighScoreBotPanel.add(HighScoreLabel,gbc);
-        */
-        //HighScoreBotPanel.add(HighScoreheaderLabel, BorderLayout.NORTH);
-        //HighScoreBotPanel.add(HighScoreLabel, BorderLayout.EAST);
         add(HighScorePanel);
     }
 
+    // pointComponent method that paints the background of the panel a gradient blue
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         GradientPaint gradient = new GradientPaint(0,0, Color.BLUE, 800, 600, Color.CYAN);

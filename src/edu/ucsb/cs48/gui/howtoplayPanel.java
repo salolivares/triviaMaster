@@ -14,9 +14,11 @@ public class howtoplayPanel extends JPanel {
 
 
     /**
-     * howtoplayPanel class that allows users to learn how to play TriviaMaster
+     * howtoplayPanel class that allows shows how to play the game
      */
     public howtoplayPanel() {
+
+        // load the background image
         background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
         add(background);
@@ -55,7 +57,6 @@ public class howtoplayPanel extends JPanel {
         gbc.gridy = 1;
         background.add(description, gbc);
 
-        // back button
         menu = new JButton("Return to Main Menu");
         gbc.anchor = GridBagConstraints.PAGE_END;
         gbc.insets = new Insets(50,600,0,0);

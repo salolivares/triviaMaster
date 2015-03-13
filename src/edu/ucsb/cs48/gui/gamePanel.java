@@ -17,17 +17,19 @@ import java.util.HashMap;
 
 /**
  * This class creates the panel where the game is played.
- * This panel contains the question and potential answers.
+ * This panel contains the question, potential answers, and power-ups.
+ * The score is displayed at the top of the screen
+ * and a timer is displayed in the top left if playing timed mode
  */
 public class gamePanel extends JPanel{
+
+
     AudioClip correct;
     AudioClip wrong;
     AudioClip bombs;
     URL ding;
     URL beep;
     URL boom;
-
-
     JPanel topPanel;
     JPanel botPanel;
     JLabel question;
@@ -90,27 +92,25 @@ public class gamePanel extends JPanel{
         correctAnswer = cAnswer;
         setLayout(new BorderLayout());
 
-       // set AutoAnwer image
-       // AutoAnswer    = new JButton("<Auto Answer (Q): 0");
-        //AutoAnswer = new JButton("<html>Auto Answer <br/>(Q): 0 </html>");
+        // set up the two power-up buttons
         AutoAnswer = new JButton("<html>AutoAnswer <br/>(Q): " + Main.shop.numberOfAutoAnswer(Main.player.getUsername()) + "</html>");
         AutoAnswer.setIcon(new ImageIcon("assets/Skip.jpg"));
-        //AutoAnswer.setIcon(new ImageIcon("C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/Skip.jpg"));
         AutoAnswer.setBackground(Color.WHITE);
         AutoAnswer.setHorizontalAlignment(SwingConstants.LEFT);
         AutoAnswer.setHorizontalTextPosition(AbstractButton.CENTER);
         AutoAnswer.setVerticalTextPosition(AbstractButton.BOTTOM);
+        // disable AutoAnswer if none are owned
         if (Main.shop.numberOfAutoAnswer(Main.player.getUsername()) == 0)
             AutoAnswer.setEnabled(false);
-        //set Bomb image to the Bomb button
+
 
         Bomb = new JButton("Bomb (W): " + Main.shop.numberOfQuestionEliminator(Main.player.getUsername()));
         Bomb.setIcon(new ImageIcon("assets/bomb.jpg"));
-        //Bomb.setIcon(new ImageIcon("C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.jpg"));
         Bomb.setBackground(Color.WHITE);
         Bomb.setHorizontalAlignment(SwingConstants.LEFT);
         Bomb.setHorizontalTextPosition(AbstractButton.CENTER);
         Bomb.setVerticalTextPosition(AbstractButton.BOTTOM);
+        // disable Bomb if none are owned
         if (Main.shop.numberOfQuestionEliminator(Main.player.getUsername()) == 0)
             Bomb.setEnabled(false);
 
@@ -214,6 +214,7 @@ public class gamePanel extends JPanel{
         submit.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ENTER"), "pressed");
         submit.getActionMap().put("pressed", pressedEnter);
 
+        // submit button action listener
         submit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -226,7 +227,7 @@ public class gamePanel extends JPanel{
             }
         });
 
-
+        // next button action listener
         next.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -297,6 +298,8 @@ public class gamePanel extends JPanel{
         answer5.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("5"), "pressed");
         answer5.getActionMap().put("pressed", pressed5);
 
+
+        // allow users to press Q and W to use power ups
         pressedQ = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -342,12 +345,12 @@ public class gamePanel extends JPanel{
     /**
      * A helper function to check if the user input the correct answer.
      * Also sets font to green or red depending if selection is right or wrong.
+     * This function also plays the appropriate sound effects.
      */
     private void checkAnswer() {
 
         //load sound effects
         try {
-            //ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
             ding = new URL("file:assets/wow.wav");
         }
         catch (MalformedURLException e) {
@@ -357,7 +360,6 @@ public class gamePanel extends JPanel{
         correct = java.applet.Applet.newAudioClip(ding);
 
         try {
-            //beep = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/sirentone.wav");
             beep = new URL("file:assets/sirentone.wav");
         }
         catch (MalformedURLException e) {
@@ -366,7 +368,7 @@ public class gamePanel extends JPanel{
 
         wrong = java.applet.Applet.newAudioClip(beep);
 
-
+        // check every button to see if it is selected
         if (answer1.isSelected()) {
             if (answer1.getText().equals(this.correctAnswer)) {
                 answer1.setForeground(Color.GREEN);
@@ -424,13 +426,12 @@ public class gamePanel extends JPanel{
         }
 
     /**
-     * AutoAnswer methods that executes the AutoAnswer power-up
+     * AutoAnswer method that executes the AutoAnswer power-up and plays the correct sound effect
      */
     private void AutoAnswer() {
 
-
+        // load sound effects
         try {
-            //ding = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/wow.wav");
             ding = new URL("file:assets/wow.wav");
         }
         catch (MalformedURLException e) {
@@ -440,7 +441,6 @@ public class gamePanel extends JPanel{
         correct = java.applet.Applet.newAudioClip(ding);
 
         try {
-            //beep = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/sirentone.wav");
             beep = new URL("file:assets/sirentone.wav");
         }
         catch (MalformedURLException e) {
@@ -449,6 +449,7 @@ public class gamePanel extends JPanel{
 
         wrong = java.applet.Applet.newAudioClip(beep);
 
+        // automatically finds and selects the correct answer
         if (!next.isVisible()) {
             if (answer1.getText().equals(this.correctAnswer)) {
                 answer1.setForeground(Color.GREEN);
@@ -492,11 +493,14 @@ public class gamePanel extends JPanel{
         Main.shop.decreaseNumberOfAutoAnswer(Main.player.getUsername());
     }
 
+    /**
+     * QuestionEliminator method that is called when Bomb is used.
+     * Highlights two wrong answers and plays a sound effect.
+     */
     private void QuestionEliminator() {
 
         //load sound effects
         try {
-            //boom = new URL("file:///C:/Users/brand_000/Documents/GitHub/triviaMaster/assets/bomb.wav");
             boom = new URL("file:assets/bomb.wav");
         }
         catch (MalformedURLException e) {

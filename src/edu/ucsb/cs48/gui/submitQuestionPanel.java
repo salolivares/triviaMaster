@@ -13,7 +13,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
 /**
- * This panel allows user to submit their own questions
+ * This panel allows user to submit their own questions to the database
  */
 
 public class submitQuestionPanel extends JPanel {
@@ -71,11 +71,13 @@ public class submitQuestionPanel extends JPanel {
 
         final HashMap<String, Integer> catID= QuestionAccess.getHashMap();
 
+        // create an arraylist of categories to choose from
         ArrayList<String> categories = QuestionAccess.getCategories();
         Collections.sort(categories);
         categoryList = new JComboBox(categories.toArray());
         categoryList.setMaximumRowCount(3);
 
+        // create an array to allow users to select the correct answer
         Integer[] answers = {1, 2, 3, 4, 5};
         correctAnswer = new JComboBox(answers);
         correctAnswer.setPreferredSize(new Dimension(40, 20));
@@ -148,6 +150,7 @@ public class submitQuestionPanel extends JPanel {
             }
         });
 
+        // if any text fields are empty, return a failure, otherwise attempt to connect to database and submit question
         submit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -212,11 +215,9 @@ public class submitQuestionPanel extends JPanel {
             }
 
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            //mainPan = new JPanel(new GridLayout(2, 1));
             mainPan = new JPanel(new GridBagLayout());
             GridBagConstraints gbc = new GridBagConstraints();
             OK = new JButton("OK");
-            //OK.setPreferredSize(new Dimension(100, 50));
             gbc.insets = new Insets(10,10,10,10);
             gbc.gridx = 0;
             gbc.gridy = 0;

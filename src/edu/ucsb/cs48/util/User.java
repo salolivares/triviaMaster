@@ -234,6 +234,10 @@ public class User {
         }
     }
 
+    /**
+     * This function finds the top 5 high scores in the database
+     * @return An ArrayList<String> of the names of the top 5 scores.
+     */
     public ArrayList<String> getTopFiveUsers() {
         String query;
         ArrayList<String> usernames = new ArrayList<String>();

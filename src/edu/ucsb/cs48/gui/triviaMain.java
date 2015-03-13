@@ -52,17 +52,6 @@ public class triviaMain {
         }
 
 
-
-        // background image
-        /*Image image = null;
-        try{
-            image = ImageIO.read(this.getClass().getResource("/background.jpg"));
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
-
         // load the background image
         background = new JLabel(new ImageIcon("assets/background.jpg"));
         background.setOpaque(false);
